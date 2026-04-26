@@ -1,0 +1,1026 @@
+[
+  {
+    "ticker": "TCS.NS",
+    "prediction": {
+      "verdict": "HOLD",
+      "confidence": 60,
+      "strongest_bull_points": [
+        "Robust revenue growth (0.096)",
+        "Impressive market cap of $934 billion",
+        "Competitive advantage identified by multiple financial institutions",
+        "Digital services scale considered strong by market analysts"
+      ],
+      "strongest_bear_points": [
+        "Declining revenue growth (0.096)",
+        "High debt-to-equity ratio (10.389)",
+        "India's TCS falls as rare annual revenue drop dulls quarterly earnings beat",
+        "Allegations against TCS could impact its reputation"
+      ],
+      "final_reasoning": "While Tata Consultancy Services (TCS) demonstrates strong points such as robust revenue growth, substantial market cap and a competitive advantage, these are counterbalanced by concerns about declining revenue growth, high debt-to-equity ratio, and financial performance issues indicated by the recent annual revenue drop. The negative market sentiment further highlights potential short-term downward pressure on TCS stock, making it advisable to hold onto existing positions rather than aggressively buying or selling at this time."
+    },
+    "checked": true,
+    "actual": "UP",
+    "correct": false
+  },
+  {
+    "ticker": "TCS.NS",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 0.6,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "strongest_bull_points": [
+        "Large Market Cap",
+        "Bullish Outlook from Analysts",
+        "Share Price Target",
+        "Deal Wins"
+      ],
+      "strongest_bear_points": [
+        "Negative Revenue Growth",
+        "Decreasing Profit Margins",
+        "High Debt-to-Equity Ratio",
+        "Recent 52-Week Low"
+      ],
+      "final_reasoning": "The bullish points outweigh the bearish points, with a focus on strong financial footing, investor confidence, analyst optimism, and recent deal wins. However, the potential downside risks should be considered, as well as the negative revenue growth and decreasing profit margins. The short-term outlook is positive given the bullish sentiment from various sources, but long-term performance will depend on TCS's ability to address its financial challenges."
+    },
+    "checked": true,
+    "actual": "UP",
+    "correct": true
+  },
+  {
+    "ticker": "TCS.NS",
+    "prediction": {
+      "verdict": "BUY or HOLD",
+      "confidence": 70,
+      "risk": "MEDIUM",
+      "timeframe": "long-term",
+      "strongest_bull_points": [
+        "Strong Market Capitalization",
+        "Positive Revenue Growth (slight increase of only 0.096%)",
+        "Impressive Profit Margins",
+        "Buying Recommendations from reputable sources",
+        "Stock Hits 52-Week Low providing an attractive entry point",
+        "Deal Wins indicate a steady flow of business and potential future revenue growth",
+        "Bullish Analyst Opinions"
+      ],
+      "strongest_bear_points": [
+        "Declining Revenue Growth (negative at 0.096%)",
+        "High Debt to Equity Ratio",
+        "Stock Hits 52-Week Low indicating poor market sentiment towards the company",
+        "Rare Annual Revenue Drop",
+        "Allegations and revenue slowdown"
+      ],
+      "final_reasoning": "While there are concerns about declining revenue growth, high debt to equity ratio, stock price decline, and rare annual revenue drop, these points are countered by a strong market capitalization, positive revenue trend (albeit slight), impressive profit margins, buying recommendations from reputable sources, the attractive entry point provided by the 52-week low, deal wins indicating a steady flow of business, and bullish analyst opinions. Overall, a long-term BUY or HOLD recommendation is suggested, with a MEDIUM risk level due to the mixed market sentiment."
+    },
+    "checked": true,
+    "actual": "UP",
+    "correct": false
+  },
+  {
+    "ticker": "TCS.NS",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 65,
+      "risk": "MEDIUM",
+      "timeframe": "long-term",
+      "strongest_bull_points": [
+        "High Market Capitalization",
+        "Attractive Valuation",
+        "Deal Wins",
+        "Digital Services Scale",
+        "Share Price Appreciation"
+      ],
+      "strongest_bear_points": [
+        "Declining Revenue Growth",
+        "Deteriorating Profit Margins",
+        "Increasing Debt Levels",
+        "Recent Stock Performance",
+        "Allegations and Slow Growth",
+        "Margin Discipline Concerns"
+      ],
+      "final_reasoning": "While TCS faces challenges such as a decline in revenue growth, deteriorating profit margins, increasing debt levels, and allegations, the company's substantial market capitalization, attractive valuation, numerous deal wins, recognition in digital services, and resilient share price appreciation suggest potential for long-term growth. The mixed market sentiment reflects both positive and negative sentiments, but we consider the overall bullish outlook from multiple analysts to be a strong indicator. Investors should be aware of the medium risk associated with this investment due to the current financial challenges faced by the company."
+    },
+    "checked": false
+  },
+  {
+    "ticker": "TCS.NS",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 75,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "bull_score_used": 63,
+      "bear_score_used": 64.3,
+      "sentiment_score_used": 0,
+      "strongest_bull_points": [
+        "Company's current price is within a lower portion of the 52-week range, indicating potential undervaluation",
+        "Earnings per share (TTM) is high, reflecting strong profitability"
+      ],
+      "strongest_bear_points": [
+        "Debt to Equity ratio of 10.39 indicates a high level of debt, which may impact the company's financial stability"
+      ],
+      "final_reasoning": "The company's current price is within a lower portion of the 52-week range, indicating potential undervaluation and strong profitability. However, a high Debt to Equity ratio raises concerns about the company's financial stability. This suggests a medium risk short-term buy decision."
+    },
+    "bull_score": 63,
+    "bear_score": 64.3,
+    "timestamp": "2026-04-19T13:52:20.686648",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "TCS.NS",
+    "prediction": {
+      "error": "JSON parsing failed: Expecting ',' delimiter: line 8 column 384 (char 628)",
+      "raw": " {\n  \"verdict\": \"SELL\",\n  \"confidence\": 44,\n  \"risk\": \"HIGH\",\n  \"timeframe\": \"short-term\",\n  \"strongest_bull_points\": [],\n  \"strongest_bear_points\": [\"Revenue Growth (YoY)\", \"Tata Consultancy Services Ltd. Stock Hits 52-Week Low at Rs.2418.1\"],\n  \"final_reasoning\": \"The SELL-leaning net signal (-17)",
+      "confidence": 44,
+      "signal_breakdown": "Bull 50 - Bear 67 = net -17 | Sentiment boost: +0.0 | Final confidence: 44"
+    },
+    "bull_score": 50,
+    "bear_score": 67,
+    "timestamp": "2026-04-19T14:03:17.104799",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "TCS.NS",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 45,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "strongest_bull_points": [
+        "Analyst recommendation is 'Buy', indicating a positive outlook from financial experts",
+        "The company's P/E ratio of 18.974642 suggests the stock might be undervalued, especially when compared to other companies in the sector"
+      ],
+      "strongest_bear_points": [
+        "The company's revenue growth (YoY) is negative at 0.096, indicating a decrease in revenue compared to the same period last year.",
+        "The stock has hit a 52-week low, indicating a lack of investor confidence and potential selling pressure"
+      ],
+      "final_reasoning": "While the revenue growth and profit margins are concerning, positive analyst recommendations and the potentially undervalued P/E ratio suggest a buying opportunity in the short term. However, the medium risk is due to the negative revenue growth and low profit margins.",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 45,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"strongest_bull_points\": [\"Analyst recommendation is 'Buy', indicating a positive outlook from financial experts\", \"The company's P/E ratio of 18.974642 suggests the stock might be undervalued, especially when compared to other companies in the sector\"],\n  \"strongest_bear_points\": [\"The company's revenue growth (YoY) is negative at 0.096, indicating a decrease in revenue compared to the same period last year.\", \"The stock has hit a 52-week low, indicating a lack of investor confidence and potential selling pressure\"],\n  \"final_reasoning\": \"While the revenue growth and profit margins are concerning, positive analyst recommendations and the potentially undervalued P/E ratio suggest a buying opportunity in the short term. However, the medium risk is due to the negative revenue growth and low profit margins.\"\n}",
+      "signal_breakdown": "Bull 65 - Bear 80 = net -15 | Sentiment boost: +0.0 | Final confidence: 45"
+    },
+    "bull_score": 65,
+    "bear_score": 80,
+    "timestamp": "2026-04-19T14:17:44.509823",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "TCS.NS",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 54,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "strongest_bull_points": [
+        "TCS has a high market capitalization, indicating its size and scale in the technology sector.",
+        "The P/E Ratio of Tata Consultancy Services is relatively lower compared to some other companies in the same sector, suggesting that it may be undervalued."
+      ],
+      "strongest_bear_points": [
+        "The company's revenue growth rate has decreased YoY, indicating potential slowing of business expansion.",
+        "High Debt to Equity ratio could indicate a high leverage, which may increase financial risk."
+      ],
+      "final_reasoning": "The strong points suggest a potentially undervalued company with a high market cap and good earnings performance. However, the decreased revenue growth rate and high debt-to-equity ratio indicate potential risks that should be monitored closely. A short-term buy decision is suggested due to the current favorable P/E ratio.",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 54,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"strongest_bull_points\": [\"TCS has a high market capitalization, indicating its size and scale in the technology sector.\", \"The P/E Ratio of Tata Consultancy Services is relatively lower compared to some other companies in the same sector, suggesting that it may be undervalued.\"],\n  \"strongest_bear_points\": [\"The company's revenue growth rate has decreased YoY, indicating potential slowing of business expansion.\", \"High Debt to Equity ratio could indicate a high leverage, which may increase financial risk.\"],\n  \"final_reasoning\": \"The strong points suggest a potentially undervalued company with a high market cap and good earnings performance. However, the decreased revenue growth rate and high debt-to-equity ratio indicate potential risks that should be monitored closely. A short-term buy decision is suggested due to the current favorable P/E ratio.\"\n}",
+      "signal_breakdown": "Bull 65 - Bear 68 = net -3 | Sentiment boost: +5.0 | Final confidence: 54"
+    },
+    "bull_score": 65,
+    "bear_score": 68,
+    "timestamp": "2026-04-21T17:48:23.058747",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "RVNL",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 64,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "strongest_bull_points": [
+        "RVNL has won a major railway contract worth Rs 968 crore, which could lead to further growth.",
+        "RVNL stock has risen significantly in the past few days, indicating strong investor interest."
+      ],
+      "strongest_bear_points": [
+        "The stock price has risen significantly in a short period, potentially indicating overvaluation.",
+        "The stock has reached a high position (22.5%) within its 52-week range, which could indicate potential for downward correction."
+      ],
+      "final_reasoning": "The strong investor interest and recent major railway contract win suggest potential growth for RVNL in the short term, despite some concerns about overvaluation and potential for downward correction.",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 64,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"strongest_bull_points\": [\"RVNL has won a major railway contract worth Rs 968 crore, which could lead to further growth.\", \"RVNL stock has risen significantly in the past few days, indicating strong investor interest.\"],\n  \"strongest_bear_points\": [\"The stock price has risen significantly in a short period, potentially indicating overvaluation.\", \"The stock has reached a high position (22.5%) within its 52-week range, which could indicate potential for downward correction.\"],\n  \"final_reasoning\": \"The strong investor interest and recent major railway contract win suggest potential growth for RVNL in the short term, despite some concerns about overvaluation and potential for downward correction.\"\n}",
+      "signal_breakdown": "Bull 65 - Bear 60 = net +5 | Sentiment boost: +12.6 | Final confidence: 64"
+    },
+    "bull_score": 65,
+    "bear_score": 60,
+    "timestamp": "2026-04-21T18:05:13.498960",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "IRCTC",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 41,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "strongest_bull_points": [
+        "IRCTC's stock is down 26% from its 52-week high, indicating a potential buying opportunity.",
+        "Buy IRCTC at Rs 646 with an upside potential of 18%, suggesting a positive outlook according to market trading guide."
+      ],
+      "strongest_bear_points": [
+        "The IRCTC stock has experienced a significant drop (26%) from its 52-week high, indicating potential selling pressure or lack of investor confidence.",
+        "The Foreign Institutional Investors (FII) holding is at a two-year low, which could impact the company's liquidity and future investments."
+      ],
+      "final_reasoning": "While the IRCTC stock has shown signs of selling pressure, its current price presents a potential buying opportunity with an upside potential. However, the low FII holding poses a risk to the company's liquidity and future investments, necessitating careful monitoring.",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 41,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"strongest_bull_points\": [\"IRCTC's stock is down 26% from its 52-week high, indicating a potential buying opportunity.\", \"Buy IRCTC at Rs 646 with an upside potential of 18%, suggesting a positive outlook according to market trading guide.\"],\n  \"strongest_bear_points\": [\"The IRCTC stock has experienced a significant drop (26%) from its 52-week high, indicating potential selling pressure or lack of investor confidence.\", \"The Foreign Institutional Investors (FII) holding is at a two-year low, which could impact the company's liquidity and future investments.\"],\n  \"final_reasoning\": \"While the IRCTC stock has shown signs of selling pressure, its current price presents a potential buying opportunity with an upside potential. However, the low FII holding poses a risk to the company's liquidity and future investments, necessitating careful monitoring.\"\n}",
+      "signal_breakdown": "Bull 80 - Bear 65 = net +15 | Sentiment boost: -12.6 | Final confidence: 41"
+    },
+    "bull_score": 80,
+    "bear_score": 65,
+    "timestamp": "2026-04-22T09:58:44.936310",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "IRCTC",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 41,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "strongest_bull_points": [
+        "IRCTC shares have fallen from their 52-week high, potentially offering a buying opportunity. According to The Economic Times, there's a buy recommendation at Rs 646 with an upside of 18%.",
+        "IRCTC, despite its recent fall, remains popular among state or government entities that own 63%, and individual investors hold 20%. This suggests a strong investor base."
+      ],
+      "strongest_bear_points": [
+        "IRCTC stock has experienced a significant drop of 26% from its 52-week high, indicating potential selling pressure and a bearish trend.",
+        "The Individual investors' holding in IRCTC is comparatively lower (20%) than the state or government's holdings (63%), which could lead to limited support for the stock during downturns."
+      ],
+      "final_reasoning": "Despite recent bearish trends, strong investor interest and a potential recovery opportunity make it a viable short-term buy decision. However, investors should be aware of the moderate risk due to significant share drop and limited individual investor support.",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 41,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"strongest_bull_points\": [\"IRCTC shares have fallen from their 52-week high, potentially offering a buying opportunity. According to The Economic Times, there's a buy recommendation at Rs 646 with an upside of 18%.\", \"IRCTC, despite its recent fall, remains popular among state or government entities that own 63%, and individual investors hold 20%. This suggests a strong investor base.\"],\n  \"strongest_bear_points\": [\"IRCTC stock has experienced a significant drop of 26% from its 52-week high, indicating potential selling pressure and a bearish trend.\", \"The Individual investors' holding in IRCTC is comparatively lower (20%) than the state or government's holdings (63%), which could lead to limited support for the stock during downturns.\"],\n  \"final_reasoning\": \"Despite recent bearish trends, strong investor interest and a potential recovery opportunity make it a viable short-term buy decision. However, investors should be aware of the moderate risk due to significant share drop and limited individual investor support.\"\n}",
+      "signal_breakdown": "Bull 75 - Bear 60 = net +15 | Sentiment boost: -12.6 | Final confidence: 41"
+    },
+    "bull_score": 75,
+    "bear_score": 60,
+    "timestamp": "2026-04-22T10:20:12.148263",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "IRCTC",
+    "nse_symbol": "IRCTC",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 55,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong Revenue Growth",
+        "Impressive Profit Margins"
+      ],
+      "strongest_bear_points": [
+        "Elevated Valuation",
+        "Debt Concerns"
+      ],
+      "final_reasoning": "IRCTC's strong revenue and profit growth, healthy margins, and positive analyst sentiment present a promising short-term investment opportunity. However, the high valuation and debt levels require careful consideration to mitigate potential downside risk.",
+      "key_risk": "Debt Concerns",
+      "key_catalyst": "Positive analyst sentiment and strong upcoming earnings",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 55,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong Revenue Growth\", \"Impressive Profit Margins\"],\n  \"strongest_bear_points\": [\"Elevated Valuation\", \"Debt Concerns\"],\n  \"final_reasoning\": \"IRCTC's strong revenue and profit growth, healthy margins, and positive analyst sentiment present a promising short-term investment opportunity. However, the high valuation and debt levels require careful consideration to mitigate potential downside risk.\",\n  \"key_risk\": \"Debt Concerns\",\n  \"key_catalyst\": \"Positive analyst sentiment and strong upcoming earnings\"\n}",
+      "signal_breakdown": "Bull 70 - Bear 65 = net +5 | Sentiment boost: +4.0 | Confidence: 55"
+    },
+    "bull_score": 70,
+    "bear_score": 65,
+    "baseline_price": 558.55,
+    "timestamp": "2026-04-22T17:45:37.020779",
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 541.2000122070312,
+        "pct_move": -3.11,
+        "direction": "DOWN",
+        "correct": false
+      }
+    }
+  },
+  {
+    "ticker": "HDFC",
+    "nse_symbol": "HDFC",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 66,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "HDFC Bank target price of Rs 1011 by Deven Choksey",
+        "HDFC Life Consolidated March 2026 Net Sales at Rs 19,890.03 crore"
+      ],
+      "strongest_bear_points": [
+        "Moderate valuation risk due to high P/E ratio",
+        "Moderate revenue decline risk due to Y-o-Y decrease in HDFC Life's consolidated March 2026 net sales"
+      ],
+      "final_reasoning": "Positive sentiment from brokerages indicates potential price appreciation for HDFC Bank, with a target price of Rs 1011. However, the high P/E ratio and revenue decline present moderate risks. A balanced approach is advised, considering the medium risk level.",
+      "key_risk": "Moderate valuation risk due to high P/E ratio",
+      "key_catalyst": "HDFC Bank stock rating - 'buy'; brokerages eye up to 55% upside",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 66,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"HDFC Bank target price of Rs 1011 by Deven Choksey\", \"HDFC Life Consolidated March 2026 Net Sales at Rs 19,890.03 crore\"],\n  \"strongest_bear_points\": [\"Moderate valuation risk due to high P/E ratio\", \"Moderate revenue decline risk due to Y-o-Y decrease in HDFC Life's consolidated March 2026 net sales\"],\n  \"final_reasoning\": \"Positive sentiment from brokerages indicates potential price appreciation for HDFC Bank, with a target price of Rs 1011. However, the high P/E ratio and revenue decline present moderate risks. A balanced approach is advised, considering the medium risk level.\",\n  \"key_risk\": \"Moderate valuation risk due to high P/E ratio\",\n  \"key_catalyst\": \"HDFC Bank stock rating - 'buy'; brokerages eye up to 55% upside\"\n}",
+      "signal_breakdown": "Bull 81 - Bear 60 = net +21 | Sentiment boost: +10.0 | Confidence: 66"
+    },
+    "bull_score": 81,
+    "bear_score": 60,
+    "baseline_price": 0.0,
+    "timestamp": "2026-04-22T19:29:41.359496",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "IRCTC",
+    "nse_symbol": "IRCTC",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 59,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong revenue growth",
+        "Robust profit margins"
+      ],
+      "strongest_bear_points": [
+        "Elevated valuation",
+        "Margin pressure"
+      ],
+      "final_reasoning": "IRCTC's strong revenue growth and robust profit margins, despite moderate valuation discount, indicate a promising investment opportunity in the Indian travel services sector. However, caution is advised due to high valuation and margin pressure.",
+      "key_risk": "High debt levels",
+      "key_catalyst": "Positive news around summer special train trips",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 59,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong revenue growth\", \"Robust profit margins\"],\n  \"strongest_bear_points\": [\"Elevated valuation\", \"Margin pressure\"],\n  \"final_reasoning\": \"IRCTC's strong revenue growth and robust profit margins, despite moderate valuation discount, indicate a promising investment opportunity in the Indian travel services sector. However, caution is advised due to high valuation and margin pressure.\",\n  \"key_risk\": \"High debt levels\",\n  \"key_catalyst\": \"Positive news around summer special train trips\"\n}",
+      "signal_breakdown": "Bull 65 - Bear 68 = net -3 | Sentiment boost: +10.0 | Confidence: 59"
+    },
+    "bull_score": 65,
+    "bear_score": 68,
+    "baseline_price": 558.55,
+    "timestamp": "2026-04-22T19:40:26.727598",
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 541.2000122070312,
+        "pct_move": -3.11,
+        "direction": "DOWN",
+        "correct": false
+      }
+    }
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 58,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong revenue growth",
+        "Impressive profit margins"
+      ],
+      "strongest_bear_points": [
+        "High valuation: Trailing P/E and Forward P/E ratios are significantly above industry norms",
+        "High debt-to-equity ratio suggests potential financial stress"
+      ],
+      "final_reasoning": "The strong revenue growth, impressive profit margins, and positive analyst sentiment indicate a significant expansion in the company's business operations and a positive outlook from the financial community. However, these bullish points are counterbalanced by the overvaluation and higher debt levels, which suggest potential risks for investors seeking stable returns.",
+      "key_risk": "High valuation: Trailing P/E and Forward P/E ratios are significantly above industry norms",
+      "key_catalyst": "Positive earnings reports post IPO and continued strong revenue growth",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 58,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong revenue growth\", \"Impressive profit margins\"],\n  \"strongest_bear_points\": [\"High valuation: Trailing P/E and Forward P/E ratios are significantly above industry norms\", \"High debt-to-equity ratio suggests potential financial stress\"],\n  \"final_reasoning\": \"The strong revenue growth, impressive profit margins, and positive analyst sentiment indicate a significant expansion in the company's business operations and a positive outlook from the financial community. However, these bullish points are counterbalanced by the overvaluation and higher debt levels, which suggest potential risks for investors seeking stable returns.\",\n  \"key_risk\": \"High valuation: Trailing P/E and Forward P/E ratios are significantly above industry norms\",\n  \"key_catalyst\": \"Positive earnings reports post IPO and continued strong revenue growth\"\n}",
+      "signal_breakdown": "Bull 75 - Bear 60 = net +15 | Sentiment boost: +4.0 | Confidence: 58"
+    },
+    "bull_score": 75,
+    "bear_score": 60,
+    "baseline_price": 543.95,
+    "timestamp": "2026-04-22T19:52:07.118624",
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 533.8499755859375,
+        "pct_move": -1.86,
+        "direction": "DOWN",
+        "correct": false
+      }
+    }
+  },
+  {
+    "ticker": "NVDA",
+    "nse_symbol": "NVDA",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 64,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong Revenue Growth",
+        "Impressive Profit Margins"
+      ],
+      "strongest_bear_points": [
+        "High Forward P/E Ratio",
+        "FII Selling Pressure"
+      ],
+      "final_reasoning": "The robust demand for NVIDIA's products and services, as indicated by strong revenue growth and high profit margins, outweigh the potential risks of overvaluation and foreign institutional investor selling pressure. Despite the bearish points, the company's undervalued positioning, strategic partnerships, and upgraded analyst recommendations provide a compelling investment opportunity in the short-term.",
+      "key_risk": "Foreign institutional investors selling could put pressure on the share price",
+      "key_catalyst": "Upgraded analyst recommendations can increase demand for the stock and drive price appreciation",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 64,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong Revenue Growth\", \"Impressive Profit Margins\"],\n  \"strongest_bear_points\": [\"High Forward P/E Ratio\", \"FII Selling Pressure\"],\n  \"final_reasoning\": \"The robust demand for NVIDIA's products and services, as indicated by strong revenue growth and high profit margins, outweigh the potential risks of overvaluation and foreign institutional investor selling pressure. Despite the bearish points, the company's undervalued positioning, strategic partnerships, and upgraded analyst recommendations provide a compelling investment opportunity in the short-term.\",\n  \"key_risk\": \"Foreign institutional investors selling could put pressure on the share price\",\n  \"key_catalyst\": \"Upgraded analyst recommendations can increase demand for the stock and drive price appreciation\"\n}",
+      "signal_breakdown": "Bull 80 - Bear 70 = net +10 | Sentiment boost: +11.0 | Confidence: 64"
+    },
+    "bull_score": 80,
+    "bear_score": 70,
+    "baseline_price": 0.0,
+    "timestamp": "2026-04-22T20:26:29.582629",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 65,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong revenue growth",
+        "Impressive profit margins"
+      ],
+      "strongest_bear_points": [
+        "Valuation stretch",
+        "Weak profit margins"
+      ],
+      "final_reasoning": "Despite high valuation multiples and weak profit margins posing risks, the substantial increase in revenue growth and the company's ability to efficiently convert revenue into profits outweigh these concerns. The positive analyst sentiment and strong Q3 results further support a bullish case.",
+      "key_catalyst": "Improved financial performance and potential upside from current undervalued valuation",
+      "key_risk": "Potential downward correction due to high valuation multiples and limited ability to invest in growth due to weak profit margins",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 65,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong revenue growth\", \"Impressive profit margins\"],\n  \"strongest_bear_points\": [\"Valuation stretch\", \"Weak profit margins\"],\n  \"final_reasoning\": \"Despite high valuation multiples and weak profit margins posing risks, the substantial increase in revenue growth and the company's ability to efficiently convert revenue into profits outweigh these concerns. The positive analyst sentiment and strong Q3 results further support a bullish case.\",\n  \"key_catalyst\": \"Improved financial performance and potential upside from current undervalued valuation\",\n  \"key_risk\": \"Potential downward correction due to high valuation multiples and limited ability to invest in growth due to weak profit margins\"\n}",
+      "signal_breakdown": "Bull 70 - Bear 70 = net +0 | Sentiment boost: +15.0 | Confidence: 65"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "baseline_price": 535.55,
+    "timestamp": "2026-04-23T07:47:45.541813",
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 533.8499755859375,
+        "pct_change": -0.32,
+        "correct": false
+      }
+    }
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 56,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Stock Price Performance",
+        "Analyst Recommendation"
+      ],
+      "strongest_bear_points": [
+        "High valuation",
+        "Margin Pressure"
+      ],
+      "final_reasoning": "Lenskart's strong stock performance and broad analyst consensus indicate a compelling investment opportunity, despite high valuations and margin pressure. The short-term target is an upside of 8.5%.",
+      "key_risk": "High valuation",
+      "key_catalyst": "Strong Q2 FY26 results post IPO",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 56,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Stock Price Performance\", \"Analyst Recommendation\"],\n  \"strongest_bear_points\": [\"High valuation\", \"Margin Pressure\"],\n  \"final_reasoning\": \"Lenskart's strong stock performance and broad analyst consensus indicate a compelling investment opportunity, despite high valuations and margin pressure. The short-term target is an upside of 8.5%.\",\n  \"key_risk\": \"High valuation\",\n  \"key_catalyst\": \"Strong Q2 FY26 results post IPO\"\n}",
+      "signal_breakdown": "Bull 75 - Bear 70 = net +5 | Sentiment boost: +5.0 | Confidence: 56"
+    },
+    "bull_score": 75,
+    "bear_score": 70,
+    "baseline_price": 534.3,
+    "timestamp": "2026-04-24T07:01:36.673638",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 64,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong revenue growth",
+        "Impressive profit margins"
+      ],
+      "strongest_bear_points": [
+        "Valuation Stretch",
+        "High Debt"
+      ],
+      "final_reasoning": "Despite elevated debt levels, Lenskart's strong revenue growth and impressive profit margins suggest a promising investment opportunity in the short term. The stock may experience an upside of 8.5% as analysts generally have a positive outlook on the company.",
+      "key_catalyst": "Robust revenue growth driving potential stock price appreciation",
+      "key_risk": "High valuation multiples making the stock vulnerable to correction",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 64,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong revenue growth\", \"Impressive profit margins\"],\n  \"strongest_bear_points\": [\"Valuation Stretch\", \"High Debt\"],\n  \"final_reasoning\": \"Despite elevated debt levels, Lenskart's strong revenue growth and impressive profit margins suggest a promising investment opportunity in the short term. The stock may experience an upside of 8.5% as analysts generally have a positive outlook on the company.\",\n  \"key_catalyst\": \"Robust revenue growth driving potential stock price appreciation\",\n  \"key_risk\": \"High valuation multiples making the stock vulnerable to correction\"\n}",
+      "signal_breakdown": "Bull 75 - Bear 62 = net +13 | Sentiment boost: +11.0 | Confidence: 64"
+    },
+    "bull_score": 75,
+    "bear_score": 62,
+    "baseline_price": 535.95,
+    "timestamp": "2026-04-24T07:23:54.374097",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 64,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong revenue growth",
+        "Profit jumps multifold to Rs 133 crore"
+      ],
+      "strongest_bear_points": [
+        "High valuation stretch",
+        "Negative news"
+      ],
+      "final_reasoning": "The strong revenue growth and impressive profitability, as indicated by the Q3 earnings report, outweigh the risks of high valuation and negative news. However, the company's high debt levels and weak margins should be closely monitored.",
+      "key_catalyst": "Continued strong revenue growth could potentially drive up the stock price further",
+      "key_risk": "Negative publicity could lead to a decline in the stock price",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 64,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong revenue growth\", \"Profit jumps multifold to Rs 133 crore\"],\n  \"strongest_bear_points\": [\"High valuation stretch\", \"Negative news\"],\n  \"final_reasoning\": \"The strong revenue growth and impressive profitability, as indicated by the Q3 earnings report, outweigh the risks of high valuation and negative news. However, the company's high debt levels and weak margins should be closely monitored.\",\n  \"key_catalyst\": \"Continued strong revenue growth could potentially drive up the stock price further\",\n  \"key_risk\": \"Negative publicity could lead to a decline in the stock price\"\n}",
+      "signal_breakdown": "Bull 80 - Bear 70 = net +10 | Sentiment boost: +11.6 | Confidence: 64"
+    },
+    "bull_score": 80,
+    "bear_score": 70,
+    "baseline_price": 0,
+    "timestamp": "2026-04-24T11:57:18.196651",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 66,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        {
+          "point": "Strong Revenue Growth",
+          "metric_cited": "\u20b98.0K Cr, \u20136.7% growth"
+        },
+        {
+          "point": "Robust Quarter-over-Quarter Revenue Growth Exceeding 30%",
+          "metric_cited": "\u20b98.0K Cr, \u201338.30%"
+        }
+      ],
+      "strongest_bear_points": [
+        {
+          "point": "Valuation Stretch",
+          "metric_cited": "\u2016\u2095 above analysts' fair value estimate"
+        },
+        {
+          "point": "Debt Load Concern",
+          "metric_cited": "44.215 Debt / Equity ratio"
+        }
+      ],
+      "final_reasoning": "Given the strong revenue growth and robust profit margins, alongside a fair value price below target estimates, it's prudent to invest with caution while monitoring valuation trends closely.",
+      "key_catalyst": "Continued robust revenue performance",
+      "key_risk": "Market sentiment could shift if overvaluation concerns are realized",
+      "_raw": "{\n  \"verdict\": \"BUY\",\n  \"confidence\": 66,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\n    {\n      \"point\": \"Strong Revenue Growth\",\n      \"metric_cited\": \"\\u20b98.0K Cr, \\u20136.7% growth\"\n    },\n    {\n      \"point\": \"Robust Quarter-over-Quarter Revenue Growth Exceeding 30%\",\n      \"metric_cited\": \"\\u20b98.0K Cr, \\u201338.30%\"\n    }\n  ],\n  \"strongest_bear_points\": [\n    {\n      \"point\": \"Valuation Stretch\",\n      \"metric_cited\": \"\\u2016\\u2095 above analysts' fair value estimate\"\n    },\n    {\n      \"point\": \"Debt Load Concern\",\n      \"metric_cited\": \"44.215 Debt / Equity ratio\"\n    }\n  ],\n  \"final_reasoning\": \"Given the strong revenue growth and robust profit margins, alongside a fair value price below target estimates, it's prudent to invest with caution while monitoring valuation trends closely.\",\n  \"key_catalyst\": \"Continued robust revenue performance\",\n  \"key_risk\": \"Market sentiment could shift if overvaluation concerns are realized\"\n}",
+      "signal_breakdown": "Bull 65 - Bear 60 = net +5 | Sentiment boost: +15.0 | Confidence: 66"
+    },
+    "bull_score": 65,
+    "bear_score": 60,
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-24T13:12:28.791412",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 71,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong Revenue Growth",
+        "Momentum in the Market"
+      ],
+      "strongest_bear_points": [],
+      "final_reasoning": "Given Lenskart Solutions Ltd's strong revenue growth and recent positive momentum, coupled with an optimistic turnaround of analyst sentiment and solid profit margins even amidst high P/E ratios, the fund is inclined to recommend a BUY position.",
+      "key_catalyst": "Analyst Sentiment Turnaround",
+      "key_risk": "",
+      "_raw": "{\n  \"verdict\": \"BUY\",\n  \"confidence\": 71,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong Revenue Growth\", \"Momentum in the Market\"],\n  \"strongest_bear_points\": [],\n  \"final_reasoning\": \"Given Lenskart Solutions Ltd's strong revenue growth and recent positive momentum, coupled with an optimistic turnaround of analyst sentiment and solid profit margins even amidst high P/E ratios, the fund is inclined to recommend a BUY position.\",\n  \"key_catalyst\": \"Analyst Sentiment Turnaround\",\n  \"key_risk\": \"\"\n}",
+      "signal_breakdown": "Bull 70 - Bear 50 = net +20 | Sentiment boost: +15.0 | Confidence: 71"
+    },
+    "bull_score": 70,
+    "bear_score": 50,
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-24T14:34:08.853311",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 66,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 13.0,
+      "strongest_bull_points": [
+        "Strong revenue growth",
+        "Impressive net profit surge"
+      ],
+      "strongest_bear_points": [
+        "Valuation Stretch",
+        "High Debt"
+      ],
+      "final_reasoning": "The strong revenue growth and impressive net profit surge indicate a robust financial performance, outweighing concerns about high valuation and debt levels. The potential upside of 13% in the short term makes it an attractive investment.",
+      "key_catalyst": "Continued strong revenue growth and operational efficiency",
+      "key_risk": "Overvaluation leading to a correction if earnings do not meet expectations",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 66,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 13.0,\n  \"strongest_bull_points\": [\"Strong revenue growth\", \"Impressive net profit surge\"],\n  \"strongest_bear_points\": [\"Valuation Stretch\", \"High Debt\"],\n  \"final_reasoning\": \"The strong revenue growth and impressive net profit surge indicate a robust financial performance, outweighing concerns about high valuation and debt levels. The potential upside of 13% in the short term makes it an attractive investment.\",\n  \"key_catalyst\": \"Continued strong revenue growth and operational efficiency\",\n  \"key_risk\": \"Overvaluation leading to a correction if earnings do not meet expectations\"\n}",
+      "signal_breakdown": "Bull 78 - Bear 65 = net +13 | Sentiment boost: +13.0 | Confidence: 66"
+    },
+    "bull_score": 78,
+    "bear_score": 65,
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-24T15:01:07.013327",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "KPRMILL",
+    "nse_symbol": "KPRMILL",
+    "prediction": {
+      "verdict": "BUY",
+      "confidence": 62,
+      "risk": "MEDIUM",
+      "timeframe": "short-term",
+      "target_upside_pct": 8.5,
+      "strongest_bull_points": [
+        "Strong market rally in response to India-EU trade deal",
+        "Analyst consensus of BUY recommendation"
+      ],
+      "strongest_bear_points": [
+        "Valuation Stretch",
+        "Weak Margin"
+      ],
+      "final_reasoning": "The strong market rally in response to the India-EU trade deal and positive analyst recommendations provide optimistic signals for KPR Mill. However, given the high valuation and weak margins, it is essential to monitor the stock closely.",
+      "key_catalyst": "Positive sentiment from the India-EU trade deal",
+      "key_risk": "Overvalued stock with weak margins",
+      "_raw": " {\n  \"verdict\": \"BUY\",\n  \"confidence\": 62,\n  \"risk\": \"MEDIUM\",\n  \"timeframe\": \"short-term\",\n  \"target_upside_pct\": 8.5,\n  \"strongest_bull_points\": [\"Strong market rally in response to India-EU trade deal\", \"Analyst consensus of BUY recommendation\"],\n  \"strongest_bear_points\": [\"Valuation Stretch\", \"Weak Margin\"],\n  \"final_reasoning\": \"The strong market rally in response to the India-EU trade deal and positive analyst recommendations provide optimistic signals for KPR Mill. However, given the high valuation and weak margins, it is essential to monitor the stock closely.\",\n  \"key_catalyst\": \"Positive sentiment from the India-EU trade deal\",\n  \"key_risk\": \"Overvalued stock with weak margins\"\n}",
+      "signal_breakdown": "Bull 50 - Bear 60 = net -10 | Sentiment boost: +15.0 | Confidence: 62"
+    },
+    "bull_score": 50,
+    "bear_score": 60,
+    "baseline_price": 930.6,
+    "timestamp": "2026-04-24T15:36:31.256546",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is based on Lenskart Solutions' impressive revenue growth, strong profit margins, and positive analyst sentiment. Despite some concerns about high debt levels and valuation, the company's performance in Q3 indicates its ability to deliver strong financial results in the short term.",
+      "key_catalyst": "The significant increase in revenue, growing by 38.30% over the past year, serves as the key catalyst for potential upside.",
+      "key_risk": "High Debt/Equity Ratio of 44.215 indicates high leverage, which could increase the risk of default if the company faces financial stress in the short term.",
+      "timeframe": "short-term",
+      "_raw": " {\n  \"final_reasoning\": \"The BUY verdict is based on Lenskart Solutions' impressive revenue growth, strong profit margins, and positive analyst sentiment. Despite some concerns about high debt levels and valuation, the company's performance in Q3 indicates its ability to deliver strong financial results in the short term.\",\n  \"key_catalyst\": \"The significant increase in revenue, growing by 38.30% over the past year, serves as the key catalyst for potential upside.\",\n  \"key_risk\": \"High Debt/Equity Ratio of 44.215 indicates high leverage, which could increase the risk of default if the company faces financial stress in the short term.\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 24,
+      "risk": "MEDIUM",
+      "composite": 65.9,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 75.0,
+        "bear": 65.0,
+        "sentiment": 72.5,
+        "fair_value": 45,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53\u00c3\u20140.35 + Bull 75\u00c3\u20140.2 - Bear 65\u00c3\u20140.2 + Sent 72\u00c3\u20140.15 + FV 45\u00c3\u20140.1 \u00e2\u2020\u2019 65.9 \u00e2\u2020\u2019 BUY"
+    },
+    "bull_score": 75,
+    "bear_score": 65,
+    "fundamentals_score": 52.9,
+    "scores": {
+      "fundamentals": 52.9,
+      "bull": 75.0,
+      "bear": 65.0,
+      "sentiment": 72.5,
+      "fair_value": 45,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-26T04:59:32.107208",
+    "checked": false,
+    "eval_results": {}
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "Given Lenskart Solutions' impressive financial performance and market reactions, the pre-computed BUY verdict is justified. The company has not only demonstrated substantial YoY growth in net profits but also a significant stock price rally post its Q3 earnings release.",
+      "key_catalyst": "Net Profit: Rs 131 Cr, Revenue Growth: 38.30%",
+      "key_risk": "",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"Given Lenskart Solutions' impressive financial performance and market reactions, the pre-computed BUY verdict is justified. The company has not only demonstrated substantial YoY growth in net profits but also a significant stock price rally post its Q3 earnings release.\",\n  \"key_catalyst\": \"Net Profit: Rs 131 Cr, Revenue Growth: 38.30%\",\n  \"key_risk\": \"\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 24,
+      "risk": "LOW",
+      "composite": 65.5,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 75.0,
+        "bear": 50.0,
+        "sentiment": 50.0,
+        "fair_value": 45,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 75x0.2 - Bear 50x0.2 + Sent 50x0.15 + FV 45x0.1 = 65.5 -> BUY"
+    },
+    "bull_score": 75,
+    "bear_score": 50,
+    "fundamentals_score": 52.9,
+    "scores_breakdown": {
+      "fundamentals": 52.9,
+      "bull": 75.0,
+      "bear": 50.0,
+      "sentiment": 50.0,
+      "fair_value": 45,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-26T05:29:42.456480",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is due to Lenskart's robust revenue growth and positive analyst outlook which may continue in the near future; however, concerns over financial structure risk with high debt levels could temper stock price increases.",
+      "key_catalyst": "'Revenue (TTM)    : \u20b98.0K Cr'",
+      "key_risk": "'Debt / Equity' standing at an elevated 44.215, which greatly surpasses the fair value estimate for a stable company in its sector.",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is due to Lenskart's robust revenue growth and positive analyst outlook which may continue in the near future; however, concerns over financial structure risk with high debt levels could temper stock price increases.\",\n  \"key_catalyst\": \"'Revenue (TTM)    : \\u20b98.0K Cr'\",\n  \"key_risk\": \"'Debt / Equity' standing at an elevated 44.215, which greatly surpasses the fair value estimate for a stable company in its sector.\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 18,
+      "risk": "MEDIUM",
+      "composite": 61.5,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 75.0,
+        "bear": 70.0,
+        "sentiment": 50.0,
+        "fair_value": 45,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 75x0.2 - Bear 70x0.2 + Sent 50x0.15 + FV 45x0.1 = 61.5 -> HOLD"
+    },
+    "bull_score": 75,
+    "bear_score": 70,
+    "fundamentals_score": 52.9,
+    "scores_breakdown": {
+      "fundamentals": 52.9,
+      "bull": 75.0,
+      "bear": 70.0,
+      "sentiment": 50.0,
+      "fair_value": 45,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-26T06:08:27.061649",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "The pre-computed HOLD verdict is based on a composite score of 60.5, which indicates that the overall market sentiment and fundamental analysis does not strongly support significant movement in either direction.",
+      "key_catalyst": "Bull case points",
+      "key_risk": "Fundamental risk data suggests concerns about potential underperformance or volatility issues within some companies' fundamentals, which could hinder sector growth and impact stock prices adversely.",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed HOLD verdict is based on a composite score of 60.5, which indicates that the overall market sentiment and fundamental analysis does not strongly support significant movement in either direction.\",\n  \n  \"key_catalyst\": \"Bull case points\",\n  \n  \"key_risk\": \"Fundamental risk data suggests concerns about potential underperformance or volatility issues within some companies' fundamentals, which could hinder sector growth and impact stock prices adversely.\",\n  \n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 16,
+      "risk": "LOW",
+      "composite": 60.5,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 50.0,
+        "bear": 50.0,
+        "sentiment": 50.0,
+        "fair_value": 45,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 50x0.2 - Bear 50x0.2 + Sent 50x0.15 + FV 45x0.1 = 60.5 -> HOLD"
+    },
+    "bull_score": 50,
+    "bear_score": 50,
+    "fundamentals_score": 52.9,
+    "scores_breakdown": {
+      "fundamentals": 52.9,
+      "bull": 50.0,
+      "bear": 50.0,
+      "sentiment": 50.0,
+      "fair_value": 45,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-26T06:47:38.803964",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is based on Lenskart's impressive financial performance, positive market response, and analyst optimism, which collectively indicate a strong growth potential in the short term.",
+      "key_catalyst": "Significant increase in net profit and revenue growth",
+      "key_risk": "High debt levels and overvaluation",
+      "timeframe": "short-term",
+      "_raw": " {\n  \"final_reasoning\": \"The BUY verdict is based on Lenskart's impressive financial performance, positive market response, and analyst optimism, which collectively indicate a strong growth potential in the short term.\",\n  \"key_catalyst\": \"Significant increase in net profit and revenue growth\",\n  \"key_risk\": \"High debt levels and overvaluation\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 10,
+      "risk": "MEDIUM",
+      "composite": 65.9,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 80.0,
+        "bear": 70.0,
+        "sentiment": 72.5,
+        "fair_value": 45,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 80x0.2 - Bear 70x0.2 + Sent 72x0.15 + FV 45x0.1 = 65.9 -> BUY"
+    },
+    "bull_score": 80,
+    "bear_score": 70,
+    "fundamentals_score": 52.9,
+    "scores_breakdown": {
+      "fundamentals": 52.9,
+      "bull": 80.0,
+      "bear": 70.0,
+      "sentiment": 72.5,
+      "fair_value": 45,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-26T07:22:40.692739",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is based on Lenskart Solutions' strong revenue growth, impressive financial performance, and positive analyst consensus indicating potential for stock price appreciation. However, the high debt levels and overvaluation suggest potential risks.",
+      "key_catalyst": "Strong revenue growth of 38.30% in TTM and net profit jump over 70x YoY",
+      "key_risk": "High debt/equity ratio indicating financial weakness",
+      "timeframe": "short-term",
+      "_raw": " {\n  \"final_reasoning\": \"The BUY verdict is based on Lenskart Solutions' strong revenue growth, impressive financial performance, and positive analyst consensus indicating potential for stock price appreciation. However, the high debt levels and overvaluation suggest potential risks.\",\n  \"key_catalyst\": \"Strong revenue growth of 38.30% in TTM and net profit jump over 70x YoY\",\n  \"key_risk\": \"High debt/equity ratio indicating financial weakness\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 43,
+      "risk": "MEDIUM",
+      "composite": 66.5,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 78.0,
+        "bear": 65.0,
+        "sentiment": 72.5,
+        "fair_value": 45,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 78x0.2 - Bear 65x0.2 + Sent 72x0.15 + FV 45x0.1 = 66.5 -> BUY"
+    },
+    "bull_score": 78,
+    "bear_score": 65,
+    "fundamentals_score": 52.9,
+    "scores_breakdown": {
+      "fundamentals": 52.9,
+      "bull": 78.0,
+      "bear": 65.0,
+      "sentiment": 72.5,
+      "fair_value": 45,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 533.85,
+    "timestamp": "2026-04-26T07:58:32.742527",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "YESBANK",
+    "nse_symbol": "YESBANK",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is based on Yes Bank's strong revenue growth, lower P/E ratio compared to peers, and healthy profit margins. These factors indicate an undervalued position with potential for upside, especially in the short term.",
+      "key_catalyst": "The analyst consensus target price at \u20b919.32 suggests a potential short-term upside of -2.63%",
+      "key_risk": "Overburdened balance sheet due to high debt/equity ratio may impact credit rating and raise borrowing costs, posing a moderate risk in the short term.",
+      "timeframe": "short-term",
+      "_raw": " {\n  \"final_reasoning\": \"The pre-computed BUY verdict is based on Yes Bank's strong revenue growth, lower P/E ratio compared to peers, and healthy profit margins. These factors indicate an undervalued position with potential for upside, especially in the short term.\",\n  \"key_catalyst\": \"The analyst consensus target price at \\u20b919.32 suggests a potential short-term upside of -2.63%\",\n  \"key_risk\": \"Overburdened balance sheet due to high debt/equity ratio may impact credit rating and raise borrowing costs, posing a moderate risk in the short term.\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 25,
+      "risk": "HIGH",
+      "composite": 64.5,
+      "scores": {
+        "fundamentals": 55.0,
+        "bull": 85.0,
+        "bear": 80.0,
+        "sentiment": 75.0,
+        "fair_value": 30,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [
+        "Rule 5: HIGH risk reduced BUY confidence by 15"
+      ],
+      "signal_breakdown": "Fund 55x0.35 + Bull 85x0.2 - Bear 80x0.2 + Sent 75x0.15 + FV 30x0.1 = 64.5 -> BUY"
+    },
+    "bull_score": 85,
+    "bear_score": 80,
+    "fundamentals_score": 55.0,
+    "scores_breakdown": {
+      "fundamentals": 55.0,
+      "bull": 85.0,
+      "bear": 80.0,
+      "sentiment": 75.0,
+      "fair_value": 30,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 19.84,
+    "timestamp": "2026-04-26T08:25:04.645759",
+    "eval_results": {},
+    "checked": false
+  }
+]
