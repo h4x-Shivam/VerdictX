@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import io
+=======
+﻿import io
+>>>>>>> f739e36 (updated main logic and cleaned cache files)
 import json
 import os
 import re
@@ -292,7 +296,108 @@ def _jugaad_extras(symbol: str) -> dict:
     except Exception:
         return {}
 #Screeener API
-#code
+
+import requests
+from bs4 import BeautifulSoup
+
+
+# -------------------------------
+# CLEAN VALUE
+# -------------------------------
+def clean_value(val):
+    val = val.strip()
+    val = val.replace("₹", "").replace(",", "")
+    val = val.replace("Cr.", "").replace("%", "")
+    val = " ".join(val.split())
+
+    try:
+        return float(val)
+    except:
+        return val
+
+
+# -------------------------------
+# CONVERT INPUT → SLUG
+# -------------------------------
+def generate_slug(company_name):
+    return company_name.strip().upper().replace(" ", "")
+
+
+# -------------------------------
+# GET DATA
+# -------------------------------
+def get_quick_ratios(slug):
+    import requests
+    from bs4 import BeautifulSoup
+    import re
+
+    s = requests.Session()
+
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
+
+    url = f"https://www.screener.in/company/{slug}/consolidated/"
+
+    try:
+        r = s.get(url, headers=headers, timeout=10)
+    except:
+        return {"error": "Request failed"}
+
+    if r.status_code != 200:
+        return {"error": f"HTTP {r.status_code}"}
+
+    if "Page Not Found" in r.text:
+        return {"error": "Invalid company slug"}
+
+    soup = BeautifulSoup(r.text, "html.parser")
+
+    data = {}
+
+    for item in soup.find_all("li"):
+        name = item.find("span", class_="name")
+        value = item.find("span", class_="value")
+
+        if name and value:
+            key = name.text.strip()
+
+            val = value.text.strip()
+            val = val.replace("₹", "").replace(",", "")
+            val = val.replace("Cr.", "").replace("%", "")
+            val = " ".join(val.split())
+
+            try:
+                val = float(val)
+            except:
+                pass
+
+            data[key] = val
+
+    return data
+
+
+# -------------------------------
+# MAIN FUNCTION (USER INPUT)
+# -------------------------------
+def fetch_company_data(company_name):
+    slug = generate_slug(company_name)
+
+    data = get_quick_ratios(slug)
+
+    return {
+        "input": company_name,
+        "slug": slug,
+        "data": data
+    }
+
+
+# -------------------------------
+# RUN
+# -------------------------------
+if __name__ == "__main__":
+    company = input("Enter company name: ")
+    result = fetch_company_data(company)
+    print(result)
 
 # ─────────────────────────────────────────────────────────────────
 # Fair Value calculation
