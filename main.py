@@ -1,13 +1,10 @@
-<<<<<<< HEAD
 import io
-=======
-﻿import io
->>>>>>> f739e36 (updated main logic and cleaned cache files)
 import json
 import os
 import re
 import time
 from datetime import datetime, timedelta
+from data_pipeline import get_clean_stock_data
 
 import feedparser
 import requests
@@ -295,109 +292,11 @@ def _jugaad_extras(symbol: str) -> dict:
         }
     except Exception:
         return {}
-#Screeener API
 
-import requests
-from bs4 import BeautifulSoup
+# Screener API
 
 
-# -------------------------------
-# CLEAN VALUE
-# -------------------------------
-def clean_value(val):
-    val = val.strip()
-    val = val.replace("₹", "").replace(",", "")
-    val = val.replace("Cr.", "").replace("%", "")
-    val = " ".join(val.split())
-
-    try:
-        return float(val)
-    except:
-        return val
-
-
-# -------------------------------
-# CONVERT INPUT → SLUG
-# -------------------------------
-def generate_slug(company_name):
-    return company_name.strip().upper().replace(" ", "")
-
-
-# -------------------------------
-# GET DATA
-# -------------------------------
-def get_quick_ratios(slug):
-    import requests
-    from bs4 import BeautifulSoup
-    import re
-
-    s = requests.Session()
-
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
-
-    url = f"https://www.screener.in/company/{slug}/consolidated/"
-
-    try:
-        r = s.get(url, headers=headers, timeout=10)
-    except:
-        return {"error": "Request failed"}
-
-    if r.status_code != 200:
-        return {"error": f"HTTP {r.status_code}"}
-
-    if "Page Not Found" in r.text:
-        return {"error": "Invalid company slug"}
-
-    soup = BeautifulSoup(r.text, "html.parser")
-
-    data = {}
-
-    for item in soup.find_all("li"):
-        name = item.find("span", class_="name")
-        value = item.find("span", class_="value")
-
-        if name and value:
-            key = name.text.strip()
-
-            val = value.text.strip()
-            val = val.replace("₹", "").replace(",", "")
-            val = val.replace("Cr.", "").replace("%", "")
-            val = " ".join(val.split())
-
-            try:
-                val = float(val)
-            except:
-                pass
-
-            data[key] = val
-
-    return data
-
-
-# -------------------------------
-# MAIN FUNCTION (USER INPUT)
-# -------------------------------
-def fetch_company_data(company_name):
-    slug = generate_slug(company_name)
-
-    data = get_quick_ratios(slug)
-
-    return {
-        "input": company_name,
-        "slug": slug,
-        "data": data
-    }
-
-
-# -------------------------------
-# RUN
-# -------------------------------
-if __name__ == "__main__":
-    company = input("Enter company name: ")
-    result = fetch_company_data(company)
-    print(result)
+# Screener logic moved to data_pipeline.py
 
 # ─────────────────────────────────────────────────────────────────
 # Fair Value calculation
@@ -647,29 +546,85 @@ def compute_final_score(bull_score: int, bear_score: int, sent_score: int,
 # ─────────────────────────────────────────────────────────────────
 # Component 3: Validation Layer — hard rules applied AFTER scoring
 # ─────────────────────────────────────────────────────────────────
+def validate_and_adjust(
+    score_result: dict,
+    fundamentals_score: float,
+    bull_score: int,
+    bear_score: int,
+    data_completeness: float
+) -> dict:
 
-def validate_and_adjust(score_result: dict, fundamentals_score: float, bull_score: int, bear_score: int, data_completeness: float) -> dict:
-    result = dict(score_result)
+    result = score_result.copy()
     applied = []
-    verdict, confidence, risk = result["verdict"], result["confidence"], result["risk"]
 
+    verdict    = result.get("verdict", "HOLD")
+    confidence = result.get("confidence", 50)
+    risk       = result.get("risk", "MEDIUM")
+
+    # ─────────────────────────────────────────
+    # 🧠 RULE 1: Weak fundamentals block BUY
+    # ─────────────────────────────────────────
     if fundamentals_score < 30 and verdict == "BUY":
         result["verdict"] = "HOLD"
-        applied.append("Rule 1: Weak fundamentals (<30) blocked BUY -> HOLD")
-    if bear_score > bull_score + 15 and result["verdict"] == "BUY":
-        result["verdict"] = "HOLD"
-        applied.append(f"Rule 2: Bear ({bear_score}) > Bull ({bull_score})+15 blocked BUY -> HOLD")
-    if bull_score > bear_score + 15 and result["verdict"] == "SELL":
-        result["verdict"] = "HOLD"
-        applied.append(f"Rule 3: Bull ({bull_score}) > Bear ({bear_score})+15 blocked SELL -> HOLD")
-    if data_completeness < 0.5 and confidence > 40:
-        result["confidence"] = 40
-        applied.append(f"Rule 4: Low data completeness ({data_completeness:.0%}) capped confidence at 40")
-    if risk == "HIGH" and result["verdict"] == "BUY":
-        result["confidence"] = max(15, result["confidence"] - 15)
-        applied.append("Rule 5: HIGH risk reduced BUY confidence by 15")
+        confidence = min(confidence, 50)
+        applied.append("Rule 1: Weak fundamentals (<30) blocked BUY → HOLD")
 
-    result["validation_applied"] = applied
+    # ─────────────────────────────────────────
+    # 🧠 RULE 2: Strong bear dominance blocks BUY
+    # ─────────────────────────────────────────
+    if (bear_score - bull_score) >= 20 and verdict == "BUY":
+        result["verdict"] = "HOLD"
+        confidence = min(confidence, 45)
+        applied.append("Rule 2: Bear dominance blocked BUY → HOLD")
+
+    # ─────────────────────────────────────────
+    # 🧠 RULE 3: Strong bull dominance upgrades SELL
+    # ─────────────────────────────────────────
+    if (bull_score - bear_score) >= 25 and verdict == "SELL":
+        result["verdict"] = "HOLD"
+        confidence = max(confidence, 55)
+        applied.append("Rule 3: Bull dominance softened SELL → HOLD")
+
+    # ─────────────────────────────────────────
+    # 🧠 RULE 4: LOW DATA COMPLETENESS (CRITICAL)
+    # ─────────────────────────────────────────
+    if data_completeness < 0.5:
+        if verdict == "BUY":
+            result["verdict"] = "HOLD"
+            confidence = min(confidence, 40)
+            applied.append("Rule 4A: Low data completeness blocked BUY → HOLD")
+        elif confidence > 40:
+            confidence = 40
+            applied.append("Rule 4B: Low data completeness capped confidence")
+
+    # ─────────────────────────────────────────
+    # 🧠 RULE 5: High risk prevents strong BUY
+    # ─────────────────────────────────────────
+    if risk == "HIGH" and result["verdict"] == "BUY":
+        result["verdict"] = "HOLD"
+        confidence = min(confidence, 50)
+        applied.append("Rule 5: High risk blocked BUY → HOLD")
+
+    # ─────────────────────────────────────────
+    # 🧠 RULE 6: Very strong fundamentals upgrade HOLD
+    # ─────────────────────────────────────────
+    if fundamentals_score > 75 and result["verdict"] == "HOLD":
+        if bull_score > bear_score:
+            result["verdict"] = "BUY"
+            confidence = max(confidence, 60)
+            applied.append("Rule 6: Strong fundamentals upgraded HOLD → BUY")
+
+    # ─────────────────────────────────────────
+    # 🧠 RULE 7: Confidence sanity bounds
+    # ─────────────────────────────────────────
+    confidence = max(10, min(confidence, 95))
+
+    # ─────────────────────────────────────────
+    # FINAL ASSIGNMENT
+    # ─────────────────────────────────────────
+    result["confidence"] = int(confidence)
+    result["applied_rules"] = applied
+
     return result
 
 
@@ -680,6 +635,10 @@ def validate_and_adjust(score_result: dict, fundamentals_score: float, bull_scor
 def get_basic_data(ticker: str) -> dict:
     nse_sym   = ticker.upper().replace(".NS","").replace(".BO","").replace("-","").strip()
     yf_ticker = f"{nse_sym}.NS"
+
+    pipeline = get_clean_stock_data(nse_sym)
+    clean_data = pipeline["data"]
+    completeness = pipeline["completeness"]
 
     nse = _nse_fetch(nse_sym)
     yf  = _yf_fetch(yf_ticker)
@@ -700,18 +659,18 @@ def get_basic_data(ticker: str) -> dict:
     industry = nse.get("industry") or yf.get("industry", "N/A")
 
     mkt_cap   = yf.get("market_cap")
-    t_pe      = yf.get("trailing_pe")   or jg.get("jugaad_pe")
+    t_pe      = clean_data.get("pe")
+    pb        = clean_data.get("pb")
+    roe       = clean_data.get("roe")
+    d2e       = clean_data.get("debt")
+    rev_gr    = clean_data.get("growth")
+    p_margins = clean_data.get("margin")
     f_pe      = yf.get("forward_pe")
     t_eps     = yf.get("trailing_eps")
-    pb        = yf.get("pb_ratio")      or jg.get("jugaad_pb")
-    p_margins = yf.get("profit_margins")
     g_margins = yf.get("gross_margins")
-    rev_gr    = yf.get("revenue_growth")
     tot_rev   = yf.get("total_revenue")
     fcf       = yf.get("free_cash_flow")
-    d2e       = yf.get("debt_to_equity")
     cur_ratio = yf.get("current_ratio")
-    roe       = yf.get("return_on_equity")
     roa       = yf.get("return_on_assets")
     div_yield = yf.get("dividend_yield") or jg.get("jugaad_div_yield")
     beta      = yf.get("beta")
@@ -782,6 +741,7 @@ ANALYST VIEW
 """.strip()
 
     return {
+        "completeness": completeness,
         "summary": summary,
         "info": {
             "company_name":       company,
