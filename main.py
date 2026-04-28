@@ -507,28 +507,60 @@ def compute_final_score(bull_score: int, bear_score: int, sent_score: int,
     bear_norm = max(0, min(100, float(bear_score)))
     sent_norm = max(0, min(100, (float(sent_score) + 100) / 2))
 
+    # Bear is inverted: high bear score = bad, treated as low bull
+    # This guarantees neutral stock (all=50) → composite = 50 with no magic offset
+    bear_inv = 100 - bear_norm
+
+    # FIX: Fair value scoring — any positive upside ≥ 55 (not below neutral)
     if fair_value_upside is not None:
-        fv_score = 90 if fair_value_upside > 30 else (75 if fair_value_upside > 15 else (60 if fair_value_upside > 5 else (45 if fair_value_upside > 0 else (30 if fair_value_upside > -10 else 15))))
+        if   fair_value_upside > 30:  fv_score = 90
+        elif fair_value_upside > 15:  fv_score = 78
+        elif fair_value_upside > 5:   fv_score = 65
+        elif fair_value_upside > 0:   fv_score = 55   # was 45 — positive upside should be above neutral
+        elif fair_value_upside > -10: fv_score = 40
+        elif fair_value_upside > -25: fv_score = 25
+        else:                          fv_score = 12
     else:
-        fv_score = 50
+        fv_score = 50  # unknown = perfectly neutral
 
-    composite = (W_FUND * fund_norm + W_BULL * bull_norm - W_BEAR * bear_norm + W_SENT * sent_norm + W_FAIR * fv_score)
-    composite = max(0, min(100, composite + 30))
+    # Pure weighted average — no magic offset needed
+    composite = (
+        W_FUND * fund_norm +
+        W_BULL * bull_norm +
+        W_BEAR * bear_inv  +
+        W_SENT * sent_norm +
+        W_FAIR * fv_score
+    )
+    composite = max(0, min(100, composite))
 
-    if composite >= 62: verdict = "BUY"
-    elif composite <= 38: verdict = "SELL"
-    else: verdict = "HOLD"
+    # 5-Tier verdict system
+    if   composite >= 75: verdict = "STRONG BUY"
+    elif composite >= 60: verdict = "BUY"
+    elif composite <= 25: verdict = "STRONG SELL"
+    elif composite <= 40: verdict = "SELL"
+    else:                  verdict = "HOLD"
 
+    # Confidence: distance from the nearest threshold, scaled 30-95
     if verdict == "HOLD":
-        dist = abs(composite - 50)
-        confidence = 90 - (dist / 12.0) * 45
-    else:
-        dist = abs(composite - 50) - 12
-        confidence = 45 + (dist / 38.0) * 45
+        # Max distance inside HOLD zone is 10 (40→50 or 50→60)
+        dist = min(abs(composite - 40), abs(composite - 60))
+        confidence = int(30 + (dist / 10.0) * 35)     # 30–65 inside HOLD
+    elif verdict in ("BUY", "SELL"):
+        # Distance beyond the 60/40 threshold (max 15 before STRONG zone)
+        dist = min(abs(composite - 60), abs(composite - 40)) if verdict == "BUY" else abs(composite - 40)
+        dist = abs(composite - 60) if verdict == "BUY" else abs(composite - 40)
+        dist = min(dist, 15)
+        confidence = int(55 + (dist / 15.0) * 25)     # 55–80
+    else:  # STRONG BUY / STRONG SELL
+        dist = abs(composite - 75) if verdict == "STRONG BUY" else abs(composite - 25)
+        dist = min(dist, 25)
+        confidence = int(75 + (dist / 25.0) * 20)     # 75–95
 
-    confidence = int(confidence)
+    # Penalty for low data completeness
     if data_completeness < 0.8:
         confidence = int(confidence * (0.5 + 0.5 * data_completeness))
+
+    confidence = max(10, min(95, confidence))
 
     risk = "HIGH" if (bear_norm > 70 or (bear_norm > bull_norm + 20)) else ("MEDIUM" if (bear_norm > 50 or (bear_norm > bull_norm + 5)) else "LOW")
 
@@ -539,7 +571,7 @@ def compute_final_score(bull_score: int, bear_score: int, sent_score: int,
             "sentiment": round(sent_norm, 1), "fair_value": fv_score, "data_completeness": data_completeness,
         },
         "weights": {"fundamentals": W_FUND, "bull": W_BULL, "bear": W_BEAR, "sentiment": W_SENT, "fair_value": W_FAIR},
-        "breakdown": f"Fund {fund_norm:.0f}x{W_FUND} + Bull {bull_norm:.0f}x{W_BULL} - Bear {bear_norm:.0f}x{W_BEAR} + Sent {sent_norm:.0f}x{W_SENT} + FV {fv_score}x{W_FAIR} = {composite:.1f} -> {verdict}",
+        "breakdown": f"Fund {fund_norm:.0f}x{W_FUND} + Bull {bull_norm:.0f}x{W_BULL} + BearInv {bear_inv:.0f}x{W_BEAR} + Sent {sent_norm:.0f}x{W_SENT} + FV {fv_score}x{W_FAIR} = {composite:.1f} → {verdict}",
     }
 
 
@@ -562,25 +594,33 @@ def validate_and_adjust(
     risk       = result.get("risk", "MEDIUM")
 
     # ─────────────────────────────────────────
-    # 🧠 RULE 1: Weak fundamentals block BUY
+    # 🧠 RULE 1: Weak fundamentals block any BUY tier
     # ─────────────────────────────────────────
-    if fundamentals_score < 30 and verdict == "BUY":
+    if fundamentals_score < 30 and verdict in ("BUY", "STRONG BUY"):
         result["verdict"] = "HOLD"
         confidence = min(confidence, 50)
         applied.append("Rule 1: Weak fundamentals (<30) blocked BUY → HOLD")
 
     # ─────────────────────────────────────────
-    # 🧠 RULE 2: Strong bear dominance blocks BUY
+    # 🧠 RULE 2: Strong bear dominance blocks any BUY tier
     # ─────────────────────────────────────────
-    if (bear_score - bull_score) >= 20 and verdict == "BUY":
+    if (bear_score - bull_score) >= 20 and verdict in ("BUY", "STRONG BUY"):
         result["verdict"] = "HOLD"
         confidence = min(confidence, 45)
         applied.append("Rule 2: Bear dominance blocked BUY → HOLD")
 
     # ─────────────────────────────────────────
-    # 🧠 RULE 3: Strong bull dominance upgrades SELL
+    # 🧠 RULE 2B: Downgrade STRONG BUY → BUY if bear is elevated
     # ─────────────────────────────────────────
-    if (bull_score - bear_score) >= 25 and verdict == "SELL":
+    if bear_score > 55 and verdict == "STRONG BUY":
+        result["verdict"] = "BUY"
+        confidence = min(confidence, 75)
+        applied.append("Rule 2B: Elevated bear risk downgraded STRONG BUY → BUY")
+
+    # ─────────────────────────────────────────
+    # 🧠 RULE 3: Strong bull dominance softens any SELL tier
+    # ─────────────────────────────────────────
+    if (bull_score - bear_score) >= 25 and verdict in ("SELL", "STRONG SELL"):
         result["verdict"] = "HOLD"
         confidence = max(confidence, 55)
         applied.append("Rule 3: Bull dominance softened SELL → HOLD")
@@ -589,7 +629,7 @@ def validate_and_adjust(
     # 🧠 RULE 4: LOW DATA COMPLETENESS (CRITICAL)
     # ─────────────────────────────────────────
     if data_completeness < 0.5:
-        if verdict == "BUY":
+        if verdict in ("BUY", "STRONG BUY"):
             result["verdict"] = "HOLD"
             confidence = min(confidence, 40)
             applied.append("Rule 4A: Low data completeness blocked BUY → HOLD")
@@ -598,12 +638,17 @@ def validate_and_adjust(
             applied.append("Rule 4B: Low data completeness capped confidence")
 
     # ─────────────────────────────────────────
-    # 🧠 RULE 5: High risk prevents strong BUY
+    # 🧠 RULE 5: High risk blocks STRONG BUY, downgrades BUY
     # ─────────────────────────────────────────
-    if risk == "HIGH" and result["verdict"] == "BUY":
-        result["verdict"] = "HOLD"
-        confidence = min(confidence, 50)
-        applied.append("Rule 5: High risk blocked BUY → HOLD")
+    if risk == "HIGH":
+        if result["verdict"] == "STRONG BUY":
+            result["verdict"] = "BUY"
+            confidence = min(confidence, 65)
+            applied.append("Rule 5A: High risk downgraded STRONG BUY → BUY")
+        elif result["verdict"] == "BUY":
+            result["verdict"] = "HOLD"
+            confidence = min(confidence, 50)
+            applied.append("Rule 5B: High risk blocked BUY → HOLD")
 
     # ─────────────────────────────────────────
     # 🧠 RULE 6: Very strong fundamentals upgrade HOLD
@@ -613,6 +658,14 @@ def validate_and_adjust(
             result["verdict"] = "BUY"
             confidence = max(confidence, 60)
             applied.append("Rule 6: Strong fundamentals upgraded HOLD → BUY")
+
+    # ─────────────────────────────────────────
+    # 🧠 RULE 7: Exceptional fundamentals + bull = STRONG BUY
+    # ─────────────────────────────────────────
+    if fundamentals_score > 85 and result["verdict"] == "BUY" and bull_score > 70 and bear_score < 40:
+        result["verdict"] = "STRONG BUY"
+        confidence = max(confidence, 78)
+        applied.append("Rule 7: Exceptional fundamentals + bull dominance → STRONG BUY")
 
     # ─────────────────────────────────────────
     # 🧠 RULE 7: Confidence sanity bounds

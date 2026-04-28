@@ -500,8 +500,14 @@
     "bear_score": 70,
     "baseline_price": 534.3,
     "timestamp": "2026-04-24T07:01:36.673638",
-    "checked": false,
-    "eval_results": {}
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 535.9500122070312,
+        "pct_change": 0.31,
+        "correct": false
+      }
+    }
   },
   {
     "ticker": "LENSKART",
@@ -530,8 +536,14 @@
     "bear_score": 62,
     "baseline_price": 535.95,
     "timestamp": "2026-04-24T07:23:54.374097",
-    "checked": false,
-    "eval_results": {}
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 535.9500122070312,
+        "pct_change": 0.0,
+        "correct": false
+      }
+    }
   },
   {
     "ticker": "LENSKART",
@@ -602,8 +614,14 @@
     "bear_score": 60,
     "baseline_price": 533.85,
     "timestamp": "2026-04-24T13:12:28.791412",
-    "checked": false,
-    "eval_results": {}
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 535.9500122070312,
+        "pct_change": 0.39,
+        "correct": false
+      }
+    }
   },
   {
     "ticker": "LENSKART",
@@ -629,8 +647,14 @@
     "bear_score": 50,
     "baseline_price": 533.85,
     "timestamp": "2026-04-24T14:34:08.853311",
-    "checked": false,
-    "eval_results": {}
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 535.9500122070312,
+        "pct_change": 0.39,
+        "correct": false
+      }
+    }
   },
   {
     "ticker": "LENSKART",
@@ -659,8 +683,14 @@
     "bear_score": 65,
     "baseline_price": 533.85,
     "timestamp": "2026-04-24T15:01:07.013327",
-    "checked": false,
-    "eval_results": {}
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 535.9500122070312,
+        "pct_change": 0.39,
+        "correct": false
+      }
+    }
   },
   {
     "ticker": "KPRMILL",
@@ -689,8 +719,14 @@
     "bear_score": 60,
     "baseline_price": 930.6,
     "timestamp": "2026-04-24T15:36:31.256546",
-    "checked": false,
-    "eval_results": {}
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 932.7999877929688,
+        "pct_change": 0.24,
+        "correct": false
+      }
+    }
   },
   {
     "ticker": "LENSKART",
@@ -1020,6 +1056,147 @@
     },
     "baseline_price": 19.84,
     "timestamp": "2026-04-26T08:25:04.645759",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "The decision to buy is bolstered by a positive sentiment score and an overall composite rating that indicates relative market optimism. Despite the low confidence level, which may suggest some uncertainty among experts or models used for valuation, the decisive factors lean towards bullish prospects.",
+      "key_catalyst": "Positive Market Sentiment",
+      "key_risk": "Low Confidence Level in Valuation Models",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The decision to buy is bolstered by a positive sentiment score and an overall composite rating that indicates relative market optimism. Despite the low confidence level, which may suggest some uncertainty among experts or models used for valuation, the decisive factors lean towards bullish prospects.\",\n  \"key_catalyst\": \"Positive Market Sentiment\",\n  \"key_risk\": \"Low Confidence Level in Valuation Models\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 43,
+      "risk": "LOW",
+      "composite": 66.9,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 50.0,
+        "bear": 50.0,
+        "sentiment": 92.5,
+        "fair_value": 45,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 50x0.2 - Bear 50x0.2 + Sent 92x0.15 + FV 45x0.1 = 66.9 -> BUY"
+    },
+    "bull_score": 50,
+    "bear_score": 50,
+    "fundamentals_score": 52.9,
+    "scores_breakdown": {
+      "fundamentals": 52.9,
+      "bull": 50.0,
+      "bear": 50.0,
+      "sentiment": 92.5,
+      "fair_value": 45,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 535.0,
+    "timestamp": "2026-04-28T07:24:17.501317",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "While Lenskart's strong Q3 results and positive analyst sentiment provide a bullish outlook, high debt/equity ratio and overvalued stock present significant risks. Given the current market conditions, we recommend a HOLD strategy in the short-term.",
+      "key_catalyst": "Securing additional $220 million for global expansion",
+      "key_risk": "High Debt/Equity ratio of 44.215",
+      "timeframe": "short-term",
+      "_raw": " {\n  \"final_reasoning\": \"While Lenskart's strong Q3 results and positive analyst sentiment provide a bullish outlook, high debt/equity ratio and overvalued stock present significant risks. Given the current market conditions, we recommend a HOLD strategy in the short-term.\",\n  \"key_catalyst\": \"Securing additional $220 million for global expansion\",\n  \"key_risk\": \"High Debt/Equity ratio of 44.215\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 40,
+      "risk": "HIGH",
+      "composite": 63.9,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 75.0,
+        "bear": 75.0,
+        "sentiment": 72.5,
+        "fair_value": 45,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 75x0.2 - Bear 75x0.2 + Sent 72x0.15 + FV 45x0.1 = 63.9 -> BUY"
+    },
+    "bull_score": 75,
+    "bear_score": 75,
+    "fundamentals_score": 52.9,
+    "scores_breakdown": {
+      "fundamentals": 52.9,
+      "bull": 75.0,
+      "bear": 75.0,
+      "sentiment": 72.5,
+      "fair_value": 45,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 534.0,
+    "timestamp": "2026-04-28T08:29:09.999205",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is based on strong profit growth, positive analyst sentiment, and expansion plans, offset by high debt/equity ratio and potential customer concentration risks in the short term.",
+      "key_catalyst": "Significant revenue growth of 38%",
+      "key_risk": "High Debt/Equity ratio of 44.215",
+      "timeframe": "short-term",
+      "_raw": " {\n  \"final_reasoning\": \"The HOLD verdict is based on strong profit growth, positive analyst sentiment, and expansion plans, offset by high debt/equity ratio and potential customer concentration risks in the short term.\",\n  \"key_catalyst\": \"Significant revenue growth of 38%\",\n  \"key_risk\": \"High Debt/Equity ratio of 44.215\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 42,
+      "risk": "MEDIUM",
+      "composite": 54.5,
+      "scores": {
+        "fundamentals": 52.9,
+        "bull": 68.0,
+        "bear": 70.0,
+        "sentiment": 72.5,
+        "fair_value": 55,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 68x0.2 + BearInv 30x0.2 + Sent 72x0.15 + FV 55x0.1 = 54.5 \u2192 HOLD"
+    },
+    "bull_score": 68,
+    "bear_score": 70,
+    "fundamentals_score": 52.9,
+    "scores_breakdown": {
+      "fundamentals": 52.9,
+      "bull": 68.0,
+      "bear": 70.0,
+      "sentiment": 72.5,
+      "fair_value": 55,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 535.85,
+    "timestamp": "2026-04-28T09:16:35.070363",
     "eval_results": {},
     "checked": false
   }

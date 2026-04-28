@@ -132,7 +132,41 @@ def fp(v, is_indian=True):
     except: return str(v)
 
 def vc(v):
-    return {"BUY":GREEN,"HOLD":YELLOW,"SELL":RED}.get(v, TSEC)
+    # 5-tier color mapping
+    return {
+        "STRONG BUY": "#00ffb3",   # brighter teal for STRONG BUY
+        "BUY":        GREEN,
+        "HOLD":       YELLOW,
+        "SELL":       RED,
+        "STRONG SELL":"#ff1744",   # deeper red for STRONG SELL
+    }.get(v, TSEC)
+
+def verdict_label(v):
+    return {
+        "STRONG BUY":  "Exceptional Opportunity",
+        "BUY":         "Positive Signal — Consider Buying",
+        "HOLD":        "Hold — Neutral Outlook",
+        "SELL":        "Weak Signal — Consider Exiting",
+        "STRONG SELL": "High Risk — Strong Exit Signal",
+    }.get(v, "")
+
+def verdict_bg(v):
+    return {
+        "STRONG BUY":  "rgba(0,255,179,.10)",
+        "BUY":         "rgba(0,229,160,.08)",
+        "HOLD":        "rgba(255,196,0,.08)",
+        "SELL":        "rgba(255,61,107,.08)",
+        "STRONG SELL": "rgba(255,23,68,.12)",
+    }.get(v, "rgba(99,102,241,.06)")
+
+def verdict_border(v):
+    return {
+        "STRONG BUY":  "rgba(0,255,179,.35)",
+        "BUY":         "rgba(0,229,160,.22)",
+        "HOLD":        "rgba(255,196,0,.22)",
+        "SELL":        "rgba(255,61,107,.22)",
+        "STRONG SELL": "rgba(255,23,68,.35)",
+    }.get(v, BORDER)
 
 def ring(pct, color, size=92):
     r = 34; c = size//2
@@ -570,18 +604,27 @@ def render_results(ticker):
         </div>""", unsafe_allow_html=True)
 
     with h2:
-        vbg  = {"BUY":"rgba(0,229,160,.08)","HOLD":"rgba(255,196,0,.08)","SELL":"rgba(255,61,107,.08)"}.get(vv,"rgba(99,102,241,.06)")
-        vbrd = {"BUY":"rgba(0,229,160,.22)","HOLD":"rgba(255,196,0,.22)","SELL":"rgba(255,61,107,.22)"}.get(vv, BORDER)
-        slbl = {"BUY":"Strong Buy Signal","HOLD":"Hold — Neutral","SELL":"Strong Sell Signal"}.get(vv,"")
+        vbg_  = verdict_bg(vv)
+        vbrd_ = verdict_border(vv)
+        slbl  = verdict_label(vv)
         tgt_html = f'<div style="font-size:.75rem;color:{TSEC};margin-top:8px;">Target: {csn}{tgt:.1f}%</div>' if tgt else ''
-        st.markdown(f"""<div style="background:{vbg};border:1px solid {vbrd};border-radius:18px;
+        # STRONG tiers get a subtle glow shadow
+        glow = ""
+        if vv == "STRONG BUY":
+            glow = "box-shadow:0 0 28px rgba(0,255,179,.18);"
+        elif vv == "STRONG SELL":
+            glow = "box-shadow:0 0 28px rgba(255,23,68,.18);"
+        # Show short display label — STRONG BUY becomes 2 lines
+        display_vv = vv.replace(" ", "<br>") if " " in vv else vv
+        font_size = "2.1rem" if " " in vv else "2.8rem"
+        st.markdown(f"""<div style="background:{vbg_};border:1px solid {vbrd_};border-radius:18px;
              padding:1.5rem 1.7rem;display:flex;align-items:center;
-             justify-content:space-between;height:100%;">
+             justify-content:space-between;height:100%;{glow}">
           <div>
-            <div style="font-size:2.8rem;font-weight:900;color:{vc_};
-                 letter-spacing:-.03em;line-height:1;">{vv}</div>
-            <div style="font-size:.8rem;color:{vc_};opacity:.8;
-                 font-weight:500;margin-top:5px;">{slbl}</div>{tgt_html}
+            <div style="font-size:{font_size};font-weight:900;color:{vc_};
+                 letter-spacing:-.03em;line-height:1.1;">{display_vv}</div>
+            <div style="font-size:.78rem;color:{vc_};opacity:.85;
+                 font-weight:500;margin-top:7px;line-height:1.4;">{slbl}</div>{tgt_html}
           </div>
           {ring(cf, vc_, size=94)}
         </div>""", unsafe_allow_html=True)
@@ -884,7 +927,7 @@ def render_results(ticker):
             base_px  = entry.get("baseline_price")
             checked  = entry.get("checked",False)
             evc      = vc(ev)
-            evbg     = {"BUY":"rgba(0,229,160,.08)","HOLD":"rgba(255,196,0,.08)","SELL":"rgba(255,61,107,.08)"}.get(ev,"transparent")
+            evbg     = verdict_bg(ev)
 
             if checked:
                 c   = entry.get("correct")
