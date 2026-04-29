@@ -12,6 +12,7 @@ ollama>=0.1.9
 
 # Charts
 plotly>=5.19.0
+python-dotenv
 
 # Optional NSE fallback
 # jugaad-data>=2.5.0  ← uncomment to enable jugaad fallback
