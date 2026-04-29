@@ -1199,5 +1199,52 @@
     "timestamp": "2026-04-28T09:16:35.070363",
     "eval_results": {},
     "checked": false
+  },
+  {
+    "ticker": "IRCTC",
+    "nse_symbol": "IRCTC",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is based on IRCTC's high valuation and financial weaknesses, balanced against its strong revenue growth, market leadership, and institutional backing. In the short term, the potential upside from these positive factors may be offset by the risk of overvaluation and high debt levels.",
+      "key_catalyst": "Significant valuation cushion with consensus fair value estimate indicating substantial upside potential",
+      "key_risk": "High valuation risk due to high P/E ratios",
+      "timeframe": "short-term",
+      "_raw": " {\n  \"final_reasoning\": \"The HOLD verdict is based on IRCTC's high valuation and financial weaknesses, balanced against its strong revenue growth, market leadership, and institutional backing. In the short term, the potential upside from these positive factors may be offset by the risk of overvaluation and high debt levels.\",\n  \"key_catalyst\": \"Significant valuation cushion with consensus fair value estimate indicating substantial upside potential\",\n  \"key_risk\": \"High valuation risk due to high P/E ratios\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 49,
+      "risk": "HIGH",
+      "composite": 61.6,
+      "scores": {
+        "fundamentals": 87.5,
+        "bull": 65.0,
+        "bear": 83.0,
+        "sentiment": 37.5,
+        "fair_value": 90,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 88x0.35 + Bull 65x0.2 + BearInv 17x0.2 + Sent 38x0.15 + FV 90x0.1 = 61.6 \u2192 BUY"
+    },
+    "bull_score": 65,
+    "bear_score": 83,
+    "fundamentals_score": 87.5,
+    "scores_breakdown": {
+      "fundamentals": 87.5,
+      "bull": 65.0,
+      "bear": 83.0,
+      "sentiment": 37.5,
+      "fair_value": 90,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 544.7,
+    "timestamp": "2026-04-29T04:45:39.729105",
+    "eval_results": {},
+    "checked": false
   }
 ]

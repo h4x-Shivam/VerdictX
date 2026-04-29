@@ -3,21 +3,18 @@ import json
 import os
 import re
 import time
+from dotenv import load_dotenv
 from datetime import datetime, timedelta
 from data_pipeline import get_clean_stock_data
 
 import feedparser
 import requests
 import yfinance as yf
-from ollama import chat
 
 try:
     from config import RAPIDAPI_KEY
 except ImportError:
     RAPIDAPI_KEY = ""
-
-# Model to use — change here to switch (phi3:mini for low RAM)
-LLM_MODEL = "mistral"
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -75,6 +72,31 @@ def safe_html(s: str) -> str:
 # LLM utilities
 # ─────────────────────────────────────────────────────────────────
 
+import os
+import json
+import re
+import requests
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# ─────────────────────────────────────────────
+# CONFIG
+# ─────────────────────────────────────────────
+
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "nvidia")  # "nvidia" or "ollama"
+
+NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
+NVIDIA_MODEL   = "moonshotai/kimi-k2.5"
+
+OLLAMA_MODEL   = "mistral"
+OLLAMA_URL     = "http://localhost:11434/api/chat"
+
+# ─────────────────────────────────────────────
+# JSON extractor (keep your original logic)
+# ─────────────────────────────────────────────
+
 def _extract_json(text: str) -> dict:
     fenced = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
     if fenced:
@@ -83,55 +105,103 @@ def _extract_json(text: str) -> dict:
         raw_obj = re.search(r"\{.*\}", text, re.DOTALL)
         if raw_obj:
             text = raw_obj.group()
+
     try:
         return json.loads(text)
     except json.JSONDecodeError as e:
         return {"_parse_error": str(e), "_raw": text[:400]}
 
 
-def _unload_model():
-    """Ask Ollama to release model from RAM after each call."""
-    try:
-        requests.post(
-            "http://localhost:11434/api/generate",
-            json={"model": LLM_MODEL, "keep_alive": 0},
-            timeout=5
-        )
-    except Exception:
-        pass
+# ─────────────────────────────────────────────
+# NVIDIA CALL (Kimi)
+# ─────────────────────────────────────────────
 
+def _call_nvidia(messages):
+    url = "https://integrate.api.nvidia.com/v1/chat/completions"
+
+    headers = {
+        "Authorization": f"Bearer {NVIDIA_API_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(
+        url,
+        headers=headers,
+        json={
+            "model": NVIDIA_MODEL,
+            "messages": messages,
+            "temperature": 0.3
+        },
+        timeout=120
+    )
+
+    data = response.json()
+
+    return data["choices"][0]["message"]["content"]
+
+
+# ─────────────────────────────────────────────
+# OLLAMA CALL (fallback)
+# ─────────────────────────────────────────────
+
+def _call_ollama(messages):
+    response = requests.post(
+        OLLAMA_URL,
+        json={
+            "model": OLLAMA_MODEL,
+            "messages": messages,
+            "stream": False
+        },
+        timeout=300
+    )
+
+    data = response.json()
+    return data["message"]["content"]
+
+
+# ─────────────────────────────────────────────
+# MAIN LLM CALL (SMART ROUTER)
+# ─────────────────────────────────────────────
 
 def _llm_call(prompt: str, required_keys: list, max_retries: int = 2) -> dict:
     messages = [{"role": "user", "content": prompt}]
+
     raw, result = "", {}
+
     for attempt in range(max_retries + 1):
-        resp    = chat(model=LLM_MODEL, messages=messages)
-        raw     = resp["message"]["content"]
-        result  = _extract_json(raw)
+        try:
+            if LLM_PROVIDER == "nvidia":
+                raw = _call_nvidia(messages)
+            else:
+                raw = _call_ollama(messages)
+
+        except Exception as e:
+            # fallback to ollama if nvidia fails
+            if LLM_PROVIDER == "nvidia":
+                print(f"[LLM ERROR → NVIDIA] {e} → Falling back to Ollama")
+                raw = _call_ollama(messages)
+            else:
+                raise e
+
+        result = _extract_json(raw)
+
         missing = [k for k in required_keys if result.get(k) is None]
+
         if not missing:
             result["_raw"] = raw
-            _unload_model()
             return result
+
+        # retry logic
         if attempt < max_retries:
             messages.append({"role": "assistant", "content": raw})
-            messages.append({"role": "user", "content": (
-                f"Missing keys: {missing}. Return ONLY valid JSON, every key filled. No markdown."
-            )})
-    _unload_model()
-    result["_schema_error"] = f"Still missing {missing} after {max_retries} retries"
+            messages.append({
+                "role": "user",
+                "content": f"Missing keys: {missing}. Return ONLY valid JSON. No markdown."
+            })
+
+    result["_schema_error"] = f"Missing keys after retries: {missing}"
     result["_raw"] = raw
     return result
-
-
-def _safe_get(d, *keys, default=None):
-    for k in keys:
-        if not isinstance(d, dict):
-            return default
-        d = d.get(k, default)
-        if d is None:
-            return default
-    return d
 
 
 # ─────────────────────────────────────────────────────────────────
