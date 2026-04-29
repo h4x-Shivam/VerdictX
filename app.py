@@ -8,14 +8,14 @@ from main import (
     analyze_sentiment, run_bull_agent, run_bear_agent,
     run_judge_agent, save_prediction, check_outcomes,
     calculate_accuracy, get_prediction_history,
-    generate_pdf_report, get_days_until_eval,
+    get_days_until_eval,
     compute_fundamentals_score, compute_final_score,
     validate_and_adjust,
     fmt_rupee, fmt_cr, fmt_pct,
 )
 
 st.set_page_config(
-    page_title="StockAI — NSE Research",
+    page_title="VerdictX — NSE Research",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -79,19 +79,23 @@ div[data-testid="stToolbar"] {{ display:none !important; }}
 ::-webkit-scrollbar-thumb {{ background:{BDR2}; border-radius:4px; }}
 
 .stTextInput>div>div>input {{
-  background:{INPUT} !important; border:1.5px solid {BDR2} !important;
-  border-radius:12px !important; color:{TPRI} !important;
-  padding:.8rem 1rem !important; font-size:.95rem !important;
-  font-family:'Outfit',sans-serif !important; height:50px !important;
-  transition:border-color .2s !important;
+  background: {INPUT} !important; border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 12px !important; color: {TPRI} !important;
+  padding: .8rem 1.2rem !important; font-size: 1rem !important;
+  font-family: 'Outfit',sans-serif !important; height: 52px !important;
+  box-sizing: border-box !important;
+  transition: all .2s ease !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
 }}
 .stTextInput>div>div>input:focus {{
-  border-color:{ACCENT} !important;
-  box-shadow:0 0 0 3px rgba(99,102,241,.12) !important;
+  border-color: {ACCENT} !important;
+  box-shadow: 0 0 0 1px {ACCENT}, 0 4px 20px rgba(99,102,241,.15) !important;
 }}
+.stTextInput>div>div {{ background: transparent !important; }}
 .stTextInput>div>div>input::placeholder {{ color:{TMUTE} !important; }}
 .stTextInput label {{ display:none !important; }}
-.stTextInput>div {{ border:none !important; }}
+.stTextInput>div {{ border:none !important; background: transparent !important; }}
+div[data-testid="stHorizontalBlock"] {{ align-items: center !important; }}
 
 .stButton>button {{
   font-family:'Outfit',sans-serif !important; font-weight:600 !important;
@@ -116,6 +120,26 @@ div[data-testid="stToolbar"] {{ display:none !important; }}
 }}
 @keyframes blink {{
   0%,100% {{ opacity:1; }} 50% {{ opacity:.3; }}
+}}
+@keyframes bgShift {{
+  0% {{ background-position: 0% 50%; }}
+  50% {{ background-position: 100% 50%; }}
+  100% {{ background-position: 0% 50%; }}
+}}
+.gradient-text {{
+  background: linear-gradient(90deg, #6366f1, #00e5a0, #6366f1);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: bgShift 4s linear infinite;
+}}
+.feat-card {{
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}}
+.feat-card:hover {{
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(99,102,241,0.15);
+  border-color: rgba(99,102,241,0.5) !important;
 }}
 </style>
 """, unsafe_allow_html=True)
@@ -193,25 +217,18 @@ def card_wrap(content, pad="1.3rem 1.5rem", radius="15px"):
 # ─────────────────────────────────────────────────────────────────
 
 def render_home():
-    a, b = st.columns([11, 1])
-    with a:
-        st.markdown(f"""
-        <div style="display:flex;align-items:center;gap:10px;
-             padding:1.2rem 2.5rem;border-bottom:1px solid {BORDER};">
-          <div style="width:32px;height:32px;
-               background:linear-gradient(135deg,{ACCENT},{GREEN});
-               border-radius:9px;display:flex;align-items:center;
-               justify-content:center;font-size:15px;">📈</div>
-          <div>
-            <div style="font-weight:800;font-size:.95rem;color:{TPRI};">StockAI</div>
-            <div style="font-size:.62rem;color:{TMUTE};">NSE Stock Analysis</div>
-          </div>
-        </div>""", unsafe_allow_html=True)
-    with b:
-        st.markdown("<div style='padding-top:.85rem;'>", unsafe_allow_html=True)
-        if st.button("☀️" if DM else "🌙", key="th_home"):
-            st.session_state.dark_mode = not DM; st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown(f"""
+    <div style="display:flex;align-items:center;justify-content:center;
+         padding:2rem 0 1.5rem;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:1rem;">
+      <div style="display:flex;flex-direction:column;align-items:center;line-height:1.15;">
+        <div style="font-weight:900;font-size:2.4rem;letter-spacing:-1px;color:{TPRI};">
+          Verdict<span style="color:{GREEN};">X</span>
+        </div>
+        <div style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:4px;color:{TMUTE};margin-top:0.3rem;">
+          NSE Stock Analysis
+        </div>
+      </div>
+    </div>""", unsafe_allow_html=True)
 
     hero_grad = (
         f"radial-gradient(ellipse 100% 70% at 50% -5%,rgba(99,102,241,.22) 0%,transparent 60%),"
@@ -226,9 +243,8 @@ def render_home():
       <div style="font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:900;
            letter-spacing:-.03em;color:{TPRI};line-height:1.05;">Smart Analysis.</div>
       <div style="font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:900;
-           letter-spacing:-.03em;line-height:1.05;margin-bottom:1.4rem;
-           background:linear-gradient(90deg,{ACCENT},{GREEN});
-           -webkit-background-clip:text;-webkit-text-fill-color:transparent;">Smarter Decisions.</div>
+           letter-spacing:-.03em;line-height:1.05;margin-bottom:1.4rem;"
+           class="gradient-text">Smarter Decisions.</div>
       <div style="font-size:1rem;color:{TSEC};line-height:1.7;max-width:360px;">
         NSE-powered AI research on any Indian stock — in seconds.
       </div>
@@ -244,13 +260,20 @@ def render_home():
         with c2:
             st.markdown(f"""<style>
             div[data-testid="column"]:nth-child(2) .stButton>button {{
-              background:linear-gradient(135deg,{ACCENT},#8b5cf6) !important;
-              color:#fff !important; height:50px !important;
-              width:100% !important; font-size:.95rem !important;
-              box-shadow:0 4px 18px rgba(99,102,241,.3) !important;
-              margin-top:-1px !important;
+              background: rgba(255,255,255,0.04) !important;
+              border: 1px solid rgba(255,255,255,0.08) !important;
+              color: {TPRI} !important; height: 52px !important;
+              width: 100% !important; font-size: 1rem !important;
+              border-radius: 12px !important; margin-top: 0px !important;
+              box-sizing: border-box !important;
+              transition: all 0.2s ease !important;
+            }}
+            div[data-testid="column"]:nth-child(2) .stButton>button:hover {{
+              background: {ACCENT} !important;
+              border-color: {ACCENT} !important;
+              color: #fff !important;
+              box-shadow: 0 4px 15px rgba(99,102,241,0.3) !important;
             }}</style>""", unsafe_allow_html=True)
-            st.markdown("<div style='margin-top:1px;'></div>", unsafe_allow_html=True)
             if st.button("Analyze →", key="ha"):
                 t = ticker_home.strip() or "IRCTC"
                 st.session_state.ticker_val = t
@@ -258,7 +281,7 @@ def render_home():
                 st.rerun()
 
     st.markdown(f'<div style="text-align:center;font-size:.72rem;color:{TMUTE};'
-                f'margin:.9rem 0 .5rem;text-transform:uppercase;letter-spacing:.07em;'
+                f'margin:3.5rem 0 .5rem;text-transform:uppercase;letter-spacing:.07em;'
                 f'font-weight:500;">Popular searches</div>', unsafe_allow_html=True)
     _, cc, _ = st.columns([1, 7, 1])
     with cc:
@@ -296,11 +319,11 @@ def render_home():
         for col, (bg, bc, icon, title, desc) in zip([f1, f2, f3], feats):
             with col:
                 st.markdown(f"""
-                <div style="background:{bg};border:1px solid {bc};
-                     border-radius:16px;padding:1.5rem 1.4rem;">
+                <div class="feat-card" style="background:{bg};border:1px solid {bc};
+                     border-radius:16px;padding:1.5rem 1.4rem;height:100%;">
                   <div style="width:48px;height:48px;background:{'rgba(0,0,0,.2)' if DM else 'rgba(255,255,255,.6)'};
                        border-radius:12px;display:flex;align-items:center;justify-content:center;
-                       font-size:1.5rem;margin-bottom:.9rem;">{icon}</div>
+                       font-size:1.5rem;margin-bottom:.9rem;box-shadow:0 4px 10px rgba(0,0,0,0.1);">{icon}</div>
                   <div style="font-weight:700;font-size:.95rem;color:{TPRI};margin-bottom:.45rem;">{title}</div>
                   <div style="font-size:.82rem;color:{TSEC};line-height:1.65;">{desc}</div>
                 </div>""", unsafe_allow_html=True)
@@ -541,29 +564,7 @@ def render_results(ticker):
                border-radius:20px;padding:2px 10px;">{src}</span>
         </div>""", unsafe_allow_html=True)
     with tb3:
-        c1, c2 = st.columns(2)
-        with c1:
-            st.markdown(f"<div style='padding:.9rem 0 0 0;text-align:right;'>", unsafe_allow_html=True)
-            if st.button("☀️" if DM else "🌙", key="th_r"):
-                st.session_state.dark_mode = not DM; st.rerun()
-            st.markdown("</div>", unsafe_allow_html=True)
-        with c2:
-            # FIX 5: PDF download button
-            st.markdown(f"<div style='padding:.9rem 0 0 0;'>", unsafe_allow_html=True)
-            try:
-                pdf_bytes = generate_pdf_report(
-                    ticker, d, sent, bull, bear, verd, news
-                )
-                st.download_button(
-                    label="📄 PDF",
-                    data=pdf_bytes,
-                    file_name=f"StockAI_{ticker}_{vv}.pdf",
-                    mime="application/pdf",
-                    key="pdf_dl",
-                )
-            except Exception as e:
-                st.caption(f"PDF unavailable")
-            st.markdown("</div>", unsafe_allow_html=True)
+        pass
 
     pad = "padding:1.4rem 2.5rem 0;"
 
@@ -660,26 +661,40 @@ def render_results(ticker):
         </div>""", unsafe_allow_html=True)
 
     with m2:
-        if hist is not None and not hist.empty:
-            cc2 = GREEN if pch >= 0 else RED
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(
-                x=hist.index, y=hist["Close"], mode="lines",
-                line=dict(color=cc2, width=2.2),
-                fill="tozeroy",
-                fillcolor=f"rgba({'0,229,160' if cc2==GREEN else '255,61,107'},.055)"
-            ))
-            fig.update_layout(
-                plot_bgcolor=CARD, paper_bgcolor=CARD,
-                xaxis=dict(showgrid=False, tickfont=dict(size=8,color=TMUTE), showline=False, zeroline=False),
-                yaxis=dict(showgrid=True, gridcolor=BORDER, tickfont=dict(size=8,color=TMUTE),
-                           side="right", showline=False, zeroline=False),
-                margin=dict(l=0,r=4,t=8,b=0), height=205, showlegend=False,
-            )
-            st.markdown(f'<div style="background:{CARD};border:1px solid {BORDER};'
-                        f'border-radius:15px;overflow:hidden;">', unsafe_allow_html=True)
-            st.plotly_chart(fig, width="stretch")
-            st.markdown("</div>", unsafe_allow_html=True)
+        tv_sym = ticker.replace(".NS", "").replace(".BO", "")
+        st.markdown(f'<div style="background:{CARD};border:1px solid {BORDER};'
+                    f'border-radius:15px;overflow:hidden;position:relative;">', unsafe_allow_html=True)
+        import streamlit.components.v1 as components
+        tv_html = f"""
+        <div class="tradingview-widget-container" style="height:250px;width:100%;position:relative;">
+          <div id="tv_chart_{tv_sym}" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+          <script type="text/javascript">
+          new TradingView.widget({{
+            "autosize": true,
+            "symbol": "BSE:{tv_sym}",
+            "interval": "D",
+            "timezone": "Asia/Kolkata",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "enable_publishing": false,
+            "backgroundColor": "rgba(12, 14, 24, 1)",
+            "gridColor": "rgba(255, 255, 255, 0.05)",
+            "hide_top_toolbar": true,
+            "hide_legend": true,
+            "save_image": false,
+            "hide_volume": false,
+            "container_id": "tv_chart_{tv_sym}"
+          }});
+          </script>
+          <a href="https://in.tradingview.com/chart/?symbol=NSE:{tv_sym}" target="_blank" 
+             style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:9999;cursor:pointer;"
+             title="Open full chart on TradingView"></a>
+        </div>
+        """
+        components.html(tv_html, height=250)
+        st.markdown("</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
     # ── Metric tiles — FIX 3: Fair Value with method shown ──

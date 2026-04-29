@@ -772,8 +772,14 @@
     },
     "baseline_price": 533.85,
     "timestamp": "2026-04-26T04:59:32.107208",
-    "checked": false,
-    "eval_results": {}
+    "checked": true,
+    "eval_results": {
+      "3d": {
+        "price": 519.9500122070312,
+        "pct_change": -2.6,
+        "correct": false
+      }
+    }
   },
   {
     "ticker": "LENSKART",
@@ -819,8 +825,14 @@
     },
     "baseline_price": 533.85,
     "timestamp": "2026-04-26T05:29:42.456480",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 519.9500122070312,
+        "pct_change": -2.6,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "LENSKART",
@@ -866,8 +878,14 @@
     },
     "baseline_price": 533.85,
     "timestamp": "2026-04-26T06:08:27.061649",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 519.9500122070312,
+        "pct_change": -2.6,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "LENSKART",
@@ -913,8 +931,14 @@
     },
     "baseline_price": 533.85,
     "timestamp": "2026-04-26T06:47:38.803964",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 519.9500122070312,
+        "pct_change": -2.6,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "LENSKART",
@@ -960,8 +984,14 @@
     },
     "baseline_price": 533.85,
     "timestamp": "2026-04-26T07:22:40.692739",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 519.9500122070312,
+        "pct_change": -2.6,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "LENSKART",
@@ -1007,8 +1037,14 @@
     },
     "baseline_price": 533.85,
     "timestamp": "2026-04-26T07:58:32.742527",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 519.9500122070312,
+        "pct_change": -2.6,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "YESBANK",
@@ -1056,8 +1092,14 @@
     },
     "baseline_price": 19.84,
     "timestamp": "2026-04-26T08:25:04.645759",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 20.270000457763672,
+        "pct_change": 2.17,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "LENSKART",
@@ -1244,6 +1286,194 @@
     },
     "baseline_price": 544.7,
     "timestamp": "2026-04-29T04:45:39.729105",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "INFY",
+    "nse_symbol": "INFY",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by Infosys' strong revenue growth, high return on equity, and significant valuation cushion, which outweigh the potential risks of high debt-to-equity ratio and potential overvaluation. The company's efficient use of shareholder capital and strong demand for its services are expected to contribute to higher earnings and stock price. The fair value estimate of \u20b91,488.21 provides a potential upside for investors, making Infosys an attractive investment opportunity.",
+      "key_catalyst": "Infosys' strong revenue growth, with a 13.38% year-over-year increase in consolidated net sales for March 2026.",
+      "key_risk": "Infosys's high debt-to-equity ratio, indicating potential financial strain and increased interest expenses.",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by Infosys' strong revenue growth, high return on equity, and significant valuation cushion, which outweigh the potential risks of high debt-to-equity ratio and potential overvaluation. The company's efficient use of shareholder capital and strong demand for its services are expected to contribute to higher earnings and stock price. The fair value estimate of \u20b91,488.21 provides a potential upside for investors, making Infosys an attractive investment opportunity.\",\n  \"key_catalyst\": \"Infosys' strong revenue growth, with a 13.38% year-over-year increase in consolidated net sales for March 2026.\",\n  \"key_risk\": \"Infosys's high debt-to-equity ratio, indicating potential financial strain and increased interest expenses.\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 70,
+      "risk": "LOW",
+      "composite": 69.0,
+      "scores": {
+        "fundamentals": 81.6,
+        "bull": 72.0,
+        "bear": 50.0,
+        "sentiment": 55.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 82x0.35 + Bull 72x0.2 + BearInv 50x0.2 + Sent 55x0.15 + FV 78x0.1 = 69.0 \u2192 BUY"
+    },
+    "bull_score": 72,
+    "bear_score": 50,
+    "fundamentals_score": 81.6,
+    "scores_breakdown": {
+      "fundamentals": 81.6,
+      "bull": 72.0,
+      "bear": 50.0,
+      "sentiment": 55.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 1167.5,
+    "timestamp": "2026-04-29T15:47:47.400298",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "LENSKART",
+    "nse_symbol": "LENSKART",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is justified due to the mixed signals from the data, with strong revenue growth and profit margin expansion being offset by high valuation, debt-to-equity ratio, and low profit margins. The positive sentiment and upside potential based on analyst targets are also balanced by the risk of a sharp correction in the stock price. Overall, the data suggests that the stock is fairly valued at current levels, warranting a HOLD verdict.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High valuation risk with P/E ratio significantly above sector average",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is justified due to the mixed signals from the data, with strong revenue growth and profit margin expansion being offset by high valuation, debt-to-equity ratio, and low profit margins. The positive sentiment and upside potential based on analyst targets are also balanced by the risk of a sharp correction in the stock price. Overall, the data suggests that the stock is fairly valued at current levels, warranting a HOLD verdict.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High valuation risk with P/E ratio significantly above sector average\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 25,
+      "risk": "MEDIUM",
+      "composite": 60.0,
+      "scores": {
+        "fundamentals": 57.1,
+        "bull": 70.0,
+        "bear": 70.0,
+        "sentiment": 90.0,
+        "fair_value": 65,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 57x0.35 + Bull 70x0.2 + BearInv 30x0.2 + Sent 90x0.15 + FV 65x0.1 = 60.0 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "fundamentals_score": 57.1,
+    "scores_breakdown": {
+      "fundamentals": 57.1,
+      "bull": 70.0,
+      "bear": 70.0,
+      "sentiment": 90.0,
+      "fair_value": 65,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 519.95,
+    "timestamp": "2026-04-29T16:19:47.585544",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "BHARTIARTL",
+    "nse_symbol": "BHARTIARTL",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is driven by the balance between Bharti Airtel's strong revenue growth, high return on equity, and significant upside to analyst target price, and the company's high debt-to-equity ratio, low current ratio, and overvaluation. While the company's fundamentals suggest potential for long-term growth, the significant risks associated with its financial health and valuation warrant caution. As a result, a HOLD verdict is appropriate, as the stock's potential upside is offset by its potential downside risks.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio poses significant financial risk",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is driven by the balance between Bharti Airtel's strong revenue growth, high return on equity, and significant upside to analyst target price, and the company's high debt-to-equity ratio, low current ratio, and overvaluation. While the company's fundamentals suggest potential for long-term growth, the significant risks associated with its financial health and valuation warrant caution. As a result, a HOLD verdict is appropriate, as the stock's potential upside is offset by its potential downside risks.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio poses significant financial risk\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 33,
+      "risk": "MEDIUM",
+      "composite": 59.1,
+      "scores": {
+        "fundamentals": 54.1,
+        "bull": 72.0,
+        "bear": 70.0,
+        "sentiment": 80.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 54x0.35 + Bull 72x0.2 + BearInv 30x0.2 + Sent 80x0.15 + FV 78x0.1 = 59.1 \u2192 HOLD"
+    },
+    "bull_score": 72,
+    "bear_score": 70,
+    "fundamentals_score": 54.1,
+    "scores_breakdown": {
+      "fundamentals": 54.1,
+      "bull": 72.0,
+      "bear": 70.0,
+      "sentiment": 80.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 1888.1,
+    "timestamp": "2026-04-29T16:31:16.619352",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "BHARTIARTL",
+    "nse_symbol": "BHARTIARTL",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by Bharti Airtel's strong revenue growth, high return on equity, and significant upside to fair value, which outweigh the concerns around its high debt-to-equity ratio and weak current ratio. The company's strong profit margins and positive sentiment also contribute to the BUY decision. Overall, the potential for growth and upside to fair value make Bharti Airtel an attractive investment opportunity.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by Bharti Airtel's strong revenue growth, high return on equity, and significant upside to fair value, which outweigh the concerns around its high debt-to-equity ratio and weak current ratio. The company's strong profit margins and positive sentiment also contribute to the BUY decision. Overall, the potential for growth and upside to fair value make Bharti Airtel an attractive investment opportunity.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 56,
+      "risk": "MEDIUM",
+      "composite": 60.7,
+      "scores": {
+        "fundamentals": 54.1,
+        "bull": 80.0,
+        "bear": 70.0,
+        "sentiment": 80.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 54x0.35 + Bull 80x0.2 + BearInv 30x0.2 + Sent 80x0.15 + FV 78x0.1 = 60.7 \u2192 BUY"
+    },
+    "bull_score": 80,
+    "bear_score": 70,
+    "fundamentals_score": 54.1,
+    "scores_breakdown": {
+      "fundamentals": 54.1,
+      "bull": 80.0,
+      "bear": 70.0,
+      "sentiment": 80.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 1888.1,
+    "timestamp": "2026-04-29T16:43:55.138982",
     "eval_results": {},
     "checked": false
   }
