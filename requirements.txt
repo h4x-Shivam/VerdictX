@@ -6,6 +6,8 @@ streamlit>=1.32.0
 requests>=2.31.0
 yfinance>=0.2.37
 feedparser>=6.0.10
+flask>=3.0.0
+flask-cors>=4.0.0
 
 # AI
 ollama>=0.1.9

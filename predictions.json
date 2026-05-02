@@ -300,6 +300,11 @@
         "pct_move": -3.11,
         "direction": "DOWN",
         "correct": false
+      },
+      "7d": {
+        "price": 539.5499877929688,
+        "pct_change": -3.4,
+        "correct": false
       }
     }
   },
@@ -367,6 +372,11 @@
         "pct_move": -3.11,
         "direction": "DOWN",
         "correct": false
+      },
+      "7d": {
+        "price": 539.5499877929688,
+        "pct_change": -3.4,
+        "correct": false
       }
     }
   },
@@ -403,6 +413,11 @@
         "price": 533.8499755859375,
         "pct_move": -1.86,
         "direction": "DOWN",
+        "correct": false
+      },
+      "7d": {
+        "price": 515.9500122070312,
+        "pct_change": -5.15,
         "correct": false
       }
     }
@@ -470,6 +485,11 @@
         "price": 533.8499755859375,
         "pct_change": -0.32,
         "correct": false
+      },
+      "7d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.66,
+        "correct": false
       }
     }
   },
@@ -506,6 +526,11 @@
         "price": 535.9500122070312,
         "pct_change": 0.31,
         "correct": false
+      },
+      "7d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.43,
+        "correct": false
       }
     }
   },
@@ -541,6 +566,11 @@
       "3d": {
         "price": 535.9500122070312,
         "pct_change": 0.0,
+        "correct": false
+      },
+      "7d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.73,
         "correct": false
       }
     }
@@ -620,6 +650,11 @@
         "price": 535.9500122070312,
         "pct_change": 0.39,
         "correct": false
+      },
+      "7d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.35,
+        "correct": false
       }
     }
   },
@@ -652,6 +687,11 @@
       "3d": {
         "price": 535.9500122070312,
         "pct_change": 0.39,
+        "correct": false
+      },
+      "7d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.35,
         "correct": false
       }
     }
@@ -689,6 +729,11 @@
         "price": 535.9500122070312,
         "pct_change": 0.39,
         "correct": false
+      },
+      "7d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.35,
+        "correct": false
       }
     }
   },
@@ -724,6 +769,11 @@
       "3d": {
         "price": 932.7999877929688,
         "pct_change": 0.24,
+        "correct": false
+      },
+      "7d": {
+        "price": 936.5999755859375,
+        "pct_change": 0.64,
         "correct": false
       }
     }
@@ -1145,8 +1195,14 @@
     },
     "baseline_price": 535.0,
     "timestamp": "2026-04-28T07:24:17.501317",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.56,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "LENSKART",
@@ -1192,8 +1248,14 @@
     },
     "baseline_price": 534.0,
     "timestamp": "2026-04-28T08:29:09.999205",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.38,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "LENSKART",
@@ -1239,8 +1301,14 @@
     },
     "baseline_price": 535.85,
     "timestamp": "2026-04-28T09:16:35.070363",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 515.9500122070312,
+        "pct_change": -3.71,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "IRCTC",
@@ -1286,8 +1354,14 @@
     },
     "baseline_price": 544.7,
     "timestamp": "2026-04-29T04:45:39.729105",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 541.5,
+        "pct_change": -0.59,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "INFY",
@@ -1333,8 +1407,14 @@
     },
     "baseline_price": 1167.5,
     "timestamp": "2026-04-29T15:47:47.400298",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1182.5999755859375,
+        "pct_change": 1.29,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "LENSKART",
@@ -1380,8 +1460,14 @@
     },
     "baseline_price": 519.95,
     "timestamp": "2026-04-29T16:19:47.585544",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 517.0,
+        "pct_change": -0.57,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "BHARTIARTL",
@@ -1427,8 +1513,14 @@
     },
     "baseline_price": 1888.1,
     "timestamp": "2026-04-29T16:31:16.619352",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1891.0,
+        "pct_change": 0.15,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "BHARTIARTL",
@@ -1474,6 +1566,394 @@
     },
     "baseline_price": 1888.1,
     "timestamp": "2026-04-29T16:43:55.138982",
+    "eval_results": {
+      "3d": {
+        "price": 1891.0,
+        "pct_change": 0.15,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "BHARTIARTL",
+    "nse_symbol": "BHARTIARTL",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by Bharti Airtel's strong revenue growth, high return on equity, and significant upside to analyst consensus target price, which outweigh the company's high debt levels and valuation risk. The positive sentiment and improving profit margins also contribute to the BUY verdict. Overall, the company's financial health and growth prospects justify the investment opportunity.",
+      "key_catalyst": "Strong revenue growth of 19.60%, indicating a growing demand for the company's services and driving future profitability and stock price appreciation.",
+      "key_risk": "High debt levels, with a debt-to-equity ratio of 117.095, posing a significant risk to the company's financial health and potentially leading to increased interest expenses and reduced financial flexibility.",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by Bharti Airtel's strong revenue growth, high return on equity, and significant upside to analyst consensus target price, which outweigh the company's high debt levels and valuation risk. The positive sentiment and improving profit margins also contribute to the BUY verdict. Overall, the company's financial health and growth prospects justify the investment opportunity.\",\n  \"key_catalyst\": \"Strong revenue growth of 19.60%, indicating a growing demand for the company's services and driving future profitability and stock price appreciation.\",\n  \"key_risk\": \"High debt levels, with a debt-to-equity ratio of 117.095, posing a significant risk to the company's financial health and potentially leading to increased interest expenses and reduced financial flexibility.\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 56,
+      "risk": "MEDIUM",
+      "composite": 60.7,
+      "scores": {
+        "fundamentals": 54.1,
+        "bull": 80.0,
+        "bear": 70.0,
+        "sentiment": 80.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 54x0.35 + Bull 80x0.2 + BearInv 30x0.2 + Sent 80x0.15 + FV 78x0.1 = 60.7 \u2192 BUY"
+    },
+    "bull_score": 80,
+    "bear_score": 70,
+    "fundamentals_score": 54.1,
+    "scores_breakdown": {
+      "fundamentals": 54.1,
+      "bull": 80.0,
+      "bear": 70.0,
+      "sentiment": 80.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 1888.1,
+    "timestamp": "2026-04-29T17:33:58.313172",
+    "eval_results": {
+      "3d": {
+        "price": 1891.0,
+        "pct_change": 0.15,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "INFY",
+    "nse_symbol": "INFY",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by Infosys's strong financials, valuation cushion, and company-specific catalysts, which outweigh the risks associated with its high debt-to-equity ratio and premium valuation. The company's ability to generate strong returns on equity and its potential upside of +24.75% make it an attractive investment opportunity. Additionally, Infosys's ability to win large contracts and capitalize on emerging trends such as AI should drive its growth and profitability.",
+      "key_catalyst": "Infosys's significant valuation cushion with a P/E (Trailing) of 15.611881, lower than its fair value estimate of \u20b91,475.28, implying a potential upside of +24.75%",
+      "key_risk": "Infosys' high debt-to-equity ratio of 9.827, which poses a significant risk to its financial stability and could lead to increased interest expenses, reduced profitability, and decreased investor confidence",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by Infosys's strong financials, valuation cushion, and company-specific catalysts, which outweigh the risks associated with its high debt-to-equity ratio and premium valuation. The company's ability to generate strong returns on equity and its potential upside of +24.75% make it an attractive investment opportunity. Additionally, Infosys's ability to win large contracts and capitalize on emerging trends such as AI should drive its growth and profitability.\",\n  \"key_catalyst\": \"Infosys's significant valuation cushion with a P/E (Trailing) of 15.611881, lower than its fair value estimate of \u20b91,475.28, implying a potential upside of +24.75%\",\n  \"key_risk\": \"Infosys' high debt-to-equity ratio of 9.827, which poses a significant risk to its financial stability and could lead to increased interest expenses, reduced profitability, and decreased investor confidence\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 60,
+      "risk": "MEDIUM",
+      "composite": 63.6,
+      "scores": {
+        "fundamentals": 78.6,
+        "bull": 70.0,
+        "bear": 70.0,
+        "sentiment": 55.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 79x0.35 + Bull 70x0.2 + BearInv 30x0.2 + Sent 55x0.15 + FV 78x0.1 = 63.6 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "fundamentals_score": 78.6,
+    "scores_breakdown": {
+      "fundamentals": 78.6,
+      "bull": 70.0,
+      "bear": 70.0,
+      "sentiment": 55.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 1182.6,
+    "timestamp": "2026-05-01T18:45:29.168031",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "SHREERAMA",
+    "nse_symbol": "SHREERAMA",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by Shree Rama Multi-Tech Limited's strong revenue growth, high profit margins, and undervaluation compared to its sector, which outweigh the bearish risks. Despite a high debt/equity ratio and potential overvaluation based on book value, the company's attractive valuation and significant upside potential make it an attractive investment opportunity. The negative sentiment and bear points are not sufficient to override the strong bull case.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt/equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by Shree Rama Multi-Tech Limited's strong revenue growth, high profit margins, and undervaluation compared to its sector, which outweigh the bearish risks. Despite a high debt/equity ratio and potential overvaluation based on book value, the company's attractive valuation and significant upside potential make it an attractive investment opportunity. The negative sentiment and bear points are not sufficient to override the strong bull case.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt/equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 47,
+      "risk": "MEDIUM",
+      "composite": 63.5,
+      "scores": {
+        "fundamentals": 84.2,
+        "bull": 80.0,
+        "bear": 70.0,
+        "sentiment": 20.0,
+        "fair_value": 90,
+        "data_completeness": 0.57
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 84x0.35 + Bull 80x0.2 + BearInv 30x0.2 + Sent 20x0.15 + FV 90x0.1 = 63.5 \u2192 BUY"
+    },
+    "bull_score": 80,
+    "bear_score": 70,
+    "fundamentals_score": 84.2,
+    "scores_breakdown": {
+      "fundamentals": 84.2,
+      "bull": 80.0,
+      "bear": 70.0,
+      "sentiment": 20.0,
+      "fair_value": 90,
+      "data_completeness": 0.57
+    },
+    "baseline_price": 46.5,
+    "timestamp": "2026-05-01T18:49:26.724873",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "IFBAGRO",
+    "nse_symbol": "IFBAGRO",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by IFB Agro Industries' robust revenue growth, undervaluation compared to the sector, and recent business expansion, which outweigh the risks associated with its high debt-to-equity ratio and low profit margins. The company's strong revenue growth and undervaluation provide a valuation cushion, making it likely to move higher to reach its fair value. The recent order wins and business expansion also indicate the company's ability to secure new orders and expand its business, positively impacting its revenue and profitability.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by IFB Agro Industries' robust revenue growth, undervaluation compared to the sector, and recent business expansion, which outweigh the risks associated with its high debt-to-equity ratio and low profit margins. The company's strong revenue growth and undervaluation provide a valuation cushion, making it likely to move higher to reach its fair value. The recent order wins and business expansion also indicate the company's ability to secure new orders and expand its business, positively impacting its revenue and profitability.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 54,
+      "risk": "LOW",
+      "composite": 68.7,
+      "scores": {
+        "fundamentals": 71.1,
+        "bull": 70.0,
+        "bear": 50.0,
+        "sentiment": 80.0,
+        "fair_value": 78,
+        "data_completeness": 0.57
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 71x0.35 + Bull 70x0.2 + BearInv 50x0.2 + Sent 80x0.15 + FV 78x0.1 = 68.7 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 50,
+    "fundamentals_score": 71.1,
+    "scores_breakdown": {
+      "fundamentals": 71.1,
+      "bull": 70.0,
+      "bear": 50.0,
+      "sentiment": 80.0,
+      "fair_value": 78,
+      "data_completeness": 0.57
+    },
+    "baseline_price": 879.0,
+    "timestamp": "2026-05-02T08:30:36.191001",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "MRF",
+    "nse_symbol": "MRF",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by MRF's strong revenue growth, high profit margins, and undervaluation compared to its sector, which outweigh the bearish concerns. The company's recent quarterly results beating expectations and positive sentiment also contribute to the bullish outlook. Overall, the data suggests that MRF's stock price has room to grow to reach its estimated fair value, providing a potential upside of +15.28%.",
+      "key_catalyst": "Undervaluation compared to sector",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by MRF's strong revenue growth, high profit margins, and undervaluation compared to its sector, which outweigh the bearish concerns. The company's recent quarterly results beating expectations and positive sentiment also contribute to the bullish outlook. Overall, the data suggests that MRF's stock price has room to grow to reach its estimated fair value, providing a potential upside of +15.28%.\",\n  \"key_catalyst\": \"Undervaluation compared to sector\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 58,
+      "risk": "MEDIUM",
+      "composite": 68.3,
+      "scores": {
+        "fundamentals": 72.9,
+        "bull": 70.0,
+        "bear": 55.0,
+        "sentiment": 80.0,
+        "fair_value": 78,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 73x0.35 + Bull 70x0.2 + BearInv 45x0.2 + Sent 80x0.15 + FV 78x0.1 = 68.3 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 55,
+    "fundamentals_score": 72.9,
+    "scores_breakdown": {
+      "fundamentals": 72.9,
+      "bull": 70.0,
+      "bear": 55.0,
+      "sentiment": 80.0,
+      "fair_value": 78,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 130000.0,
+    "timestamp": "2026-05-02T08:55:22.384423",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "VEDL",
+    "nse_symbol": "VEDL",
+    "prediction": {
+      "final_reasoning": "The pre-computed HOLD verdict is due to the balanced yet conflicting signals from the bull and bear cases, resulting in a moderate confidence level of 50%. The strong ROE, low forward P/E ratio, and attractive dividend yield are offset by the high debt-to-equity ratio, negative free cash flow, and declining revenue growth. This equilibrium of positive and negative factors warrants a cautious approach, leading to a HOLD verdict.",
+      "key_catalyst": "Vedanta's strong ROE, indicating efficient use of shareholder equity, which could lead to increased investor confidence and higher stock prices.",
+      "key_risk": "Negative free cash flow, indicating that the company is not generating enough cash to meet its financial obligations, which could lead to a decline in its stock price.",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed HOLD verdict is due to the balanced yet conflicting signals from the bull and bear cases, resulting in a moderate confidence level of 50%. The strong ROE, low forward P/E ratio, and attractive dividend yield are offset by the high debt-to-equity ratio, negative free cash flow, and declining revenue growth. This equilibrium of positive and negative factors warrants a cautious approach, leading to a HOLD verdict.\",\n  \"key_catalyst\": \"Vedanta's strong ROE, indicating efficient use of shareholder equity, which could lead to increased investor confidence and higher stock prices.\",\n  \"key_risk\": \"Negative free cash flow, indicating that the company is not generating enough cash to meet its financial obligations, which could lead to a decline in its stock price.\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 50,
+      "risk": "HIGH",
+      "composite": 60.9,
+      "scores": {
+        "fundamentals": 62.5,
+        "bull": 70.0,
+        "bear": 80.0,
+        "sentiment": 80.0,
+        "fair_value": 90,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 62x0.35 + Bull 70x0.2 + BearInv 20x0.2 + Sent 80x0.15 + FV 90x0.1 = 60.9 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 80,
+    "fundamentals_score": 62.5,
+    "scores_breakdown": {
+      "fundamentals": 62.5,
+      "bull": 70.0,
+      "bear": 80.0,
+      "sentiment": 80.0,
+      "fair_value": 90,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 273.0,
+    "timestamp": "2026-05-02T12:49:55.148619",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "WIPRO",
+    "nse_symbol": "WIPRO",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by Wipro's strong revenue growth, healthy profit margins, and high return on equity, which indicate a robust financial performance and potential for long-term value creation. Despite some bearish concerns, the company's fair value estimate is higher than its current price, suggesting upside potential. The recent buyback announcement could also provide a short-term boost to the stock price.",
+      "key_catalyst": "Wipro's strong revenue growth, with a 7.70% growth rate, indicating a strong demand for its services",
+      "key_risk": "High debt/equity ratio, which could lead to increased interest expenses and reduced financial flexibility, ultimately affecting the company's profitability and stock price",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by Wipro's strong revenue growth, healthy profit margins, and high return on equity, which indicate a robust financial performance and potential for long-term value creation. Despite some bearish concerns, the company's fair value estimate is higher than its current price, suggesting upside potential. The recent buyback announcement could also provide a short-term boost to the stock price.\",\n  \"key_catalyst\": \"Wipro's strong revenue growth, with a 7.70% growth rate, indicating a strong demand for its services\",\n  \"key_risk\": \"High debt/equity ratio, which could lead to increased interest expenses and reduced financial flexibility, ultimately affecting the company's profitability and stock price\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 56,
+      "risk": "MEDIUM",
+      "composite": 60.7,
+      "scores": {
+        "fundamentals": 68.4,
+        "bull": 70.0,
+        "bear": 55.0,
+        "sentiment": 55.0,
+        "fair_value": 55,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 68x0.35 + Bull 70x0.2 + BearInv 45x0.2 + Sent 55x0.15 + FV 55x0.1 = 60.7 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 55,
+    "fundamentals_score": 68.4,
+    "scores_breakdown": {
+      "fundamentals": 68.4,
+      "bull": 70.0,
+      "bear": 55.0,
+      "sentiment": 55.0,
+      "fair_value": 55,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 201.2,
+    "timestamp": "2026-05-02T19:01:43.147412",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "SBIN",
+    "nse_symbol": "SBIN",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by State Bank of India's strong revenue growth, attractive valuation, and strong analyst consensus, which outweigh the risks associated with its valuation and ownership structure. The bank's ability to expand its operations and increase its market share, combined with its relatively low P/E ratio and estimated upside, make it an attractive investment opportunity. The strong consensus among analysts further supports the BUY verdict.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "Valuation risk due to high forward P/E",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by State Bank of India's strong revenue growth, attractive valuation, and strong analyst consensus, which outweigh the risks associated with its valuation and ownership structure. The bank's ability to expand its operations and increase its market share, combined with its relatively low P/E ratio and estimated upside, make it an attractive investment opportunity. The strong consensus among analysts further supports the BUY verdict.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"Valuation risk due to high forward P/E\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 57,
+      "risk": "LOW",
+      "composite": 70.8,
+      "scores": {
+        "fundamentals": 75.0,
+        "bull": 70.0,
+        "bear": 40.0,
+        "sentiment": 80.0,
+        "fair_value": 65,
+        "data_completeness": 0.6
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 75x0.35 + Bull 70x0.2 + BearInv 60x0.2 + Sent 80x0.15 + FV 65x0.1 = 70.8 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 40,
+    "fundamentals_score": 75.0,
+    "scores_breakdown": {
+      "fundamentals": 75.0,
+      "bull": 70.0,
+      "bear": 40.0,
+      "sentiment": 80.0,
+      "fair_value": 65,
+      "data_completeness": 0.6
+    },
+    "baseline_price": 1071.95,
+    "timestamp": "2026-05-02T19:50:54.817965",
     "eval_results": {},
     "checked": false
   }

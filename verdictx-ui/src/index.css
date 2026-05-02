@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+/* ===== Tailwind v4 fix: default border-color ===== */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* ===== Base Reset & Theme ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #050a0e;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ===== Layout Utilities ===== */
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0 20px;
+  }
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0f14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(0, 230, 200, 0.25);
+  color: #fff;
+}
