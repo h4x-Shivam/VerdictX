@@ -60,7 +60,7 @@ function TvChart({ ticker }) {
     script.onload = () => {
       if (window.TradingView) {
         new window.TradingView.widget({
-          autosize: true, symbol: `NSE:${sym}`, interval: 'D',
+          autosize: true, symbol: `BSE:${sym.toUpperCase()}`, interval: 'D',
           timezone: 'Asia/Kolkata', theme: 'dark', style: '1', locale: 'en',
           enable_publishing: false, backgroundColor: 'rgba(8,14,24,1)',
           gridColor: 'rgba(255,255,255,0.04)', hide_top_toolbar: true,

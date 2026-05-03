@@ -1956,5 +1956,146 @@
     "timestamp": "2026-05-02T19:50:54.817965",
     "eval_results": {},
     "checked": false
+  },
+  {
+    "ticker": "PATELENG",
+    "nse_symbol": "PATELENG",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by Patel Engineering's undervaluation, steady revenue growth, and attractive fair value estimate, which outweigh the risks associated with its high debt/equity ratio and low profit margins. The significant upside potential of 141.35% based on the fair value estimate is a key driver of this decision. Despite some risks, the overall composite score of 62.0 indicates a favorable investment opportunity.",
+      "key_catalyst": "Attractive fair value estimate, implying a +141.35% upside",
+      "key_risk": "High debt/equity ratio, which could lead to increased interest expenses and reduce profitability",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by Patel Engineering's undervaluation, steady revenue growth, and attractive fair value estimate, which outweigh the risks associated with its high debt/equity ratio and low profit margins. The significant upside potential of 141.35% based on the fair value estimate is a key driver of this decision. Despite some risks, the overall composite score of 62.0 indicates a favorable investment opportunity.\",\n  \"key_catalyst\": \"Attractive fair value estimate, implying a +141.35% upside\",\n  \"key_risk\": \"High debt/equity ratio, which could lead to increased interest expenses and reduce profitability\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 45,
+      "risk": "LOW",
+      "composite": 62.0,
+      "scores": {
+        "fundamentals": 53.7,
+        "bull": 70.0,
+        "bear": 40.0,
+        "sentiment": 55.0,
+        "fair_value": 90,
+        "data_completeness": 0.57
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 54x0.35 + Bull 70x0.2 + BearInv 60x0.2 + Sent 55x0.15 + FV 90x0.1 = 62.0 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 40,
+    "fundamentals_score": 53.7,
+    "scores_breakdown": {
+      "fundamentals": 53.7,
+      "bull": 70.0,
+      "bear": 40.0,
+      "sentiment": 55.0,
+      "fair_value": 90,
+      "data_completeness": 0.57
+    },
+    "baseline_price": 28.34,
+    "timestamp": "2026-05-03T14:17:23.675449",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "INFY",
+    "nse_symbol": "INFY",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by Infosys's strong revenue growth, high return on equity, and significant upside potential, which outweigh the bearish concerns of high debt-to-equity ratio and overvaluation. The company's ability to expand its business and increase its market share, combined with its strong financial health, make it an attractive investment opportunity. The positive analyst consensus and low debt-to-equity ratio further support the BUY verdict.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by Infosys's strong revenue growth, high return on equity, and significant upside potential, which outweigh the bearish concerns of high debt-to-equity ratio and overvaluation. The company's ability to expand its business and increase its market share, combined with its strong financial health, make it an attractive investment opportunity. The positive analyst consensus and low debt-to-equity ratio further support the BUY verdict.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 66,
+      "risk": "MEDIUM",
+      "composite": 67.0,
+      "scores": {
+        "fundamentals": 78.6,
+        "bull": 72.0,
+        "bear": 55.0,
+        "sentiment": 55.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 79x0.35 + Bull 72x0.2 + BearInv 45x0.2 + Sent 55x0.15 + FV 78x0.1 = 67.0 \u2192 BUY"
+    },
+    "bull_score": 72,
+    "bear_score": 55,
+    "fundamentals_score": 78.6,
+    "scores_breakdown": {
+      "fundamentals": 78.6,
+      "bull": 72.0,
+      "bear": 55.0,
+      "sentiment": 55.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 1182.6,
+    "timestamp": "2026-05-03T14:29:25.981265",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "ITC",
+    "nse_symbol": "ITC",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by ITC's strong revenue growth, high profit margins, and potential upside, which outweigh the risks associated with its high debt/equity ratio and overvaluation. The company's valuation is reasonable compared to its sector, and analysts expect a significant upside in the stock price. The expected cigarette price hike in May could further boost ITC's revenue and profitability.",
+      "key_catalyst": "ITC's strong revenue growth, indicating a growing business",
+      "key_risk": "High debt/equity ratio, which could lead to increased interest expenses and reduced financial flexibility",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by ITC's strong revenue growth, high profit margins, and potential upside, which outweigh the risks associated with its high debt/equity ratio and overvaluation. The company's valuation is reasonable compared to its sector, and analysts expect a significant upside in the stock price. The expected cigarette price hike in May could further boost ITC's revenue and profitability.\",\n  \"key_catalyst\": \"ITC's strong revenue growth, indicating a growing business\",\n  \"key_risk\": \"High debt/equity ratio, which could lead to increased interest expenses and reduced financial flexibility\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 49,
+      "risk": "MEDIUM",
+      "composite": 62.0,
+      "scores": {
+        "fundamentals": 72.9,
+        "bull": 60.0,
+        "bear": 70.0,
+        "sentiment": 80.0,
+        "fair_value": 65,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 73x0.35 + Bull 60x0.2 + BearInv 30x0.2 + Sent 80x0.15 + FV 65x0.1 = 62.0 \u2192 BUY"
+    },
+    "bull_score": 60,
+    "bear_score": 70,
+    "fundamentals_score": 72.9,
+    "scores_breakdown": {
+      "fundamentals": 72.9,
+      "bull": 60.0,
+      "bear": 70.0,
+      "sentiment": 80.0,
+      "fair_value": 65,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 315.2,
+    "timestamp": "2026-05-03T14:34:15.374872",
+    "eval_results": {},
+    "checked": false
   }
 ]

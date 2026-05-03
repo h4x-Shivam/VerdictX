@@ -178,7 +178,7 @@ def _llm_call(prompt: str, required_keys: list, max_retries: int = 2) -> dict:
         except Exception as e:
             # fallback to ollama if nvidia fails
             if LLM_PROVIDER == "nvidia":
-                print(f"[LLM ERROR → NVIDIA] {e} → Falling back to Ollama")
+                print(f"[LLM ERROR -> NVIDIA] {e} -> Falling back to Ollama")
                 raw = _call_ollama(messages)
             else:
                 raise e

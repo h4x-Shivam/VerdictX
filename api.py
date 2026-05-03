@@ -182,7 +182,8 @@ def _analysis_generator(ticker: str):
 
     except Exception as e:
         tb = traceback.format_exc()
-        print(f"[API ERROR] {ticker}: {e}\n{tb}")
+        safe_msg = f"[API ERROR] {ticker}: {e}\n{tb}".encode("utf-8", "replace").decode("utf-8", "replace")
+        print(safe_msg)
         yield _emit("error", {"message": str(e), "detail": tb[-500:]})
 
 
