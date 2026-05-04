@@ -42,16 +42,16 @@ Collects the latest, high-signal news from sources like MoneyControl, Economic T
 ### Sentiment Analysis  
 An AI model evaluates the news to classify market mood (Positive, Negative, Neutral, Mixed) and generate a baseline sentiment score.
 
-### Bull Agent 🟢  
+### Bull Agent
 An optimistic, growth-focused LLM identifies upside catalysts, expansion signals, and bullish arguments — producing a Bull Score.
 
-### Bear Agent 🔴  
+### Bear Agent
 A risk-aware, skeptical LLM analyzes the same data to surface weaknesses, risks, and downside factors — producing a Bear Score.
 
-### Algorithmic Validation Layer 🧮  
+### Algorithmic Validation Layer
 A deterministic Python layer cross-checks AI outputs against actual financial data, generating a Fundamentals Score and reducing hallucination risk.
 
-### Judge Agent ⚖️  
+### Judge Agent
 A neutral LLM synthesizes Bull vs Bear arguments with validated scores, delivering a structured, institutional-style report and a final verdict — from Strong Sell to Strong Buy.
 
 ---
