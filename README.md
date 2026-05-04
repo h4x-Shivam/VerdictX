@@ -96,7 +96,7 @@ This project tries to handle that by:
 ## Current limitations
 
 **Data Reliability Risks:**  
-It relies heavily on free data sources like yfinance and web-scraping (for news). If Yahoo Finance or news portals change their web structures or enforce strict rate limits, the data pipeline could temporarily break or provide delayed metrics.
+It relies heavily on free data sources like yfinance and web-scraping (for news). If yfinance or news portals change their web structures or enforce strict rate limits, the data pipeline could temporarily break or provide delayed metrics.
 
 **Analysis Latency:**  
 Because it runs a complex multi-agent system (triggering Sentiment, Bull, Bear, and Judge LLMs sequentially), generating a full research report can take 30 to 60 seconds.
