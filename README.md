@@ -118,7 +118,7 @@ The system heavily favors fundamental data and news sentiment. It does not activ
 - Premium Data Integrations  
 - Technical Analyst Agent  
 - Backtesting and accuracy tracking  
-- RAG for Earnings Transcripts  
+- RAG for Earning Transcripts  
 - Global Market Expansion  
 
 ---
