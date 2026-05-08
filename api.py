@@ -56,11 +56,20 @@ def _emit(event_type: str, payload: dict) -> str:
 
 
 # ─────────────────────────────────────────────────────────────────
-# SSE Analysis Stream
+# SSE Analysis Stream — Async parallel pipeline
 # ─────────────────────────────────────────────────────────────────
 
 def _analysis_generator(ticker: str):
-    """Generator that runs the full analysis pipeline and yields SSE events."""
+    """
+    Generator that runs the full analysis pipeline and yields SSE events.
+
+    Parallelism strategy:
+      Stage 1 (parallel): get_basic_data + get_news
+      Stage 2 (parallel): analyze_sentiment + run_bull_agent + run_bear_agent
+                          → each agent emits a 'partial' event the moment it finishes
+      Stage 3 (serial):   compute_scores + validate + run_judge_agent
+    """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
     from main import (
         get_basic_data, get_news, get_news_text,
         analyze_sentiment, run_bull_agent, run_bear_agent,
@@ -68,62 +77,111 @@ def _analysis_generator(ticker: str):
         compute_fundamentals_score, compute_final_score, validate_and_adjust,
     )
 
+    t0 = time.time()
+
     try:
-        # ── Step 1: Basic stock data ──
-        yield _emit("progress", {"step": 1, "total": 7, "pct": 5,
-                                  "msg": f"Fetching NSE data for {ticker.upper()}…"})
-        data = get_basic_data(ticker)
+        # ── Stage 1: data + news fetched in parallel ──────────────
+        yield _emit("progress", {
+            "step": 1, "total": 6, "pct": 5,
+            "msg": f"Fetching market data + news for {ticker.upper()} in parallel…",
+        })
+
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            fut_data = pool.submit(get_basic_data, ticker)
+            fut_news = pool.submit(get_news, ticker, ticker)
+
+            # Yield heartbeat events while waiting (keeps SSE connection alive
+            # and lets React show live sub-step progress)
+            data_done = news_done = False
+            while not (data_done and news_done):
+                if fut_data.done() and not data_done:
+                    data_done = True
+                    yield _emit("progress", {
+                        "step": 1, "total": 6, "pct": 12,
+                        "msg": "Market data fetched ✓",
+                    })
+                if fut_news.done() and not news_done:
+                    news_done = True
+                    yield _emit("progress", {
+                        "step": 1, "total": 6, "pct": 18,
+                        "msg": "News articles fetched ✓",
+                    })
+                if not (data_done and news_done):
+                    time.sleep(0.3)  # short poll interval
+
+            data       = fut_data.result()
+            news_items = fut_news.result()
+            
+            if not news_items:
+                print(f"[API] Warning: No news items fetched for {ticker} (possible RSS rate limit).")
+
         fund_summary = data["summary"]
-        raw = data["raw"]
-        info = data["info"]
-        fv = data.get("fair_value", {})
+        raw          = data["raw"]
+        info         = data["info"]
+        fv           = data.get("fair_value", {})
+        fund_data    = compute_fundamentals_score(info, raw)
+        news_text    = get_news_text(news_items)
+        t1 = time.time()
 
-        yield _emit("progress", {"step": 1, "total": 7, "pct": 15,
-                                  "msg": "Stock data fetched ✓"})
+        yield _emit("progress", {
+            "step": 2, "total": 4, "pct": 25,
+            "msg": f"Stage 1 done in {t1 - t0:.1f}s — launching 3 AI agents in parallel…",
+        })
 
-        # ── Step 2: Fundamentals score ──
-        yield _emit("progress", {"step": 2, "total": 7, "pct": 20,
-                                  "msg": "Computing fundamentals score…"})
-        fund_data = compute_fundamentals_score(info, raw)
+        # ── Stage 2: LLM agents — sequential to respect NVIDIA rate limits ──
+        # The _NVIDIA_SEM in main.py serializes API calls anyway — making them
+        # explicit here avoids the overhead of ThreadPoolExecutor + as_completed
+        # while keeping SSE streaming: each partial fires as the agent finishes.
 
-        # ── Step 3: News ──
-        yield _emit("progress", {"step": 3, "total": 7, "pct": 28,
-                                  "msg": "Fetching news from MoneyControl, ET, Mint…"})
-        company_name = info.get("company_name", ticker)
-        news_items = get_news(company_name, ticker)
-        news_text = get_news_text(news_items)
+        yield _emit("progress", {
+            "step": 2, "total": 6, "pct": 22,
+            "msg": f"Data ready in {t1 - t0:.1f}s — analyzing market sentiment…",
+        })
 
-        yield _emit("progress", {"step": 3, "total": 7, "pct": 36,
-                                  "msg": f"{len(news_items)} articles found ✓"})
-
-        # ── Step 4: Sentiment ──
-        yield _emit("progress", {"step": 4, "total": 7, "pct": 44,
-                                  "msg": "Analyzing market sentiment…"})
         sent = analyze_sentiment(news_text)
+        yield _emit("partial", {
+            "agent": "sentiment",
+            "sentiment":         sent.get("sentiment", "NEUTRAL"),
+            "sentiment_score":   sent.get("score", 0),
+            "sentiment_reasons": sent.get("reasons", []),
+        })
+        yield _emit("progress", {
+            "step": 3, "total": 6, "pct": 38,
+            "msg": f"Sentiment: {sent.get('sentiment', 'N/A')} ({sent.get('score', 0):+d}) ✓ — Bull agent scanning positive signals…",
+        })
 
-        yield _emit("progress", {"step": 4, "total": 7, "pct": 50,
-                                  "msg": f"Sentiment: {sent.get('sentiment', 'N/A')} ✓"})
-
-        # ── Step 5: Bull agent ──
-        yield _emit("progress", {"step": 5, "total": 7, "pct": 56,
-                                  "msg": "🟢 Bull agent scanning positive signals…"})
         bull = run_bull_agent(fund_summary, news_text)
+        yield _emit("partial", {
+            "agent": "bull",
+            "bull_score":  bull.get("overall_bull_score", 50),
+            "bull_thesis": bull.get("bull_thesis", ""),
+            "bull_points": bull.get("bull_points", []),
+        })
+        yield _emit("progress", {
+            "step": 4, "total": 6, "pct": 55,
+            "msg": f"Bull score: {bull.get('overall_bull_score', '?')}/100 ✓ — Bear agent scanning risks…",
+        })
 
-        yield _emit("progress", {"step": 5, "total": 7, "pct": 65,
-                                  "msg": f"Bull score: {bull.get('overall_bull_score', '?')} ✓"})
-
-        # ── Step 6: Bear agent ──
-        yield _emit("progress", {"step": 6, "total": 7, "pct": 70,
-                                  "msg": "🔴 Bear agent scanning risks…"})
         bear = run_bear_agent(fund_summary, news_text)
+        yield _emit("partial", {
+            "agent": "bear",
+            "bear_score":  bear.get("overall_bear_score", 50),
+            "bear_thesis": bear.get("bear_thesis", ""),
+            "bear_points": bear.get("bear_points", []),
+        })
+        yield _emit("progress", {
+            "step": 5, "total": 6, "pct": 70,
+            "msg": f"Bear score: {bear.get('overall_bear_score', '?')}/100 ✓ — judge writing final verdict…",
+        })
 
-        yield _emit("progress", {"step": 6, "total": 7, "pct": 78,
-                                  "msg": f"Bear score: {bear.get('overall_bear_score', '?')} ✓"})
+        t2 = time.time()
+        yield _emit("progress", {
+            "step": 5, "total": 6, "pct": 75,
+            "msg": f"Agents done in {t2 - t1:.1f}s — running decision engine…",
+        })
 
-        # ── Step 7: Score + validate + judge ──
-        yield _emit("progress", {"step": 7, "total": 7, "pct": 82,
-                                  "msg": "⚖️ Running decision engine…"})
-        fv_upside = fv.get("primary", {}).get("upside", 0)
+        # ── Stage 3: Scoring → Validation → Judge (serial) ────────
+        fv_upside    = fv.get("primary", {}).get("upside", 0)
         score_result = compute_final_score(
             bull_score=bull.get("overall_bull_score", 50),
             bear_score=bear.get("overall_bear_score", 50),
@@ -140,15 +198,19 @@ def _analysis_generator(ticker: str):
             data_completeness=fund_data["data_completeness"],
         )
 
-        yield _emit("progress", {"step": 7, "total": 7, "pct": 88,
-                                  "msg": "⚖️ Judge writing final verdict…"})
-        verdict = run_judge_agent(bull, bear, sent,
-                                   verdict_data=validated,
-                                   fundamentals_data=fund_data)
+        yield _emit("progress", {
+            "step": 5, "total": 6, "pct": 85,
+            "msg": f"Verdict: {validated.get('verdict')} — judge writing reasoning…",
+        })
 
-        # ── Save prediction ──
-        yield _emit("progress", {"step": 7, "total": 7, "pct": 95,
-                                  "msg": "Saving prediction…"})
+        verdict = run_judge_agent(
+            bull, bear, sent,
+            verdict_data=validated,
+            fundamentals_data=fund_data,
+        )
+
+        # ── Save prediction ────────────────────────────────────────
+        yield _emit("progress", {"step": 6, "total": 6, "pct": 95, "msg": "Saving prediction…"})
         cur_price = raw.get("currentPrice") or 0
         save_prediction(
             ticker, verdict,
@@ -160,24 +222,36 @@ def _analysis_generator(ticker: str):
         )
         check_outcomes()
 
-        # ── Done — build result payload ──
-        yield _emit("progress", {"step": 7, "total": 7, "pct": 100,
-                                  "msg": "Analysis complete ✓"})
+        t3 = time.time()
+        total_s = round(t3 - t0, 1)
+        print(f"[API Async] {ticker}: stage1={t1-t0:.1f}s  stage2={t2-t1:.1f}s  "
+              f"stage3={t3-t2:.1f}s  total={total_s}s")
 
-        result = _safe_json({
-            "ticker": ticker.upper(),
-            "info": info,
-            "raw": raw,
-            "fv": fv,
-            "news_items": news_items,
-            "sent": sent,
-            "bull": bull,
-            "bear": bear,
-            "verdict": verdict,
-            "fund_data": fund_data,
-            "validated": validated,
+        yield _emit("progress", {
+            "step": 6, "total": 6, "pct": 100,
+            "msg": f"Analysis complete in {total_s}s ✓",
         })
 
+        # ── Final done event with full result payload ──────────────
+        result = _safe_json({
+            "ticker":     ticker.upper(),
+            "info":       info,
+            "raw":        raw,
+            "fv":         fv,
+            "news_items": news_items,
+            "sent":       sent,
+            "bull":       bull,
+            "bear":       bear,
+            "verdict":    verdict,
+            "fund_data":  fund_data,
+            "validated":  validated,
+            "timings": {
+                "stage1_data_news":   round(t1 - t0, 1),
+                "stage2_llm_agents":  round(t2 - t1, 1),
+                "stage3_judge_score": round(t3 - t2, 1),
+                "total":              total_s,
+            },
+        })
         yield _emit("done", {"result": result})
 
     except Exception as e:

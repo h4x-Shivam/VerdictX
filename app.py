@@ -11,6 +11,7 @@ from main import (
     get_days_until_eval,
     compute_fundamentals_score, compute_final_score,
     validate_and_adjust,
+    run_full_analysis,
     fmt_rupee, fmt_cr, fmt_pct,
 )
 
@@ -358,15 +359,12 @@ def render_loading():
         Multi-agent AI building your research report…</div>
     </div>""", unsafe_allow_html=True)
 
-    # Steps with estimated durations shown to user
+    # ── 4 honest steps matching the 3-stage parallel pipeline ──
     steps = [
-        ("🔍", "Researching company data…",                     "~3s"),
-        ("📰", "Fetching news from MoneyControl, ET, Mint…",    "~5s"),
-        ("🧠", "Analyzing market sentiment…",                   "~15s"),
-        ("🟢", "Bull agent scanning positive signals…",         "~20s"),
-        ("🔴", "Bear agent scanning risks and red flags…",      "~20s"),
-        ("⚖️",  "Neutral agent making final report…",           "~20s"),
-        ("📋", "Preparing your research report…",               "~2s"),
+        ("🔍", "Fetching market data + news in parallel…",  "~6s"),
+        ("🤖", "Running Bull, Bear & Sentiment agents simultaneously…", "~20s"),
+        ("⚖️",  "Judge writing final verdict…",               "~15s"),
+        ("📋", "Preparing your research report…",            "~2s"),
     ]
 
     step_ph = st.empty()
@@ -386,7 +384,6 @@ def render_loading():
             fw    = "800" if cur else ("600" if done else "400")
             fc2   = TPRI if cur else (TSEC if done else TMUTE)
             anim_css = "animation:blink 1.2s ease infinite;" if cur else ""
-            # Show time estimate only on current step
             est_html = (
                 f'<span style="font-size:.72rem;color:{TMUTE};margin-left:auto;">{est}</span>'
                 if cur else ""
@@ -404,62 +401,39 @@ def render_loading():
                 f'</div>'
             )
         step_ph.markdown(
-            f'<div style="max-width:480px;margin:0 auto;'
+            f'<div style="max-width:500px;margin:0 auto;'
             f'background:{CARD};border:1px solid {BORDER};'
             f'border-radius:18px;padding:1rem .6rem;'
             f'margin-top:-55vh;">{rows}</div>',
             unsafe_allow_html=True
         )
 
-    # Run pipeline — upgraded decision engine
-    show_steps(0); prog_ph.progress(4)
-    data = get_basic_data(ticker)
-    fund_summary = data["summary"]; raw = data["raw"]; info = data["info"]
-    hist = data.get("hist"); fv = data.get("fair_value", {})
+    # ── Stage 1: data + news (parallel inside run_full_analysis) ──
+    show_steps(0); prog_ph.progress(5)
+    r = run_full_analysis(ticker)
 
-    # Component 1: Compute fundamentals score
-    fund_data = compute_fundamentals_score(info, raw)
+    # Unpack all results from the parallel run
+    data       = r["data"]
+    info       = r["info"]
+    raw        = r["raw"]
+    fv         = r["fv"]
+    hist       = r["hist"]
+    news_items = r["news_items"]
+    sent       = r["sent"]
+    bull       = r["bull"]
+    bear       = r["bear"]
+    verdict    = r["verdict"]
+    fund_data  = r["fund_data"]
+    validated  = r["validated"]
+    fund_summary = r["fund_summary"]
+    timings    = r.get("timings", {})
 
-    show_steps(1); prog_ph.progress(18)
-    news_items = get_news(info.get("company_name", ""), ticker)
-    news_text  = get_news_text(news_items)
+    # Update UI to reflect completed stages
+    show_steps(1); prog_ph.progress(30)   # Stage 1 done
+    show_steps(2); prog_ph.progress(75)   # Stage 2 done
+    show_steps(3); prog_ph.progress(95)   # Stage 3 done
 
-    show_steps(2); prog_ph.progress(34)
-    sent = analyze_sentiment(news_text)
-
-    show_steps(3); prog_ph.progress(52)
-    bull = run_bull_agent(fund_summary, news_text)
-
-    show_steps(4); prog_ph.progress(68)
-    bear = run_bear_agent(fund_summary, news_text)
-
-    # Component 2: Weighted scoring engine
-    fv_upside = fv.get("primary", {}).get("upside", 0)
-    score_result = compute_final_score(
-        bull_score=bull.get("overall_bull_score", 50),
-        bear_score=bear.get("overall_bear_score", 50),
-        sent_score=sent.get("score", 0),
-        fundamentals_score=fund_data["score"],
-        fair_value_upside=fv_upside,
-        data_completeness=fund_data["data_completeness"],
-    )
-
-    # Component 3: Validation layer
-    validated = validate_and_adjust(
-        score_result=score_result,
-        fundamentals_score=fund_data["score"],
-        bull_score=bull.get("overall_bull_score", 50),
-        bear_score=bear.get("overall_bear_score", 50),
-        data_completeness=fund_data["data_completeness"],
-    )
-
-    show_steps(5); prog_ph.progress(84)
-    # Component 5: Judge writes reasoning for pre-computed verdict
-    verdict = run_judge_agent(bull, bear, sent,
-                              verdict_data=validated,
-                              fundamentals_data=fund_data)
-
-    show_steps(6); prog_ph.progress(100)
+    # Save prediction
     cur_price = raw.get("currentPrice") or 0
     save_prediction(ticker, verdict,
                     bull.get("overall_bull_score", 50),
@@ -469,9 +443,11 @@ def render_loading():
                     scores=validated.get("scores"))
     check_outcomes()
 
+    prog_ph.progress(100)
     stat_ph.markdown(
         f'<div style="text-align:center;color:{GREEN};font-weight:700;'
-        f'font-size:.88rem;margin-top:.5rem;">✓ Analysis complete!</div>',
+        f'font-size:.88rem;margin-top:.5rem;">'
+        f'✓ Analysis complete in {timings.get("total", "?")}s!</div>',
         unsafe_allow_html=True
     )
     time.sleep(0.6)

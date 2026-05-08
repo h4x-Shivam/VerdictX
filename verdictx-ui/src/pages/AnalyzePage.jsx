@@ -2,14 +2,14 @@ import { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// 6 steps — each maps to one real operation in api.py
 const STEPS = [
-  { icon: '📡', label: 'Fetching NSE stock data', color: '#22d3ee' },
-  { icon: '📊', label: 'Computing fundamentals score', color: '#22d3ee' },
-  { icon: '📰', label: 'Fetching news from MoneyControl, ET, Mint', color: '#a78bfa' },
-  { icon: '🧠', label: 'Analyzing market sentiment', color: '#a78bfa' },
-  { icon: '🟢', label: 'Bull agent scanning positive signals', color: '#4ade80' },
-  { icon: '🔴', label: 'Bear agent scanning risks', color: '#f87171' },
-  { icon: '⚖️', label: 'Judge writing final verdict', color: '#fbbf24' },
+  { icon: '🔍', label: 'Fetching market data + news in parallel',   color: '#22d3ee' },
+  { icon: '🧠', label: 'Analyzing market sentiment',                  color: '#a78bfa' },
+  { icon: '🟢', label: 'Bull agent scanning positive signals',        color: '#4ade80' },
+  { icon: '🔴', label: 'Bear agent scanning risks & red flags',       color: '#f87171' },
+  { icon: '⚖️', label: 'Judge writing final verdict',                 color: '#fbbf24' },
+  { icon: '📋', label: 'Preparing your research report',              color: '#34d399' },
 ];
 
 export default function AnalyzePage() {
@@ -20,7 +20,9 @@ export default function AnalyzePage() {
   const [msg, setMsg] = useState('Starting analysis…');
   const [error, setError] = useState(null);
   const [done, setDone] = useState(false);
+  const [partials, setPartials] = useState({});   // live agent scores as they stream in
   const esRef = useRef(null);
+  const connectedRef = useRef(false);   // tracks whether we ever received a valid message
 
   useEffect(() => {
     if (!ticker) return;
@@ -30,13 +32,20 @@ export default function AnalyzePage() {
     esRef.current = es;
 
     es.onmessage = (e) => {
+      connectedRef.current = true;   // we've received at least one message — backend is live
       try {
         const data = JSON.parse(e.data);
 
         if (data.type === 'progress') {
-          setCurrentStep((data.step || 1) - 1);
+          // api.py sends step 1–4; convert to 0-indexed for the STEPS array
+          setCurrentStep(Math.max(0, (data.step || 1) - 1));
           setPct(data.pct || 0);
           setMsg(data.msg || '');
+        }
+
+        if (data.type === 'partial') {
+          // Stream agent scores as they arrive — before the full done event
+          setPartials(prev => ({ ...prev, ...data }));
         }
 
         if (data.type === 'done') {
@@ -44,7 +53,6 @@ export default function AnalyzePage() {
           setPct(100);
           setMsg('Analysis complete!');
           es.close();
-          // Navigate to results, passing data via location state
           setTimeout(() => {
             navigate(`/results/${ticker.toUpperCase()}`, {
               state: { result: data.result },
@@ -62,12 +70,22 @@ export default function AnalyzePage() {
     };
 
     es.onerror = () => {
-      setError('Could not connect to backend. Is the API server running?');
-      es.close();
+      // Only show the "backend down" error if we never received a single message.
+      // EventSource fires onerror on normal reconnection attempts too — don't
+      // treat those as failures when the stream is still healthy.
+      if (!connectedRef.current) {
+        setError(
+          'Could not connect to the API server.\n\n' +
+          'Make sure api.py is running:\n  python api.py'
+        );
+        es.close();
+      }
+      // If we already received messages, it's a transient hiccup — ignore it.
     };
 
     return () => es.close();
   }, [ticker, navigate]);
+
 
   return (
     <div style={{
@@ -197,6 +215,42 @@ export default function AnalyzePage() {
                       style={{ fontSize: 11, color: step.color, marginTop: 2 }}
                     >
                       {msg}
+                    </motion.div>
+                  )}
+                  {/* Sentiment badge on step 1 (index 1) */}
+                  {i === 1 && partials.sentiment && (
+                    <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }}
+                      style={{ display: 'flex', gap: 6, marginTop: 5, flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px',
+                        borderRadius: 999, background: 'rgba(167,139,250,0.12)',
+                        border: '1px solid rgba(167,139,250,0.3)', color: '#a78bfa' }}>
+                        🧠 {partials.sentiment}
+                        {partials.sentiment_score !== undefined && ` (${partials.sentiment_score > 0 ? '+' : ''}${partials.sentiment_score})`}
+                      </span>
+                    </motion.div>
+                  )}
+
+                  {/* Bull score badge on step 2 (index 2) */}
+                  {i === 2 && partials.bull_score !== undefined && (
+                    <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }}
+                      style={{ display: 'flex', gap: 6, marginTop: 5 }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px',
+                        borderRadius: 999, background: 'rgba(74,222,128,0.12)',
+                        border: '1px solid rgba(74,222,128,0.3)', color: '#4ade80' }}>
+                        🟢 Score: {partials.bull_score}/100
+                      </span>
+                    </motion.div>
+                  )}
+
+                  {/* Bear score badge on step 3 (index 3) */}
+                  {i === 3 && partials.bear_score !== undefined && (
+                    <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }}
+                      style={{ display: 'flex', gap: 6, marginTop: 5 }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px',
+                        borderRadius: 999, background: 'rgba(248,113,113,0.12)',
+                        border: '1px solid rgba(248,113,113,0.3)', color: '#f87171' }}>
+                        🔴 Score: {partials.bear_score}/100
+                      </span>
                     </motion.div>
                   )}
                 </div>

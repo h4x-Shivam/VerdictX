@@ -305,6 +305,11 @@
         "price": 539.5499877929688,
         "pct_change": -3.4,
         "correct": false
+      },
+      "14d": {
+        "price": 572.75,
+        "pct_change": 2.54,
+        "correct": true
       }
     }
   },
@@ -377,6 +382,11 @@
         "price": 539.5499877929688,
         "pct_change": -3.4,
         "correct": false
+      },
+      "14d": {
+        "price": 568.5,
+        "pct_change": 1.78,
+        "correct": true
       }
     }
   },
@@ -418,6 +428,11 @@
       "7d": {
         "price": 515.9500122070312,
         "pct_change": -5.15,
+        "correct": false
+      },
+      "14d": {
+        "price": 487.75,
+        "pct_change": -10.33,
         "correct": false
       }
     }
@@ -489,6 +504,11 @@
       "7d": {
         "price": 515.9500122070312,
         "pct_change": -3.66,
+        "correct": false
+      },
+      "14d": {
+        "price": 487.75,
+        "pct_change": -8.93,
         "correct": false
       }
     }
@@ -828,6 +848,11 @@
         "price": 519.9500122070312,
         "pct_change": -2.6,
         "correct": false
+      },
+      "7d": {
+        "price": 515.5999755859375,
+        "pct_change": -3.42,
+        "correct": false
       }
     }
   },
@@ -879,6 +904,11 @@
       "3d": {
         "price": 519.9500122070312,
         "pct_change": -2.6,
+        "correct": false
+      },
+      "7d": {
+        "price": 515.5999755859375,
+        "pct_change": -3.42,
         "correct": false
       }
     },
@@ -933,6 +963,11 @@
         "price": 519.9500122070312,
         "pct_change": -2.6,
         "correct": true
+      },
+      "7d": {
+        "price": 515.5999755859375,
+        "pct_change": -3.42,
+        "correct": false
       }
     },
     "checked": true
@@ -986,6 +1021,11 @@
         "price": 519.9500122070312,
         "pct_change": -2.6,
         "correct": true
+      },
+      "7d": {
+        "price": 515.5999755859375,
+        "pct_change": -3.42,
+        "correct": false
       }
     },
     "checked": true
@@ -1039,6 +1079,11 @@
         "price": 519.9500122070312,
         "pct_change": -2.6,
         "correct": false
+      },
+      "7d": {
+        "price": 515.5999755859375,
+        "pct_change": -3.42,
+        "correct": false
       }
     },
     "checked": true
@@ -1091,6 +1136,11 @@
       "3d": {
         "price": 519.9500122070312,
         "pct_change": -2.6,
+        "correct": false
+      },
+      "7d": {
+        "price": 515.5999755859375,
+        "pct_change": -3.42,
         "correct": false
       }
     },
@@ -1147,6 +1197,11 @@
         "price": 20.270000457763672,
         "pct_change": 2.17,
         "correct": true
+      },
+      "7d": {
+        "price": 19.959999084472656,
+        "pct_change": 0.6,
+        "correct": false
       }
     },
     "checked": true
@@ -1199,6 +1254,11 @@
       "3d": {
         "price": 515.9500122070312,
         "pct_change": -3.56,
+        "correct": false
+      },
+      "7d": {
+        "price": 503.25,
+        "pct_change": -5.93,
         "correct": false
       }
     },
@@ -1253,6 +1313,11 @@
         "price": 515.9500122070312,
         "pct_change": -3.38,
         "correct": false
+      },
+      "7d": {
+        "price": 503.25,
+        "pct_change": -5.76,
+        "correct": false
       }
     },
     "checked": true
@@ -1305,6 +1370,11 @@
       "3d": {
         "price": 515.9500122070312,
         "pct_change": -3.71,
+        "correct": false
+      },
+      "7d": {
+        "price": 503.25,
+        "pct_change": -6.08,
         "correct": false
       }
     },
@@ -1359,6 +1429,11 @@
         "price": 541.5,
         "pct_change": -0.59,
         "correct": true
+      },
+      "7d": {
+        "price": 572.75,
+        "pct_change": 5.15,
+        "correct": false
       }
     },
     "checked": true
@@ -1412,6 +1487,11 @@
         "price": 1182.5999755859375,
         "pct_change": 1.29,
         "correct": true
+      },
+      "7d": {
+        "price": 1167.199951171875,
+        "pct_change": -0.03,
+        "correct": false
       }
     },
     "checked": true
@@ -1465,6 +1545,11 @@
         "price": 517.0,
         "pct_change": -0.57,
         "correct": true
+      },
+      "7d": {
+        "price": 503.25,
+        "pct_change": -3.21,
+        "correct": false
       }
     },
     "checked": true
@@ -1517,6 +1602,11 @@
       "3d": {
         "price": 1891.0,
         "pct_change": 0.15,
+        "correct": true
+      },
+      "7d": {
+        "price": 1833.699951171875,
+        "pct_change": -2.88,
         "correct": true
       }
     },
@@ -1571,6 +1661,11 @@
         "price": 1891.0,
         "pct_change": 0.15,
         "correct": false
+      },
+      "7d": {
+        "price": 1833.699951171875,
+        "pct_change": -2.88,
+        "correct": false
       }
     },
     "checked": true
@@ -1624,6 +1719,11 @@
         "price": 1891.0,
         "pct_change": 0.15,
         "correct": false
+      },
+      "7d": {
+        "price": 1833.699951171875,
+        "pct_change": -2.88,
+        "correct": false
       }
     },
     "checked": true
@@ -1672,8 +1772,14 @@
     },
     "baseline_price": 1182.6,
     "timestamp": "2026-05-01T18:45:29.168031",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1178.0999755859375,
+        "pct_change": -0.38,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "SHREERAMA",
@@ -1719,8 +1825,14 @@
     },
     "baseline_price": 46.5,
     "timestamp": "2026-05-01T18:49:26.724873",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 48.20000076293945,
+        "pct_change": 3.66,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "IFBAGRO",
@@ -1766,8 +1878,14 @@
     },
     "baseline_price": 879.0,
     "timestamp": "2026-05-02T08:30:36.191001",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1104.0999755859375,
+        "pct_change": 25.61,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "MRF",
@@ -1813,8 +1931,14 @@
     },
     "baseline_price": 130000.0,
     "timestamp": "2026-05-02T08:55:22.384423",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 130335.0,
+        "pct_change": 0.26,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "VEDL",
@@ -1860,8 +1984,14 @@
     },
     "baseline_price": 273.0,
     "timestamp": "2026-05-02T12:49:55.148619",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 316.3999938964844,
+        "pct_change": 15.9,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "WIPRO",
@@ -1907,8 +2037,14 @@
     },
     "baseline_price": 201.2,
     "timestamp": "2026-05-02T19:01:43.147412",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 199.1199951171875,
+        "pct_change": -1.03,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "SBIN",
@@ -1954,8 +2090,14 @@
     },
     "baseline_price": 1071.95,
     "timestamp": "2026-05-02T19:50:54.817965",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1096.0,
+        "pct_change": 2.24,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "PATELENG",
@@ -2001,8 +2143,14 @@
     },
     "baseline_price": 28.34,
     "timestamp": "2026-05-03T14:17:23.675449",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 28.989999771118164,
+        "pct_change": 2.29,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "INFY",
@@ -2048,8 +2196,14 @@
     },
     "baseline_price": 1182.6,
     "timestamp": "2026-05-03T14:29:25.981265",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1167.199951171875,
+        "pct_change": -1.3,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "ITC",
@@ -2095,6 +2249,594 @@
     },
     "baseline_price": 315.2,
     "timestamp": "2026-05-03T14:34:15.374872",
+    "eval_results": {
+      "3d": {
+        "price": 310.70001220703125,
+        "pct_change": -1.43,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "RELIANCE",
+    "nse_symbol": "RELIANCE",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is driven by the balanced composite score of 58.2, which reflects the counterbalancing effects of the fund's moderate score and the conflicting bull and bear cases. While the bull case highlights the company's strong revenue growth and undervaluation, the bear case raises concerns about its high debt-to-equity ratio and negative free cash flow. As a result, the verdict is to hold the stock, awaiting further developments that could tip the balance in either direction.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "Negative free cash flow",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is driven by the balanced composite score of 58.2, which reflects the counterbalancing effects of the fund's moderate score and the conflicting bull and bear cases. While the bull case highlights the company's strong revenue growth and undervaluation, the bear case raises concerns about its high debt-to-equity ratio and negative free cash flow. As a result, the verdict is to hold the stock, awaiting further developments that could tip the balance in either direction.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"Negative free cash flow\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 36,
+      "risk": "MEDIUM",
+      "composite": 58.2,
+      "scores": {
+        "fundamentals": 52.7,
+        "bull": 70.0,
+        "bear": 70.0,
+        "sentiment": 80.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 70x0.2 + BearInv 30x0.2 + Sent 80x0.15 + FV 78x0.1 = 58.2 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "fundamentals_score": 52.7,
+    "scores_breakdown": {
+      "fundamentals": 52.7,
+      "bull": 70.0,
+      "bear": 70.0,
+      "sentiment": 80.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 1463.1,
+    "timestamp": "2026-05-04T11:39:32.362056",
+    "eval_results": {
+      "3d": {
+        "price": 1436.199951171875,
+        "pct_change": -1.84,
+        "correct": true
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "CUPID",
+    "nse_symbol": "CUPID",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is due to the conflicting signals from the bull and bear cases, with the company's exceptional revenue growth and high profit margins being offset by its significant overvaluation and high debt levels. The positive sentiment and recent bonus issue announcement are also countered by the lack of transparency in valuation metrics and significant upside risk. Overall, the verdict reflects a cautious stance, awaiting further developments to clarify the company's prospects.",
+      "key_catalyst": "Exceptional revenue growth",
+      "key_risk": "Overvaluation risk due to extremely high P/B ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is due to the conflicting signals from the bull and bear cases, with the company's exceptional revenue growth and high profit margins being offset by its significant overvaluation and high debt levels. The positive sentiment and recent bonus issue announcement are also countered by the lack of transparency in valuation metrics and significant upside risk. Overall, the verdict reflects a cautious stance, awaiting further developments to clarify the company's prospects.\",\n  \"key_catalyst\": \"Exceptional revenue growth\",\n  \"key_risk\": \"Overvaluation risk due to extremely high P/B ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 40,
+      "risk": "HIGH",
+      "composite": 68.4,
+      "scores": {
+        "fundamentals": 96.4,
+        "bull": 80.0,
+        "bear": 80.0,
+        "sentiment": 90.0,
+        "fair_value": 12,
+        "data_completeness": 0.42
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 96x0.35 + Bull 80x0.2 + BearInv 20x0.2 + Sent 90x0.15 + FV 12x0.1 = 68.4 \u2192 BUY"
+    },
+    "bull_score": 80,
+    "bear_score": 80,
+    "fundamentals_score": 96.4,
+    "scores_breakdown": {
+      "fundamentals": 96.4,
+      "bull": 80.0,
+      "bear": 80.0,
+      "sentiment": 90.0,
+      "fair_value": 12,
+      "data_completeness": 0.42
+    },
+    "baseline_price": 126.72,
+    "timestamp": "2026-05-04T11:44:21.049758",
+    "eval_results": {
+      "3d": {
+        "price": 131.13999938964844,
+        "pct_change": 3.49,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "WIPRO",
+    "nse_symbol": "WIPRO",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is due to the balanced mix of positive and negative factors, with the company's strong revenue growth and attractive valuation being offset by its high debt-to-equity ratio and valuation risk. The recent buyback announcement is a positive signal, but the muted Q1 guidance and delayed ramp-ups are concerns that need to be monitored. Overall, the stock's upside potential is balanced by its downside risks, leading to a HOLD verdict.",
+      "key_catalyst": "Attractive valuation with a forward P/E of 13.96719 and a fair value estimate of \u20b9209.78, indicating a potential upside of 4.50%",
+      "key_risk": "High debt-to-equity ratio of 22.853, which could increase the company's interest expenses and reduce its profitability",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is due to the balanced mix of positive and negative factors, with the company's strong revenue growth and attractive valuation being offset by its high debt-to-equity ratio and valuation risk. The recent buyback announcement is a positive signal, but the muted Q1 guidance and delayed ramp-ups are concerns that need to be monitored. Overall, the stock's upside potential is balanced by its downside risks, leading to a HOLD verdict.\",\n  \"key_catalyst\": \"Attractive valuation with a forward P/E of 13.96719 and a fair value estimate of \u20b9209.78, indicating a potential upside of 4.50%\",\n  \"key_risk\": \"High debt-to-equity ratio of 22.853, which could increase the company's interest expenses and reduce its profitability\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 30,
+      "risk": "MEDIUM",
+      "composite": 59.9,
+      "scores": {
+        "fundamentals": 68.4,
+        "bull": 70.0,
+        "bear": 55.0,
+        "sentiment": 50.0,
+        "fair_value": 55,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 68x0.35 + Bull 70x0.2 + BearInv 45x0.2 + Sent 50x0.15 + FV 55x0.1 = 59.9 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 55,
+    "fundamentals_score": 68.4,
+    "scores_breakdown": {
+      "fundamentals": 68.4,
+      "bull": 70.0,
+      "bear": 55.0,
+      "sentiment": 50.0,
+      "fair_value": 55,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 200.75,
+    "timestamp": "2026-05-04T13:04:28.753775",
+    "eval_results": {
+      "3d": {
+        "price": 197.36000061035156,
+        "pct_change": -1.69,
+        "correct": true
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "SBIN",
+    "nse_symbol": "SBIN",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is due to the balanced mix of strong revenue growth, high profit margins, and undervaluation on one hand, and concerns over high debt levels, negative dividend yield, and weak return on equity on the other. The overall composite score of 64.2 indicates a neutral stance, with neither the bull nor bear case dominating the decision. As a result, a HOLD verdict is warranted, awaiting further developments to tip the scales in either direction.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt levels",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is due to the balanced mix of strong revenue growth, high profit margins, and undervaluation on one hand, and concerns over high debt levels, negative dividend yield, and weak return on equity on the other. The overall composite score of 64.2 indicates a neutral stance, with neither the bull nor bear case dominating the decision. As a result, a HOLD verdict is warranted, awaiting further developments to tip the scales in either direction.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt levels\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 48,
+      "risk": "HIGH",
+      "composite": 64.2,
+      "scores": {
+        "fundamentals": 75.0,
+        "bull": 72.0,
+        "bear": 75.0,
+        "sentiment": 80.0,
+        "fair_value": 65,
+        "data_completeness": 0.6
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 75x0.35 + Bull 72x0.2 + BearInv 25x0.2 + Sent 80x0.15 + FV 65x0.1 = 64.2 \u2192 BUY"
+    },
+    "bull_score": 72,
+    "bear_score": 75,
+    "fundamentals_score": 75.0,
+    "scores_breakdown": {
+      "fundamentals": 75.0,
+      "bull": 72.0,
+      "bear": 75.0,
+      "sentiment": 80.0,
+      "fair_value": 65,
+      "data_completeness": 0.6
+    },
+    "baseline_price": 1096.0,
+    "timestamp": "2026-05-06T18:26:51.864140",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "IRCTC",
+    "nse_symbol": "IRCTC",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by IRCTC's strong revenue growth, high profit margins, and undervaluation compared to analyst consensus, outweighing the bear case concerns. The company's growing demand for services, strong pricing power, and cost control are expected to translate to higher earnings and a higher stock price. The upside potential of 37.45% to the estimated fair value further supports the BUY verdict.",
+      "key_catalyst": "Strong revenue growth of 18.40%",
+      "key_risk": "High debt-to-equity ratio of 1.836",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by IRCTC's strong revenue growth, high profit margins, and undervaluation compared to analyst consensus, outweighing the bear case concerns. The company's growing demand for services, strong pricing power, and cost control are expected to translate to higher earnings and a higher stock price. The upside potential of 37.45% to the estimated fair value further supports the BUY verdict.\",\n  \"key_catalyst\": \"Strong revenue growth of 18.40%\",\n  \"key_risk\": \"High debt-to-equity ratio of 1.836\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 62,
+      "risk": "MEDIUM",
+      "composite": 70.9,
+      "scores": {
+        "fundamentals": 87.5,
+        "bull": 70.0,
+        "bear": 55.0,
+        "sentiment": 55.0,
+        "fair_value": 90,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 88x0.35 + Bull 70x0.2 + BearInv 45x0.2 + Sent 55x0.15 + FV 90x0.1 = 70.9 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 55,
+    "fundamentals_score": 87.5,
+    "scores_breakdown": {
+      "fundamentals": 87.5,
+      "bull": 70.0,
+      "bear": 55.0,
+      "sentiment": 55.0,
+      "fair_value": 90,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 572.75,
+    "timestamp": "2026-05-06T18:36:07.023815",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "IRCTC",
+    "nse_symbol": "IRCTC",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by IRCTC's strong revenue growth, high profit margins, and significant upside to fair value, which outweigh the bear case concerns. The company's ability to expand its operations and maintain profitability is expected to drive the stock higher. Additionally, the steady dividend payments and expansion into new areas provide further support for the stock.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by IRCTC's strong revenue growth, high profit margins, and significant upside to fair value, which outweigh the bear case concerns. The company's ability to expand its operations and maintain profitability is expected to drive the stock higher. Additionally, the steady dividend payments and expansion into new areas provide further support for the stock.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 67,
+      "risk": "LOW",
+      "composite": 74.3,
+      "scores": {
+        "fundamentals": 87.5,
+        "bull": 72.0,
+        "bear": 40.0,
+        "sentiment": 55.0,
+        "fair_value": 90,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 88x0.35 + Bull 72x0.2 + BearInv 60x0.2 + Sent 55x0.15 + FV 90x0.1 = 74.3 \u2192 BUY"
+    },
+    "bull_score": 72,
+    "bear_score": 40,
+    "fundamentals_score": 87.5,
+    "scores_breakdown": {
+      "fundamentals": 87.5,
+      "bull": 72.0,
+      "bear": 40.0,
+      "sentiment": 55.0,
+      "fair_value": 90,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 572.75,
+    "timestamp": "2026-05-06T18:48:58.847809",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "BANSALWIRE",
+    "nse_symbol": "BANSALWIRE",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is due to the balanced view of the company's prospects, with strong revenue growth and attractive valuation cushion offset by concerns over high debt-to-equity ratio and overvalued stock price. The composite score of 55.7, which is near the midpoint of the scale, further supports the HOLD decision. The neutral sentiment and moderate strengths of both bull and bear points also contribute to the cautious stance.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is due to the balanced view of the company's prospects, with strong revenue growth and attractive valuation cushion offset by concerns over high debt-to-equity ratio and overvalued stock price. The composite score of 55.7, which is near the midpoint of the scale, further supports the HOLD decision. The neutral sentiment and moderate strengths of both bull and bear points also contribute to the cautious stance.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 44,
+      "risk": "LOW",
+      "composite": 55.7,
+      "scores": {
+        "fundamentals": 50.7,
+        "bull": 70.0,
+        "bear": 50.0,
+        "sentiment": 50.0,
+        "fair_value": 65,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 51x0.35 + Bull 70x0.2 + BearInv 50x0.2 + Sent 50x0.15 + FV 65x0.1 = 55.7 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 50,
+    "fundamentals_score": 50.7,
+    "scores_breakdown": {
+      "fundamentals": 50.7,
+      "bull": 70.0,
+      "bear": 50.0,
+      "sentiment": 50.0,
+      "fair_value": 65,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 326.35,
+    "timestamp": "2026-05-07T15:24:57.532416",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "IRCTC",
+    "nse_symbol": "IRCTC",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by IRCTC's strong revenue growth, high profit margins, and upside potential based on fair value estimate, which outweigh the concerns related to its high debt-to-equity ratio and overvalued stock. The company's recent approval for seven-year tenders provides a stable source of revenue, reducing uncertainty and increasing investor confidence. Overall, the bull case points suggest a more attractive investment opportunity than the bear case risks.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio poses a significant financial risk",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by IRCTC's strong revenue growth, high profit margins, and upside potential based on fair value estimate, which outweigh the concerns related to its high debt-to-equity ratio and overvalued stock. The company's recent approval for seven-year tenders provides a stable source of revenue, reducing uncertainty and increasing investor confidence. Overall, the bull case points suggest a more attractive investment opportunity than the bear case risks.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio poses a significant financial risk\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 58,
+      "risk": "MEDIUM",
+      "composite": 67.9,
+      "scores": {
+        "fundamentals": 87.5,
+        "bull": 70.0,
+        "bear": 70.0,
+        "sentiment": 55.0,
+        "fair_value": 90,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 88x0.35 + Bull 70x0.2 + BearInv 30x0.2 + Sent 55x0.15 + FV 90x0.1 = 67.9 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "fundamentals_score": 87.5,
+    "scores_breakdown": {
+      "fundamentals": 87.5,
+      "bull": 70.0,
+      "bear": 70.0,
+      "sentiment": 55.0,
+      "fair_value": 90,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 568.5,
+    "timestamp": "2026-05-07T15:36:29.713585",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "IRCTC",
+    "nse_symbol": "IRCTC",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by IRCTC's strong revenue growth, high profit margins, and upside potential based on fair value estimate, which outweigh the concerns related to its high debt-to-equity ratio and overvalued stock. The company's ability to maintain its pricing power and control its costs, resulting in higher earnings, supports the BUY decision. The recent dividend announcement also demonstrates the company's commitment to returning value to its shareholders, further supporting the verdict.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by IRCTC's strong revenue growth, high profit margins, and upside potential based on fair value estimate, which outweigh the concerns related to its high debt-to-equity ratio and overvalued stock. The company's ability to maintain its pricing power and control its costs, resulting in higher earnings, supports the BUY decision. The recent dividend announcement also demonstrates the company's commitment to returning value to its shareholders, further supporting the verdict.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 58,
+      "risk": "MEDIUM",
+      "composite": 67.9,
+      "scores": {
+        "fundamentals": 87.5,
+        "bull": 70.0,
+        "bear": 70.0,
+        "sentiment": 55.0,
+        "fair_value": 90,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 88x0.35 + Bull 70x0.2 + BearInv 30x0.2 + Sent 55x0.15 + FV 90x0.1 = 67.9 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "fundamentals_score": 87.5,
+    "scores_breakdown": {
+      "fundamentals": 87.5,
+      "bull": 70.0,
+      "bear": 70.0,
+      "sentiment": 55.0,
+      "fair_value": 90,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 568.5,
+    "timestamp": "2026-05-07T15:37:43.693811",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "BANSALWIRE",
+    "nse_symbol": "BANSALWIRE",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is due to the balanced bull and bear cases, with a composite score of 51.7, indicating that the potential upside and downside risks are relatively evenly weighted. The strong revenue growth and attractive valuation cushion are offset by the high debt-to-equity ratio and low free cash flow, resulting in a neutral sentiment. Overall, the stock's current price reflects its fair value, leading to a HOLD verdict.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "Low free cash flow",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is due to the balanced bull and bear cases, with a composite score of 51.7, indicating that the potential upside and downside risks are relatively evenly weighted. The strong revenue growth and attractive valuation cushion are offset by the high debt-to-equity ratio and low free cash flow, resulting in a neutral sentiment. Overall, the stock's current price reflects its fair value, leading to a HOLD verdict.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"Low free cash flow\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 58,
+      "risk": "MEDIUM",
+      "composite": 51.7,
+      "scores": {
+        "fundamentals": 50.7,
+        "bull": 70.0,
+        "bear": 70.0,
+        "sentiment": 50.0,
+        "fair_value": 65,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 51x0.35 + Bull 70x0.2 + BearInv 30x0.2 + Sent 50x0.15 + FV 65x0.1 = 51.7 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "fundamentals_score": 50.7,
+    "scores_breakdown": {
+      "fundamentals": 50.7,
+      "bull": 70.0,
+      "bear": 70.0,
+      "sentiment": 50.0,
+      "fair_value": 65,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 326.35,
+    "timestamp": "2026-05-07T15:49:07.227113",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "SBIN",
+    "nse_symbol": "SBIN",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by the company's strong revenue growth, attractive valuation, and high profit margins, which collectively indicate a growing business with potential for higher profitability and stock price appreciation. Despite some bearish concerns, the overall composite score of 64.8 and positive sentiment score of 60 suggest a favorable outlook. The strong analyst consensus and fair value estimate also support the BUY verdict.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "Lack of transparency in key financial metrics",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by the company's strong revenue growth, attractive valuation, and high profit margins, which collectively indicate a growing business with potential for higher profitability and stock price appreciation. Despite some bearish concerns, the overall composite score of 64.8 and positive sentiment score of 60 suggest a favorable outlook. The strong analyst consensus and fair value estimate also support the BUY verdict.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"Lack of transparency in key financial metrics\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 49,
+      "risk": "MEDIUM",
+      "composite": 64.8,
+      "scores": {
+        "fundamentals": 75.0,
+        "bull": 70.0,
+        "bear": 70.0,
+        "sentiment": 80.0,
+        "fair_value": 65,
+        "data_completeness": 0.6
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 75x0.35 + Bull 70x0.2 + BearInv 30x0.2 + Sent 80x0.15 + FV 65x0.1 = 64.8 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "fundamentals_score": 75.0,
+    "scores_breakdown": {
+      "fundamentals": 75.0,
+      "bull": 70.0,
+      "bear": 70.0,
+      "sentiment": 80.0,
+      "fair_value": 65,
+      "data_completeness": 0.6
+    },
+    "baseline_price": 1092.0,
+    "timestamp": "2026-05-07T15:49:56.478496",
+    "eval_results": {},
+    "checked": false
+  },
+  {
+    "ticker": "RELIANCE",
+    "nse_symbol": "RELIANCE",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is due to the balanced view of the company's strong revenue growth and attractive valuation cushion being offset by its high debt-to-equity ratio and overvalued stock price, resulting in a medium risk profile with a confidence level of 32%. The composite score of 59.2, which is a weighted average of various factors, also supports the HOLD verdict. The sentiment score of 60, indicating a positive sentiment, is not strong enough to override the other factors and suggest a buy verdict.",
+      "key_catalyst": "Strong revenue growth",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is due to the balanced view of the company's strong revenue growth and attractive valuation cushion being offset by its high debt-to-equity ratio and overvalued stock price, resulting in a medium risk profile with a confidence level of 32%. The composite score of 59.2, which is a weighted average of various factors, also supports the HOLD verdict. The sentiment score of 60, indicating a positive sentiment, is not strong enough to override the other factors and suggest a buy verdict.\",\n  \"key_catalyst\": \"Strong revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 32,
+      "risk": "MEDIUM",
+      "composite": 59.2,
+      "scores": {
+        "fundamentals": 52.7,
+        "bull": 70.0,
+        "bear": 65.0,
+        "sentiment": 80.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.35,
+        "bull": 0.2,
+        "bear": 0.2,
+        "sentiment": 0.15,
+        "fair_value": 0.1
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 53x0.35 + Bull 70x0.2 + BearInv 35x0.2 + Sent 80x0.15 + FV 78x0.1 = 59.2 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 65,
+    "fundamentals_score": 52.7,
+    "scores_breakdown": {
+      "fundamentals": 52.7,
+      "bull": 70.0,
+      "bear": 65.0,
+      "sentiment": 80.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 1436.2,
+    "timestamp": "2026-05-07T16:02:24.857859",
     "eval_results": {},
     "checked": false
   }
