@@ -6,6 +6,7 @@ import HowItWorks from './components/Howitworks';
 import TrustBar from './components/TrustBar';
 import AnalyzePage from './pages/AnalyzePage';
 import ResultsPage from './pages/ResultsPage';
+import { useLenis } from './hooks/useLenis';
 
 // ── Landing Page (home) ──────────────────────────────────────────
 function HomePage() {
@@ -49,6 +50,8 @@ function HomePage() {
 
 // ── App with Router ──────────────────────────────────────────────
 function App() {
+  useLenis(); // initialise Lenis smooth scroll for the whole app
+
   return (
     <BrowserRouter>
       <Routes>

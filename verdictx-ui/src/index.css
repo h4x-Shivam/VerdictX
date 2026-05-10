@@ -71,3 +71,15 @@ body {
   background: rgba(0, 230, 200, 0.25);
   color: #fff;
 }
+
+/* ===== Technical Analysis Responsive Grid ===== */
+@media (max-width: 1024px) {
+  .ta-dimension-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 600px) {
+  .ta-dimension-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

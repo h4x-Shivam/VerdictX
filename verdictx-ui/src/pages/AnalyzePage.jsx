@@ -8,6 +8,7 @@ const STEPS = [
   { icon: '🧠', label: 'Analyzing market sentiment',                  color: '#a78bfa' },
   { icon: '🟢', label: 'Bull agent scanning positive signals',        color: '#4ade80' },
   { icon: '🔴', label: 'Bear agent scanning risks & red flags',       color: '#f87171' },
+  { icon: '📊', label: 'Technical agent analyzing price action',      color: '#06b6d4' },
   { icon: '⚖️', label: 'Judge writing final verdict',                 color: '#fbbf24' },
   { icon: '📋', label: 'Preparing your research report',              color: '#34d399' },
 ];
@@ -250,6 +251,18 @@ export default function AnalyzePage() {
                         borderRadius: 999, background: 'rgba(248,113,113,0.12)',
                         border: '1px solid rgba(248,113,113,0.3)', color: '#f87171' }}>
                         🔴 Score: {partials.bear_score}/100
+                      </span>
+                    </motion.div>
+                  )}
+
+                  {/* Technical score badge on step 4 (index 4) */}
+                  {i === 4 && partials.technical_score !== undefined && (
+                    <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }}
+                      style={{ display: 'flex', gap: 6, marginTop: 5 }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px',
+                        borderRadius: 999, background: 'rgba(6,182,212,0.12)',
+                        border: '1px solid rgba(6,182,212,0.3)', color: '#06b6d4' }}>
+                        📊 Score: {partials.technical_score}/100 ({partials.technical_bias})
                       </span>
                     </motion.div>
                   )}

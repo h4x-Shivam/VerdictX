@@ -1,6 +1,7 @@
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import TechnicalAnalysis from '../components/TechnicalAnalysis';
 
 const VC = {
   'STRONG BUY':  { color: '#00ffb3', bg: 'rgba(0,255,179,0.10)', border: 'rgba(0,255,179,0.3)', label: 'Exceptional Opportunity' },
@@ -225,11 +226,12 @@ export default function ResultsPage() {
                   </div>
                 ))}
               </div>
-              <Bar label="Fundamentals" val={scores.fundamentals} weight="35%" color="#22d3ee" />
-              <Bar label="Bull Agent" val={scores.bull} weight="20%" color="#4ade80" />
-              <Bar label="Bear Agent" val={scores.bear} weight="20%" color="#f87171" />
-              <Bar label="Sentiment" val={scores.sentiment} weight="15%" color="#fbbf24" />
-              <Bar label="Fair Value" val={scores.fair_value} weight="10%" color="#a78bfa" />
+              <Bar label="Fundamentals" val={scores.fundamentals} weight="30%" color="#22d3ee" />
+              <Bar label="Bull Agent" val={scores.bull} weight="18%" color="#4ade80" />
+              <Bar label="Bear Agent" val={scores.bear} weight="18%" color="#f87171" />
+              <Bar label="Technical" val={scores.technical} weight="15%" color="#06b6d4" />
+              <Bar label="Sentiment" val={scores.sentiment} weight="10%" color="#fbbf24" />
+              <Bar label="Fair Value" val={scores.fair_value} weight="9%" color="#a78bfa" />
               <div style={{ marginTop:12, paddingTop:10, borderTop:'1px solid rgba(255,255,255,0.05)', display:'flex', justifyContent:'space-between', fontSize:11, color:'#475569' }}>
                 <span>Data completeness</span>
                 <span style={{ color:(scores.data_completeness||0)>=0.7?'#4ade80':'#fbbf24', fontWeight:600 }}>{Math.round((scores.data_completeness||0)*100)}%</span>
@@ -242,6 +244,9 @@ export default function ResultsPage() {
             </Card>
           </motion.div>
         </div>
+
+        {/* Row 3b: Technical Analysis */}
+        <TechnicalAnalysis data={r.technical} />
 
         {/* Row 4: AI Analysis + Highlights */}
         <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:0.5,delay:0.3}}

@@ -76,11 +76,12 @@ def _analysis_generator(ticker: str):
         run_judge_agent, save_prediction, check_outcomes,
         compute_fundamentals_score, compute_final_score, validate_and_adjust,
     )
+    from technical_agent import compute_technical_indicators, generate_technical_insight
 
     t0 = time.time()
 
     try:
-        # ── Stage 1: data + news fetched in parallel ──────────────
+        # ── Stage 1: data + news + tech fetched in parallel ──────────────
         yield _emit("progress", {
             "step": 1, "total": 6, "pct": 5,
             "msg": f"Fetching market data + news for {ticker.upper()} in parallel…",
@@ -88,32 +89,42 @@ def _analysis_generator(ticker: str):
 
         with ThreadPoolExecutor(max_workers=2) as pool:
             fut_data = pool.submit(get_basic_data, ticker)
-            fut_news = pool.submit(get_news, ticker, ticker)
+            fut_tech = pool.submit(compute_technical_indicators, ticker)
 
-            # Yield heartbeat events while waiting (keeps SSE connection alive
-            # and lets React show live sub-step progress)
-            data_done = news_done = False
-            while not (data_done and news_done):
+            # Yield heartbeat events while waiting
+            data_done = tech_done = False
+            while not (data_done and tech_done):
                 if fut_data.done() and not data_done:
                     data_done = True
                     yield _emit("progress", {
-                        "step": 1, "total": 6, "pct": 12,
-                        "msg": "Market data fetched ✓",
+                        "step": 1, "total": 7, "pct": 10,
+                        "msg": "Market data fetched \u2713",
                     })
-                if fut_news.done() and not news_done:
-                    news_done = True
+                if fut_tech.done() and not tech_done:
+                    tech_done = True
                     yield _emit("progress", {
-                        "step": 1, "total": 6, "pct": 18,
-                        "msg": "News articles fetched ✓",
+                        "step": 1, "total": 7, "pct": 15,
+                        "msg": "Technical indicators computed \u2713",
                     })
-                if not (data_done and news_done):
-                    time.sleep(0.3)  # short poll interval
+                if not (data_done and tech_done):
+                    time.sleep(0.3)
 
             data       = fut_data.result()
-            news_items = fut_news.result()
-            
-            if not news_items:
-                print(f"[API] Warning: No news items fetched for {ticker} (possible RSS rate limit).")
+            tech_ind, tech_dims, tech_regime, tech_score = fut_tech.result()
+
+        # Fetch news AFTER data — needs real company name for relevance filtering
+        company_name = data.get("info", {}).get("company_name", ticker)
+        yield _emit("progress", {
+            "step": 1, "total": 7, "pct": 17,
+            "msg": f"Fetching news for {company_name}\u2026",
+        })
+        news_items = get_news(company_name, ticker)
+        if not news_items:
+            print(f"[API] Warning: No news items fetched for {ticker} (possible RSS rate limit).")
+        yield _emit("progress", {
+            "step": 1, "total": 7, "pct": 20,
+            "msg": f"News: {len(news_items)} articles fetched \u2713",
+        })
 
         fund_summary = data["summary"]
         raw          = data["raw"]
@@ -124,17 +135,14 @@ def _analysis_generator(ticker: str):
         t1 = time.time()
 
         yield _emit("progress", {
-            "step": 2, "total": 4, "pct": 25,
-            "msg": f"Stage 1 done in {t1 - t0:.1f}s — launching 3 AI agents in parallel…",
+            "step": 2, "total": 7, "pct": 22,
+            "msg": f"Stage 1 done in {t1 - t0:.1f}s — launching AI agents…",
         })
 
-        # ── Stage 2: LLM agents — sequential to respect NVIDIA rate limits ──
-        # The _NVIDIA_SEM in main.py serializes API calls anyway — making them
-        # explicit here avoids the overhead of ThreadPoolExecutor + as_completed
-        # while keeping SSE streaming: each partial fires as the agent finishes.
+        # ── Stage 2: LLM agents — sequential to respect rate limits ──
 
         yield _emit("progress", {
-            "step": 2, "total": 6, "pct": 22,
+            "step": 2, "total": 7, "pct": 22,
             "msg": f"Data ready in {t1 - t0:.1f}s — analyzing market sentiment…",
         })
 
@@ -146,7 +154,7 @@ def _analysis_generator(ticker: str):
             "sentiment_reasons": sent.get("reasons", []),
         })
         yield _emit("progress", {
-            "step": 3, "total": 6, "pct": 38,
+            "step": 3, "total": 7, "pct": 35,
             "msg": f"Sentiment: {sent.get('sentiment', 'N/A')} ({sent.get('score', 0):+d}) ✓ — Bull agent scanning positive signals…",
         })
 
@@ -158,7 +166,7 @@ def _analysis_generator(ticker: str):
             "bull_points": bull.get("bull_points", []),
         })
         yield _emit("progress", {
-            "step": 4, "total": 6, "pct": 55,
+            "step": 4, "total": 7, "pct": 48,
             "msg": f"Bull score: {bull.get('overall_bull_score', '?')}/100 ✓ — Bear agent scanning risks…",
         })
 
@@ -170,13 +178,23 @@ def _analysis_generator(ticker: str):
             "bear_points": bear.get("bear_points", []),
         })
         yield _emit("progress", {
-            "step": 5, "total": 6, "pct": 70,
-            "msg": f"Bear score: {bear.get('overall_bear_score', '?')}/100 ✓ — judge writing final verdict…",
+            "step": 5, "total": 7, "pct": 62,
+            "msg": f"Bear score: {bear.get('overall_bear_score', '?')}/100 ✓ — technical insight…",
         })
+
+        # Technical insight LLM call
+        tech_insight = {"key_insight": "Technical analysis unavailable.", "bias": "Neutral"}
+        if tech_ind is not None and tech_dims is not None:
+            tech_insight = generate_technical_insight(tech_ind, tech_dims, tech_score)
+            yield _emit("partial", {
+                "agent": "technical",
+                "technical_score": tech_score or 0,
+                "technical_bias": tech_insight.get("bias", "Neutral"),
+            })
 
         t2 = time.time()
         yield _emit("progress", {
-            "step": 5, "total": 6, "pct": 75,
+            "step": 6, "total": 7, "pct": 72,
             "msg": f"Agents done in {t2 - t1:.1f}s — running decision engine…",
         })
 
@@ -189,6 +207,7 @@ def _analysis_generator(ticker: str):
             fundamentals_score=fund_data["score"],
             fair_value_upside=fv_upside,
             data_completeness=fund_data["data_completeness"],
+            technical_score=tech_score or 50,
         )
         validated = validate_and_adjust(
             score_result=score_result,
@@ -199,7 +218,7 @@ def _analysis_generator(ticker: str):
         )
 
         yield _emit("progress", {
-            "step": 5, "total": 6, "pct": 85,
+            "step": 6, "total": 7, "pct": 82,
             "msg": f"Verdict: {validated.get('verdict')} — judge writing reasoning…",
         })
 
@@ -210,7 +229,7 @@ def _analysis_generator(ticker: str):
         )
 
         # ── Save prediction ────────────────────────────────────────
-        yield _emit("progress", {"step": 6, "total": 6, "pct": 95, "msg": "Saving prediction…"})
+        yield _emit("progress", {"step": 7, "total": 7, "pct": 92, "msg": "Saving prediction…"})
         cur_price = raw.get("currentPrice") or 0
         save_prediction(
             ticker, verdict,
@@ -228,9 +247,23 @@ def _analysis_generator(ticker: str):
               f"stage3={t3-t2:.1f}s  total={total_s}s")
 
         yield _emit("progress", {
-            "step": 6, "total": 6, "pct": 100,
+            "step": 7, "total": 7, "pct": 100,
             "msg": f"Analysis complete in {total_s}s ✓",
         })
+
+        # Build technical payload for frontend
+        technical = None
+        if tech_dims is not None and tech_regime is not None:
+            clean_dims = {}
+            for k, v in tech_dims.items():
+                clean_dims[k] = {"status": v["status"], "data": v["data"]}
+            technical = {
+                "regime": tech_regime,
+                "dimensions": clean_dims,
+                "technical_score": tech_score or 0,
+                "bias": tech_insight.get("bias", "Neutral"),
+                "key_insight": tech_insight.get("key_insight", ""),
+            }
 
         # ── Final done event with full result payload ──────────────
         result = _safe_json({
@@ -245,6 +278,7 @@ def _analysis_generator(ticker: str):
             "verdict":    verdict,
             "fund_data":  fund_data,
             "validated":  validated,
+            "technical":  technical,
             "timings": {
                 "stage1_data_news":   round(t1 - t0, 1),
                 "stage2_llm_agents":  round(t2 - t1, 1),

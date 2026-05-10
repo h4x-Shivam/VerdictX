@@ -247,7 +247,7 @@ def _nse_direct(symbol: str) -> dict:
         ),
         "Accept":           "*/*",
         "Accept-Language":  "en-GB,en-US;q=0.9,en;q=0.8",
-        "Accept-Encoding":  "gzip, deflate, br",
+        "Accept-Encoding":  "gzip, deflate",
         "Cache-Control":    "no-cache",
         "Connection":       "keep-alive",
         "sec-fetch-dest":   "empty",
@@ -269,6 +269,15 @@ def _nse_direct(symbol: str) -> dict:
     if not quote:
         return {"ok": False, "_error": "NSE returned empty response"}
     return _parse_nse_response(symbol, quote, trade, source="NSE direct")
+
+
+def _safe_get(d, *keys, default=None):
+    for k in keys:
+        if isinstance(d, dict):
+            d = d.get(k)
+        else:
+            return default
+    return d if d is not None else default
 
 
 def _parse_nse_response(symbol: str, quote: dict, trade: dict, source: str = "NSE") -> dict:
@@ -582,12 +591,13 @@ def compute_fundamentals_score(info: dict, raw: dict) -> dict:
 
 def compute_final_score(bull_score: int, bear_score: int, sent_score: int,
                         fundamentals_score: float, fair_value_upside: float,
-                        data_completeness: float) -> dict:
-    W_FUND, W_BULL, W_BEAR, W_SENT, W_FAIR = 0.35, 0.20, 0.20, 0.15, 0.10
+                        data_completeness: float, technical_score: float = 50) -> dict:
+    W_FUND, W_BULL, W_BEAR, W_TECH, W_SENT, W_FAIR = 0.30, 0.18, 0.18, 0.15, 0.10, 0.09
     fund_norm = max(0, min(100, fundamentals_score))
     bull_norm = max(0, min(100, float(bull_score)))
     bear_norm = max(0, min(100, float(bear_score)))
     sent_norm = max(0, min(100, (float(sent_score) + 100) / 2))
+    tech_norm = max(0, min(100, float(technical_score)))
 
     # Bear is inverted: high bear score = bad, treated as low bull
     # This guarantees neutral stock (all=50) → composite = 50 with no magic offset
@@ -610,6 +620,7 @@ def compute_final_score(bull_score: int, bear_score: int, sent_score: int,
         W_FUND * fund_norm +
         W_BULL * bull_norm +
         W_BEAR * bear_inv  +
+        W_TECH * tech_norm +
         W_SENT * sent_norm +
         W_FAIR * fv_score
     )
@@ -650,10 +661,10 @@ def compute_final_score(bull_score: int, bear_score: int, sent_score: int,
         "verdict": verdict, "confidence": confidence, "risk": risk, "composite": round(composite, 1),
         "scores": {
             "fundamentals": round(fund_norm, 1), "bull": round(bull_norm, 1), "bear": round(bear_norm, 1),
-            "sentiment": round(sent_norm, 1), "fair_value": fv_score, "data_completeness": data_completeness,
+            "technical": round(tech_norm, 1), "sentiment": round(sent_norm, 1), "fair_value": fv_score, "data_completeness": data_completeness,
         },
-        "weights": {"fundamentals": W_FUND, "bull": W_BULL, "bear": W_BEAR, "sentiment": W_SENT, "fair_value": W_FAIR},
-        "breakdown": f"Fund {fund_norm:.0f}x{W_FUND} + Bull {bull_norm:.0f}x{W_BULL} + BearInv {bear_inv:.0f}x{W_BEAR} + Sent {sent_norm:.0f}x{W_SENT} + FV {fv_score}x{W_FAIR} = {composite:.1f} → {verdict}",
+        "weights": {"fundamentals": W_FUND, "bull": W_BULL, "bear": W_BEAR, "technical": W_TECH, "sentiment": W_SENT, "fair_value": W_FAIR},
+        "breakdown": f"Fund {fund_norm:.0f}x{W_FUND} + Bull {bull_norm:.0f}x{W_BULL} + BearInv {bear_inv:.0f}x{W_BEAR} + Tech {tech_norm:.0f}x{W_TECH} + Sent {sent_norm:.0f}x{W_SENT} + FV {fv_score}x{W_FAIR} = {composite:.1f} → {verdict}",
     }
 
 
@@ -1338,23 +1349,25 @@ def run_full_analysis(ticker: str) -> dict:
     """
     Parallel analysis pipeline using ThreadPoolExecutor.
 
-    Stage 1 (parallel): get_basic_data + get_news
-    Stage 2 (parallel): analyze_sentiment + run_bull_agent + run_bear_agent
+    Stage 1 (parallel): get_basic_data + get_news + compute_technical_indicators
+    Stage 2 (sequential): analyze_sentiment + run_bull_agent + run_bear_agent + generate_technical_insight
     Stage 3 (serial):   compute_scores + validate + run_judge_agent
 
     Returns a complete result dict identical to the old sequential pipeline.
     Console prints timing per stage for benchmarking.
     """
+    from technical_agent import compute_technical_indicators, generate_technical_insight
+
     t0 = time.time()
 
-    # ── Stage 1: Data + News fetched simultaneously ───────────────
-    # get_news() uses nse_symbol as the RSS search term — ticker alone is enough.
-    # company_name is only used for post-filtering, which is handled internally.
-    with ThreadPoolExecutor(max_workers=2) as pool:
+    # ── Stage 1: Data + News + Technical indicators fetched simultaneously ──
+    with ThreadPoolExecutor(max_workers=3) as pool:
         fut_data = pool.submit(get_basic_data, ticker)
-        fut_news = pool.submit(get_news, ticker, ticker)  # ticker as both args for parallel fetch
+        fut_news = pool.submit(get_news, ticker, ticker)
+        fut_tech = pool.submit(compute_technical_indicators, ticker)
         data       = fut_data.result()
         news_items = fut_news.result()
+        tech_ind, tech_dims, tech_regime, tech_score = fut_tech.result()
 
     fund_summary = data["summary"]
     raw          = data["raw"]
@@ -1364,13 +1377,9 @@ def run_full_analysis(ticker: str) -> dict:
     news_text    = get_news_text(news_items)
 
     t1 = time.time()
-    print(f"[Async] Stage 1  data+news   : {t1 - t0:.1f}s")
+    print(f"[Async] Stage 1  data+news+tech: {t1 - t0:.1f}s  tech_score={tech_score}")
 
-    # ── Stage 2: LLM agents — run sequentially to avoid NVIDIA rate limits ──────
-    # Running all 3 concurrently hammers the free-tier NVIDIA API simultaneously,
-    # causing all 3 to get rate-limited → fall back to slow local Ollama → 4-5 minutes.
-    # Sequential through the semaphore: each call succeeds on the first try → ~20s each.
-    # Stage 1 data+news parallelism already saved 5-10s, which is the real win.
+    # ── Stage 2: LLM agents — run sequentially to avoid rate limits ──
     t_a = time.time()
     sent = analyze_sentiment(news_text)
     print(f"[Async]   sentiment : {time.time() - t_a:.1f}s  score={sent.get('score', '?')}")
@@ -1383,8 +1392,15 @@ def run_full_analysis(ticker: str) -> dict:
     bear = run_bear_agent(fund_summary, news_text)
     print(f"[Async]   bear      : {time.time() - t_a:.1f}s  score={bear.get('overall_bear_score', '?')}")
 
+    # Technical insight (LLM call for key_insight + bias)
+    tech_insight = {"key_insight": "Technical analysis unavailable.", "bias": "Neutral"}
+    if tech_ind is not None and tech_dims is not None:
+        t_a = time.time()
+        tech_insight = generate_technical_insight(tech_ind, tech_dims, tech_score)
+        print(f"[Async]   tech LLM  : {time.time() - t_a:.1f}s  bias={tech_insight.get('bias', '?')}")
+
     t2 = time.time()
-    print(f"[Async] Stage 2  3 LLM agents: {t2 - t1:.1f}s")
+    print(f"[Async] Stage 2  4 LLM agents: {t2 - t1:.1f}s")
 
     # ── Stage 3: Scoring → Validation → Judge (serial, needs all above) ──
     fv_upside    = fv.get("primary", {}).get("upside", 0)
@@ -1395,6 +1411,7 @@ def run_full_analysis(ticker: str) -> dict:
         fundamentals_score=fund_data["score"],
         fair_value_upside=fv_upside,
         data_completeness=fund_data["data_completeness"],
+        technical_score=tech_score or 50,
     )
     validated = validate_and_adjust(
         score_result=score_result,
@@ -1414,6 +1431,20 @@ def run_full_analysis(ticker: str) -> dict:
     print(f"[Async] Total wall-clock     : {t3 - t0:.1f}s  "
           f"(was ~{round((t3 - t0) * 1.9)}s serial)")
 
+    # Build technical data for frontend
+    technical = None
+    if tech_dims is not None and tech_regime is not None:
+        clean_dims = {}
+        for k, v in tech_dims.items():
+            clean_dims[k] = {"status": v["status"], "data": v["data"]}
+        technical = {
+            "regime": tech_regime,
+            "dimensions": clean_dims,
+            "technical_score": tech_score or 0,
+            "bias": tech_insight.get("bias", "Neutral"),
+            "key_insight": tech_insight.get("key_insight", ""),
+        }
+
     return {
         "data":         data,
         "info":         info,
@@ -1429,6 +1460,7 @@ def run_full_analysis(ticker: str) -> dict:
         "verdict":      verdict,
         "fund_data":    fund_data,
         "validated":    validated,
+        "technical":    technical,
         "timings": {
             "stage1_data_news":    round(t1 - t0, 1),
             "stage2_llm_agents":   round(t2 - t1, 1),
