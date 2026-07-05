@@ -129,6 +129,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           style={{
+            fontFamily: '"Plus Jakarta Sans", sans-serif',
             fontSize: 'clamp(40px, 6vw, 78px)',
             fontWeight: 900,
             color: 'white',
@@ -145,6 +146,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.18, ease: 'easeOut' }}
           style={{
+            fontFamily: '"Plus Jakarta Sans", sans-serif',
             fontSize: 'clamp(40px, 6vw, 78px)',
             fontWeight: 900,
             marginTop: 4,
@@ -164,6 +166,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.32, ease: 'easeOut' }}
           style={{
+            fontFamily: '"Plus Jakarta Sans", sans-serif',
             color: '#94a3b8',
             fontSize: 17,
             marginTop: 18,
