@@ -57,9 +57,11 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'flex-start',
       }}>
-        <img
+        <motion.img
           src="/bull.png.png"
           alt="Bull"
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           style={{
             width: '100%',
             height: '100%',
@@ -92,9 +94,11 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'flex-end',
       }}>
-        <img
+        <motion.img
           src="/bear.png.png"
           alt="Bear"
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           style={{
             width: '100%',
             height: '100%',
