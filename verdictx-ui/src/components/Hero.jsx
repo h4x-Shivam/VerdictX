@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search } from 'lucide-react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
 
 const popularStocks = ['IRCTC', 'TCS', 'RELIANCE', 'INFY', 'HDFCBANK', 'WIPRO', 'ITC', 'SBIN'];
 
@@ -17,61 +14,149 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-[82vh] mt-14 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black flex flex-col items-center justify-center px-6 py-24 md:py-32">
-      
-      {/* Subtle Ambient Glows */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[140px]" />
-        <div className="absolute top-[10%] right-[10%] w-[600px] h-[600px] bg-rose-500/10 rounded-full blur-[140px]" />
-        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-slate-700/20 rounded-full blur-[120px]" />
+    <section style={{
+      position: 'relative',
+      width: '100%',
+      marginTop: 57,           /* navbar height */
+      overflow: 'hidden',
+      background: 'linear-gradient(135deg, rgba(0,30,18,0.97) 0%, rgba(5,10,18,0.98) 45%, rgba(28,4,4,0.97) 100%)',
+      minHeight: '82vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '72px 48px 80px',
+    }}>
+
+      {/* Ambient glow */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        <div style={{
+          position: 'absolute', top: '-10%', left: '20%',
+          width: 700, height: 600,
+          background: 'rgba(0,210,150,0.09)', borderRadius: '50%', filter: 'blur(130px)'
+        }} />
+        <div style={{
+          position: 'absolute', top: '-10%', right: '15%',
+          width: 600, height: 550,
+          background: 'rgba(200,20,20,0.09)', borderRadius: '50%', filter: 'blur(120px)'
+        }} />
       </div>
 
       {/* ── Bull — Left ── */}
-      <div 
-        className="absolute left-[-150px] top-0 bottom-0 w-[55%] max-w-[700px] pointer-events-none select-none z-[2] flex items-center justify-start opacity-80"
-        style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)' }}
-      >
+      <div style={{
+        position: 'absolute',
+        left: -180,
+        top: 0,
+        bottom: 0,
+        width: '58%',
+        maxWidth: 820,
+        pointerEvents: 'none',
+        userSelect: 'none',
+        zIndex: 2,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      }}>
         <motion.img
           src="/bull.png.png"
           alt="Bull"
-          animate={{ y: [0, -10, 0] }}
+          animate={{ y: [0, -15, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-full object-contain object-right saturate-[0.6] mix-blend-lighten"
-          style={{ filter: 'drop-shadow(0 0 60px rgba(20,184,166,0.15))' }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            objectPosition: 'right center',
+            opacity: 0.95,
+            filter: 'hue-rotate(-10deg) saturate(1.6) brightness(1.1) drop-shadow(0 0 60px rgba(0,220,100,0.6))',
+          }}
         />
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0,
+          width: '80%', height: '50%',
+          background: 'rgba(0,200,80,0.18)',
+          borderRadius: '50%', filter: 'blur(80px)', zIndex: -1
+        }} />
       </div>
 
       {/* ── Bear — Right ── */}
-      <div 
-        className="absolute right-[-100px] top-0 bottom-0 w-[55%] max-w-[700px] pointer-events-none select-none z-[2] flex items-center justify-end opacity-80"
-        style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)' }}
-      >
+      <div style={{
+        position: 'absolute',
+        right: -60,
+        top: 0,
+        bottom: 0,
+        width: '58%',
+        maxWidth: 820,
+        pointerEvents: 'none',
+        userSelect: 'none',
+        zIndex: 2,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+      }}>
         <motion.img
           src="/bear.png.png"
           alt="Bear"
-          animate={{ y: [0, -10, 0] }}
+          animate={{ y: [0, -15, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="w-full h-full object-contain object-left saturate-[0.6] mix-blend-lighten"
-          style={{ filter: 'drop-shadow(0 0 60px rgba(225,29,72,0.15))' }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            objectPosition: 'left center',
+            opacity: 0.95,
+            filter: 'hue-rotate(10deg) saturate(1.5) brightness(1.1) drop-shadow(0 0 60px rgba(220,40,40,0.6))',
+          }}
         />
+        <div style={{
+          position: 'absolute', bottom: 0, right: 0,
+          width: '80%', height: '50%',
+          background: 'rgba(210,30,30,0.18)',
+          borderRadius: '50%', filter: 'blur(80px)', zIndex: -1
+        }} />
       </div>
 
       {/* ── Centered Content ── */}
-      <div className="relative z-10 text-center max-w-4xl w-full mx-auto">
+      <div style={{
+        position: 'relative',
+        zIndex: 10,
+        textAlign: 'center',
+        maxWidth: 720,
+        width: '100%',
+      }}>
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="font-['Plus_Jakarta_Sans'] text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white tracking-tight leading-tight"
+          style={{
+            fontFamily: '"Plus Jakarta Sans", sans-serif',
+            fontSize: 'clamp(40px, 6vw, 78px)',
+            fontWeight: 900,
+            color: 'white',
+            lineHeight: 1.08,
+            letterSpacing: '-0.02em',
+            textShadow: '0 2px 40px rgba(0,0,0,0.9)',
+          }}
         >
           Smart Analysis.
         </motion.h1>
 
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="font-['Plus_Jakarta_Sans'] text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-tight mt-1 bg-gradient-to-br from-slate-200 to-slate-500 bg-clip-text text-transparent"
+          transition={{ duration: 0.8, delay: 0.18, ease: 'easeOut' }}
+          style={{
+            fontFamily: '"Plus Jakarta Sans", sans-serif',
+            fontSize: 'clamp(40px, 6vw, 78px)',
+            fontWeight: 900,
+            marginTop: 4,
+            lineHeight: 1.08,
+            letterSpacing: '-0.02em',
+            background: 'linear-gradient(135deg, #00ffcc 0%, #00e6c8 50%, #00b4d8 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
         >
           Smarter Decisions.
         </motion.h2>
@@ -79,8 +164,15 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-          className="font-['Plus_Jakarta_Sans'] text-lg md:text-xl text-slate-400 mt-6 max-w-2xl mx-auto leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.32, ease: 'easeOut' }}
+          style={{
+            fontFamily: '"Plus Jakarta Sans", sans-serif',
+            color: '#94a3b8',
+            fontSize: 17,
+            marginTop: 18,
+            fontWeight: 400,
+            lineHeight: 1.6,
+          }}
         >
           AI-powered multi-agent research on any Indian stock — in seconds.
         </motion.p>
@@ -89,34 +181,76 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12"
+          transition={{ duration: 0.6, delay: 0.46 }}
+          style={{ marginTop: 32 }}
         >
-          <div className="flex items-center gap-2 p-2.5 bg-slate-900/40 border border-slate-700/50 rounded-2xl backdrop-blur-2xl max-w-2xl mx-auto shadow-[0_0_40px_rgba(0,0,0,0.4)] ring-1 ring-white/5 transition-all hover:border-slate-600/50">
-            <Search className="w-5 h-5 text-slate-400 ml-4 shrink-0" />
-            <Input
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            background: 'rgba(8,14,26,0.88)',
+            border: '1px solid rgba(255,255,255,0.13)',
+            borderRadius: 12,
+            padding: '4px 4px 4px 16px',
+            backdropFilter: 'blur(12px)',
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b"
+              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAnalyze()}
-              placeholder="e.g. IRCTC, TCS, RELIANCE..."
-              className="border-0 bg-transparent text-white placeholder:text-slate-500 text-lg focus-visible:ring-0 focus-visible:ring-offset-0 px-3 h-14 font-['Plus_Jakarta_Sans'] w-full"
+              placeholder="e.g. IRCTC, TCS, RELIANCE, HDFCBANK"
+              style={{
+                flex: 1, background: 'transparent', color: 'white',
+                fontSize: 14, outline: 'none', border: 'none',
+                fontFamily: 'inherit', padding: '11px 0',
+              }}
             />
-            <Button 
+            <button style={{
+              padding: '11px 28px',
+              borderRadius: 9,
+              background: 'linear-gradient(135deg, #06b6d4, #22d3ee)',
+              color: 'black', fontWeight: 700, fontSize: 14,
+              border: 'none', cursor: 'pointer',
+              fontFamily: 'inherit', whiteSpace: 'nowrap',
+              transition: 'transform 0.15s',
+            }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
               onClick={handleAnalyze}
-              className="h-14 px-8 rounded-xl bg-white text-slate-950 hover:bg-slate-200 font-bold text-[15px] transition-all hover:scale-105 shadow-md shadow-white/10"
             >
-              Analyze &rarr;
-            </Button>
+              Analyze →
+            </button>
           </div>
 
           {/* Stock Tags */}
-          <div className="flex flex-wrap justify-center gap-2 mt-8">
+          <div style={{
+            display: 'flex', flexWrap: 'wrap', justifyContent: 'center',
+            gap: 8, marginTop: 14,
+          }}>
             {popularStocks.map((s) => (
               <button
                 key={s}
                 onClick={() => setQuery(s)}
-                className="px-4 py-1.5 rounded-full border border-slate-800 bg-slate-900/30 text-xs font-semibold text-slate-400 hover:text-white hover:border-slate-600 hover:bg-slate-800 transition-all font-['Plus_Jakarta_Sans'] tracking-wide"
+                style={{
+                  padding: '5px 15px', borderRadius: 7,
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(255,255,255,0.04)',
+                  fontSize: 12, fontWeight: 500, color: '#94a3b8',
+                  cursor: 'pointer', transition: 'all 0.18s', fontFamily: 'inherit',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = 'white';
+                  e.currentTarget.style.borderColor = 'rgba(34,211,238,0.45)';
+                  e.currentTarget.style.background = 'rgba(34,211,238,0.07)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = '#94a3b8';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                }}
               >
                 {s}
               </button>
