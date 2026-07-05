@@ -28,7 +28,8 @@ export default function AnalyzePage() {
   useEffect(() => {
     if (!ticker) return;
 
-    const url = `/api/analyze?ticker=${encodeURIComponent(ticker.toUpperCase())}`;
+    const API_BASE = import.meta.env.VITE_API_URL || '';
+    const url = `${API_BASE}/api/analyze?ticker=${encodeURIComponent(ticker.toUpperCase())}`;
     const es = new EventSource(url);
     esRef.current = es;
 
