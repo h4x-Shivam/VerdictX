@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+
 import Hero from './components/Hero';
 import Features from './components/Features';
 import HowItWorks from './components/Howitworks';
@@ -28,7 +28,7 @@ function HomePage() {
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column' }}>
-        <Navbar />
+
         <main style={{ flexGrow: 1 }}>
           {/* Hero — full viewport width */}
           <Hero />
