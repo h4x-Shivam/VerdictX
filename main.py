@@ -81,7 +81,7 @@ import requests
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv()
+load_dotenv(override=True)
 
 # ─────────────────────────────────────────────
 # CONFIG
@@ -149,6 +149,44 @@ def _call_groq(messages):
     return data["choices"][0]["message"]["content"]
 
 
+def _call_groq_stream(messages):
+    url = "https://api.groq.com/openai/v1/chat/completions"
+
+    headers = {
+        "Authorization": f"Bearer {GROQ_API_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    with _GROQ_SEM:
+        response = requests.post(
+            url,
+            headers=headers,
+            json={
+                "model": GROQ_MODEL,
+                "messages": messages,
+                "temperature": 0.3,
+                "stream": True
+            },
+            stream=True,
+            timeout=90
+        )
+        
+        if response.status_code != 200:
+            raise Exception(f"Groq API Error {response.status_code}: {response.text}")
+
+        for line in response.iter_lines():
+            if line:
+                line = line.decode('utf-8')
+                if line.startswith('data: ') and line != 'data: [DONE]':
+                    try:
+                        data = json.loads(line[6:])
+                        chunk = data['choices'][0]['delta'].get('content', '')
+                        if chunk:
+                            yield chunk
+                    except:
+                        pass
+
+
 # ─────────────────────────────────────────────
 # OLLAMA CALL (fallback)
 # ─────────────────────────────────────────────
@@ -171,6 +209,27 @@ def _call_ollama(messages):
     return data["message"]["content"]
 
 
+def _call_ollama_stream(messages):
+    response = requests.post(
+        OLLAMA_URL,
+        json={
+            "model": OLLAMA_MODEL,
+            "messages": messages,
+            "stream": True
+        },
+        stream=True,
+        timeout=300
+    )
+    if response.status_code != 200:
+        raise Exception(f"Ollama API Error {response.status_code}: {response.text}")
+        
+    for line in response.iter_lines():
+        if line:
+            data = json.loads(line.decode('utf-8'))
+            if 'message' in data and 'content' in data['message']:
+                yield data['message']['content']
+
+
 # ─────────────────────────────────────────────
 # MAIN LLM CALL (SMART ROUTER)
 # ─────────────────────────────────────────────
@@ -188,10 +247,14 @@ def _llm_call(prompt: str, required_keys: list, max_retries: int = 1) -> dict:
                 raw = _call_ollama(messages)
 
         except Exception as e:
-            # fallback to ollama if groq fails
             if LLM_PROVIDER == "groq":
                 print(f"[LLM ERROR -> GROQ] {e} -> Falling back to Ollama")
-                raw = _call_ollama(messages)
+                try:
+                    raw = _call_ollama(messages)
+                except Exception as ollama_err:
+                    if "Connection refused" in str(ollama_err) or "Max retries exceeded" in str(ollama_err):
+                        raise Exception(f"Groq API Free Tier Rate Limit Exceeded (TPM limit). Please wait 60 seconds before trying again! (Ollama fallback also failed). Original error: {e}")
+                    raise ollama_err
             else:
                 raise e
 
@@ -216,6 +279,44 @@ def _llm_call(prompt: str, required_keys: list, max_retries: int = 1) -> dict:
     return result
 
 
+def _llm_call_stream(prompt: str, required_keys: list, max_retries: int = 1):
+    messages = [{"role": "user", "content": prompt}]
+
+    raw = ""
+    try:
+        if LLM_PROVIDER == "groq":
+            stream_gen = _call_groq_stream(messages)
+        else:
+            stream_gen = _call_ollama_stream(messages)
+            
+        for chunk in stream_gen:
+            raw += chunk
+            yield {"type": "stream", "chunk": chunk}
+
+    except Exception as e:
+        if LLM_PROVIDER == "groq":
+            print(f"[LLM ERROR -> GROQ STREAM] {e} -> Falling back to Ollama STREAM")
+            try:
+                stream_gen = _call_ollama_stream(messages)
+                for chunk in stream_gen:
+                    raw += chunk
+                    yield {"type": "stream", "chunk": chunk}
+            except Exception as ollama_err:
+                if "Connection refused" in str(ollama_err) or "Max retries exceeded" in str(ollama_err):
+                    raise Exception(f"Groq API Free Tier Rate Limit Exceeded (TPM limit). Please wait 60 seconds before trying again! (Ollama fallback also failed). Original error: {e}")
+                raise ollama_err
+        else:
+            raise e
+
+    result = _extract_json(raw)
+    missing = [k for k in required_keys if result.get(k) is None]
+    
+    if missing:
+        result["_schema_error"] = f"Missing keys after retries: {missing}"
+    result["_raw"] = raw
+    yield {"type": "result", "data": result}
+
+
 # ─────────────────────────────────────────────────────────────────
 # NSE data fetching
 # ─────────────────────────────────────────────────────────────────
@@ -238,36 +339,35 @@ def _nse_fetch(symbol: str) -> dict:
 def _nse_direct(symbol: str) -> dict:
     BASE = "https://www.nseindia.com"
     headers = {
-        "Host":             "www.nseindia.com",
-        "Referer":          f"https://www.nseindia.com/get-quotes/equity?symbol={symbol}",
-        "X-Requested-With": "XMLHttpRequest",
         "User-Agent":       (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
             "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
         ),
         "Accept":           "*/*",
         "Accept-Language":  "en-GB,en-US;q=0.9,en;q=0.8",
-        "Accept-Encoding":  "gzip, deflate",
-        "Cache-Control":    "no-cache",
-        "Connection":       "keep-alive",
-        "sec-fetch-dest":   "empty",
-        "sec-fetch-mode":   "cors",
-        "sec-fetch-site":   "same-origin",
+        "Accept-Encoding":  "gzip, deflate, br",
     }
     s = requests.Session()
     s.headers.update(headers)
     try:
-        s.get(f"{BASE}/get-quotes/equity?symbol={symbol}", timeout=12)
+        # Fetch homepage to get cookies
+        s.get(BASE, timeout=12)
         time.sleep(0.5)
+        
+        # Now fetch the API endpoint
+        s.headers.update({"Referer": f"{BASE}/get-quotes/equity?symbol={symbol}"})
         r1    = s.get(f"{BASE}/api/quote-equity", params={"symbol": symbol}, timeout=14)
         quote = r1.json() if r1.status_code == 200 else {}
+        
         r2    = s.get(f"{BASE}/api/quote-equity",
                       params={"symbol": symbol, "section": "trade_info"}, timeout=14)
         trade = r2.json() if r2.status_code == 200 else {}
     except Exception as e:
         return {"ok": False, "_error": str(e)}
+    
     if not quote:
-        return {"ok": False, "_error": "NSE returned empty response"}
+        return {"ok": False, "_error": f"NSE returned empty response or status {r1.status_code if 'r1' in locals() else 'unknown'}"}
+        
     return _parse_nse_response(symbol, quote, trade, source="NSE direct")
 
 
@@ -325,20 +425,27 @@ def _parse_nse_response(symbol: str, quote: dict, trade: dict, source: str = "NS
 
 
 def _yf_fetch(ticker_ns: str) -> dict:
-    try:
-        stk  = yf.Ticker(ticker_ns)
-        info = stk.info
-        hist = stk.history(period="6mo")
-        price = (
-            info.get("currentPrice")
-            or info.get("regularMarketPrice")
-            or info.get("previousClose")
-        )
-        prev = info.get("previousClose") or info.get("regularMarketPreviousClose")
-        return {
-            "ok":               True,
-            "current_price":    price,
-            "prev_close":       prev,
+    for attempt in range(3):
+        try:
+            stk  = yf.Ticker(ticker_ns)
+            info = stk.info
+            hist = stk.history(period="6mo")
+            price = (
+                info.get("currentPrice")
+                or info.get("regularMarketPrice")
+                or info.get("previousClose")
+            )
+            prev = info.get("previousClose") or info.get("regularMarketPreviousClose")
+            
+            # If info is completely empty on the first try, force an error to trigger retry
+            if not info and attempt < 2:
+                time.sleep(1)
+                continue
+                
+            return {
+                "ok":               True,
+                "current_price":    price,
+                "prev_close":       prev,
             "market_cap":       info.get("marketCap"),
             "trailing_pe":      info.get("trailingPE"),
             "forward_pe":       info.get("forwardPE"),
@@ -368,8 +475,11 @@ def _yf_fetch(ticker_ns: str) -> dict:
             "hist":             hist,
             "_raw_info":        info,
         }
-    except Exception as e:
-        return {"ok": False, "_yf_error": str(e), "hist": None}
+        except Exception as e:
+            if attempt < 2:
+                time.sleep(1)
+                continue
+            return {"ok": False, "_yf_error": str(e), "hist": None}
 
 
 def _jugaad_extras(symbol: str) -> dict:
@@ -804,7 +914,7 @@ def get_basic_data(ticker: str) -> dict:
     sector   = nse.get("sector")   or yf.get("sector",   "N/A")
     industry = nse.get("industry") or yf.get("industry", "N/A")
 
-    mkt_cap   = yf.get("market_cap")
+    mkt_cap   = yf.get("market_cap") or clean_data.get("market_cap")
     t_pe      = clean_data.get("pe")
     pb        = clean_data.get("pb")
     roe       = clean_data.get("roe")
@@ -818,7 +928,7 @@ def get_basic_data(ticker: str) -> dict:
     fcf       = yf.get("free_cash_flow")
     cur_ratio = yf.get("current_ratio")
     roa       = yf.get("return_on_assets")
-    div_yield = yf.get("dividend_yield") or jg.get("jugaad_div_yield")
+    div_yield = yf.get("dividend_yield") or clean_data.get("dividend_yield") or jg.get("jugaad_div_yield")
     beta      = yf.get("beta")
     rec       = yf.get("recommendation", "N/A")
     tgt_price = yf.get("target_price")
@@ -862,7 +972,7 @@ VALUATION
   Dividend Yield   : {fmt_pct(div_yield)}
   Beta             : {beta if beta else 'N/A'}
   Fair Value (Est) : {fmt_rupee(fv['primary']['value'])} ({fv['primary']['method']})
-  Upside / Down    : {fv['primary']['upside']:+.2f}%
+  Upside / Down    : {f"{fv['primary']['upside']:+.2f}%" if fv['primary']['upside'] is not None else 'N/A'}
 
 FINANCIALS
   Revenue (TTM)    : {fmt_cr(tot_rev)}
@@ -1118,7 +1228,7 @@ def get_news(company_name: str, nse_symbol: str = "") -> list:
         return (rank, age)
 
     unique.sort(key=_sort_key)
-    return unique[:10]
+    return unique[:5]
 
 
 def get_news_text(news_items: list) -> str:
@@ -1132,7 +1242,7 @@ def get_news_text(news_items: list) -> str:
 # AI Agents
 # ─────────────────────────────────────────────────────────────────
 
-def analyze_sentiment(news_text: str) -> dict:
+def analyze_sentiment(news_text: str, stream: bool = False):
     prompt = f"""
 You are a financial sentiment analyst covering Indian equity markets.
 Read these headlines and assess how the market feels about this stock.
@@ -1153,10 +1263,12 @@ score: integer -100 to +100
 reasons: 2-3 specific things from the actual headlines
 key_themes: 1-3 short labels for dominant stories
 """
+    if stream:
+        return _llm_call_stream(prompt, required_keys=["sentiment", "score", "reasons"])
     return _llm_call(prompt, required_keys=["sentiment", "score", "reasons"])
 
 
-def run_bull_agent(fundamental_summary: str, news_text: str) -> dict:
+def run_bull_agent(fundamental_summary: str, news_text: str, stream: bool = False):
     prompt = f"""
 You are a bullish equity analyst covering NSE-listed Indian stocks.
 
@@ -1197,10 +1309,12 @@ Return ONLY valid JSON — no markdown:
   strength           → STRONG / MODERATE / WEAK
   Aim for 3-5 points. Fewer strong points > many weak ones.
 """
+    if stream:
+        return _llm_call_stream(prompt, required_keys=["bull_points", "overall_bull_score"])
     return _llm_call(prompt, required_keys=["bull_points", "overall_bull_score"])
 
 
-def run_bear_agent(fundamental_summary: str, news_text: str) -> dict:
+def run_bear_agent(fundamental_summary: str, news_text: str, stream: bool = False):
     prompt = f"""
 You are a bearish equity analyst covering NSE-listed Indian stocks.
 
@@ -1240,11 +1354,13 @@ Return ONLY valid JSON — no markdown:
   severity           → SEVERE / MODERATE / MINOR
   Aim for 3-5 points. Fewer strong points > many weak ones.
 """
+    if stream:
+        return _llm_call_stream(prompt, required_keys=["bear_points", "overall_bear_score"])
     return _llm_call(prompt, required_keys=["bear_points", "overall_bear_score"])
 
 
 def run_judge_agent(bull_result: dict, bear_result: dict, sentiment: dict,
-                    verdict_data: dict = None, fundamentals_data: dict = None) -> dict:
+                    verdict_data: dict = None, fundamentals_data: dict = None, stream: bool = False):
     """
     Component 5: Simplified Judge Agent.
     The verdict is PRE-COMPUTED by compute_final_score() + validate_and_adjust().
@@ -1303,6 +1419,23 @@ Return ONLY valid JSON — no markdown:
 
   timeframe → short-term / medium-term / long-term
 """
+        if stream:
+            # We return a generator that wraps the _llm_call_stream to also inject the extra metadata at the end
+            def _stream_wrapper():
+                gen = _llm_call_stream(prompt, required_keys=["final_reasoning", "key_catalyst", "key_risk"])
+                for chunk in gen:
+                    if chunk["type"] == "result":
+                        chunk["data"]["verdict"]            = verdict
+                        chunk["data"]["confidence"]         = confidence
+                        chunk["data"]["risk"]               = risk
+                        chunk["data"]["composite"]          = composite
+                        chunk["data"]["scores"]             = scores
+                        chunk["data"]["weights"]            = verdict_data.get("weights", {})
+                        chunk["data"]["validation_applied"] = validation
+                        chunk["data"]["signal_breakdown"]   = breakdown
+                    yield chunk
+            return _stream_wrapper()
+            
         result = _llm_call(prompt, required_keys=["final_reasoning", "key_catalyst", "key_risk"])
         result["verdict"]            = verdict
         result["confidence"]         = confidence
@@ -1336,6 +1469,15 @@ Return ONLY valid JSON — no markdown:
   "key_risk": "biggest downside risk"
 }}
 """
+    if stream:
+        def _stream_wrapper_fallback():
+            gen = _llm_call_stream(prompt, required_keys=["verdict", "final_reasoning"])
+            for chunk in gen:
+                if chunk["type"] == "result":
+                    chunk["data"]["signal_breakdown"] = f"Bull {bull_score} - Bear {bear_score} = net {net:+d} (legacy)"
+                yield chunk
+        return _stream_wrapper_fallback()
+        
     result = _llm_call(prompt, required_keys=["verdict", "final_reasoning"])
     result["signal_breakdown"] = f"Bull {bull_score} - Bear {bear_score} = net {net:+d} (legacy)"
     return result

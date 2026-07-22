@@ -1325,6 +1325,11 @@
         "price": 503.25,
         "pct_change": -5.93,
         "correct": false
+      },
+      "14d": {
+        "price": 476.95001220703125,
+        "pct_change": -10.85,
+        "correct": false
       }
     },
     "checked": true
@@ -1382,6 +1387,11 @@
       "7d": {
         "price": 503.25,
         "pct_change": -5.76,
+        "correct": false
+      },
+      "14d": {
+        "price": 476.95001220703125,
+        "pct_change": -10.68,
         "correct": false
       }
     },
@@ -1441,6 +1451,11 @@
         "price": 503.25,
         "pct_change": -6.08,
         "correct": false
+      },
+      "14d": {
+        "price": 476.95001220703125,
+        "pct_change": -10.99,
+        "correct": false
       }
     },
     "checked": true
@@ -1499,6 +1514,11 @@
         "price": 572.75,
         "pct_change": 5.15,
         "correct": false
+      },
+      "14d": {
+        "price": 538.8499755859375,
+        "pct_change": -1.07,
+        "correct": true
       }
     },
     "checked": true
@@ -1556,6 +1576,11 @@
       "7d": {
         "price": 1167.199951171875,
         "pct_change": -0.03,
+        "correct": false
+      },
+      "14d": {
+        "price": 1071.8067626953125,
+        "pct_change": -8.2,
         "correct": false
       }
     },
@@ -1615,6 +1640,11 @@
         "price": 503.25,
         "pct_change": -3.21,
         "correct": false
+      },
+      "14d": {
+        "price": 474.3500061035156,
+        "pct_change": -8.77,
+        "correct": false
       }
     },
     "checked": true
@@ -1672,6 +1702,11 @@
       "7d": {
         "price": 1833.699951171875,
         "pct_change": -2.88,
+        "correct": true
+      },
+      "14d": {
+        "price": 1883.5,
+        "pct_change": -0.24,
         "correct": true
       }
     },
@@ -1731,6 +1766,11 @@
         "price": 1833.699951171875,
         "pct_change": -2.88,
         "correct": false
+      },
+      "14d": {
+        "price": 1883.5,
+        "pct_change": -0.24,
+        "correct": false
       }
     },
     "checked": true
@@ -1788,6 +1828,11 @@
       "7d": {
         "price": 1833.699951171875,
         "pct_change": -2.88,
+        "correct": false
+      },
+      "14d": {
+        "price": 1883.5,
+        "pct_change": -0.24,
         "correct": false
       }
     },
@@ -1847,6 +1892,11 @@
         "price": 1179.199951171875,
         "pct_change": -0.29,
         "correct": false
+      },
+      "14d": {
+        "price": 1095.2984619140625,
+        "pct_change": -7.38,
+        "correct": false
       }
     },
     "checked": true
@@ -1905,6 +1955,11 @@
         "price": 50.279998779296875,
         "pct_change": 8.13,
         "correct": true
+      },
+      "14d": {
+        "price": 41.939998626708984,
+        "pct_change": -9.81,
+        "correct": false
       }
     },
     "checked": true
@@ -1962,6 +2017,11 @@
       "7d": {
         "price": 1097.800048828125,
         "pct_change": 24.89,
+        "correct": true
+      },
+      "14d": {
+        "price": 967.7000122070312,
+        "pct_change": 10.09,
         "correct": true
       }
     },
@@ -2021,6 +2081,11 @@
         "price": 130425.0,
         "pct_change": 0.33,
         "correct": false
+      },
+      "14d": {
+        "price": 128640.0,
+        "pct_change": -1.05,
+        "correct": false
       }
     },
     "checked": true
@@ -2078,6 +2143,11 @@
       "7d": {
         "price": 296.45001220703125,
         "pct_change": 8.59,
+        "correct": false
+      },
+      "14d": {
+        "price": 331.04998779296875,
+        "pct_change": 21.26,
         "correct": false
       }
     },
@@ -2137,6 +2207,11 @@
         "price": 197.91000366210938,
         "pct_change": -1.64,
         "correct": false
+      },
+      "14d": {
+        "price": 190.0,
+        "pct_change": -5.57,
+        "correct": false
       }
     },
     "checked": true
@@ -2195,6 +2270,11 @@
         "price": 1019.2999877929688,
         "pct_change": -4.91,
         "correct": false
+      },
+      "14d": {
+        "price": 963.2000122070312,
+        "pct_change": -10.15,
+        "correct": false
       }
     },
     "checked": true
@@ -2248,6 +2328,16 @@
         "price": 28.989999771118164,
         "pct_change": 2.29,
         "correct": true
+      },
+      "7d": {
+        "price": 28.010000228881836,
+        "pct_change": -1.16,
+        "correct": false
+      },
+      "14d": {
+        "price": 25.649999618530273,
+        "pct_change": -9.49,
+        "correct": false
       }
     },
     "checked": true
@@ -2300,6 +2390,16 @@
       "3d": {
         "price": 1167.199951171875,
         "pct_change": -1.3,
+        "correct": false
+      },
+      "7d": {
+        "price": 1152.0699462890625,
+        "pct_change": -2.58,
+        "correct": false
+      },
+      "14d": {
+        "price": 1118.3006591796875,
+        "pct_change": -5.44,
         "correct": false
       }
     },
@@ -2354,6 +2454,16 @@
         "price": 310.70001220703125,
         "pct_change": -1.43,
         "correct": false
+      },
+      "7d": {
+        "price": 297.7386169433594,
+        "pct_change": -5.54,
+        "correct": false
+      },
+      "14d": {
+        "price": 301.924560546875,
+        "pct_change": -4.21,
+        "correct": false
       }
     },
     "checked": true
@@ -2407,6 +2517,16 @@
         "price": 1436.199951171875,
         "pct_change": -1.84,
         "correct": true
+      },
+      "7d": {
+        "price": 1357.722412109375,
+        "pct_change": -7.2,
+        "correct": false
+      },
+      "14d": {
+        "price": 1316.6124267578125,
+        "pct_change": -10.01,
+        "correct": false
       }
     },
     "checked": true
@@ -2459,6 +2579,16 @@
       "3d": {
         "price": 131.13999938964844,
         "pct_change": 3.49,
+        "correct": false
+      },
+      "7d": {
+        "price": 119.62000274658203,
+        "pct_change": -5.6,
+        "correct": false
+      },
+      "14d": {
+        "price": 114.33999633789062,
+        "pct_change": -9.77,
         "correct": false
       }
     },
@@ -2513,6 +2643,16 @@
         "price": 197.36000061035156,
         "pct_change": -1.69,
         "correct": true
+      },
+      "7d": {
+        "price": 189.57000732421875,
+        "pct_change": -5.57,
+        "correct": false
+      },
+      "14d": {
+        "price": 195.1699981689453,
+        "pct_change": -2.78,
+        "correct": true
       }
     },
     "checked": true
@@ -2565,6 +2705,16 @@
       "3d": {
         "price": 1019.2999877929688,
         "pct_change": -7.0,
+        "correct": false
+      },
+      "7d": {
+        "price": 962.5499877929688,
+        "pct_change": -12.18,
+        "correct": false
+      },
+      "14d": {
+        "price": 950.9000244140625,
+        "pct_change": -13.24,
         "correct": false
       }
     },
@@ -2619,6 +2769,16 @@
         "price": 564.9000244140625,
         "pct_change": -1.37,
         "correct": false
+      },
+      "7d": {
+        "price": 538.8499755859375,
+        "pct_change": -5.92,
+        "correct": false
+      },
+      "14d": {
+        "price": 527.1500244140625,
+        "pct_change": -7.96,
+        "correct": false
       }
     },
     "checked": true
@@ -2672,6 +2832,16 @@
         "price": 564.9000244140625,
         "pct_change": -1.37,
         "correct": false
+      },
+      "7d": {
+        "price": 538.8499755859375,
+        "pct_change": -5.92,
+        "correct": false
+      },
+      "14d": {
+        "price": 527.1500244140625,
+        "pct_change": -7.96,
+        "correct": false
       }
     },
     "checked": true
@@ -2720,8 +2890,24 @@
     },
     "baseline_price": 326.35,
     "timestamp": "2026-05-07T15:24:57.532416",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 316.6499938964844,
+        "pct_change": -2.97,
+        "correct": true
+      },
+      "7d": {
+        "price": 303.95001220703125,
+        "pct_change": -6.86,
+        "correct": false
+      },
+      "14d": {
+        "price": 317.1499938964844,
+        "pct_change": -2.82,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "IRCTC",
@@ -2767,8 +2953,24 @@
     },
     "baseline_price": 568.5,
     "timestamp": "2026-05-07T15:36:29.713585",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 556.7999877929688,
+        "pct_change": -2.06,
+        "correct": false
+      },
+      "7d": {
+        "price": 535.9500122070312,
+        "pct_change": -5.73,
+        "correct": false
+      },
+      "14d": {
+        "price": 530.25,
+        "pct_change": -6.73,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "IRCTC",
@@ -2814,8 +3016,24 @@
     },
     "baseline_price": 568.5,
     "timestamp": "2026-05-07T15:37:43.693811",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 556.7999877929688,
+        "pct_change": -2.06,
+        "correct": false
+      },
+      "7d": {
+        "price": 535.9500122070312,
+        "pct_change": -5.73,
+        "correct": false
+      },
+      "14d": {
+        "price": 530.25,
+        "pct_change": -6.73,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "BANSALWIRE",
@@ -2861,8 +3079,24 @@
     },
     "baseline_price": 326.35,
     "timestamp": "2026-05-07T15:49:07.227113",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 316.6499938964844,
+        "pct_change": -2.97,
+        "correct": true
+      },
+      "7d": {
+        "price": 303.95001220703125,
+        "pct_change": -6.86,
+        "correct": false
+      },
+      "14d": {
+        "price": 317.1499938964844,
+        "pct_change": -2.82,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "SBIN",
@@ -2908,8 +3142,24 @@
     },
     "baseline_price": 1092.0,
     "timestamp": "2026-05-07T15:49:56.478496",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 956.3615112304688,
+        "pct_change": -12.42,
+        "correct": false
+      },
+      "7d": {
+        "price": 963.2000122070312,
+        "pct_change": -11.79,
+        "correct": false
+      },
+      "14d": {
+        "price": 949.2000122070312,
+        "pct_change": -13.08,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "RELIANCE",
@@ -2955,8 +3205,24 @@
     },
     "baseline_price": 1436.2,
     "timestamp": "2026-05-07T16:02:24.857859",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1381.81103515625,
+        "pct_change": -3.79,
+        "correct": false
+      },
+      "7d": {
+        "price": 1330.24951171875,
+        "pct_change": -7.38,
+        "correct": false
+      },
+      "14d": {
+        "price": 1348.26611328125,
+        "pct_change": -6.12,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "STEELCITY",
@@ -3002,8 +3268,24 @@
     },
     "baseline_price": 81.99,
     "timestamp": "2026-05-08T14:44:11.414892",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 79.16555786132812,
+        "pct_change": -3.44,
+        "correct": false
+      },
+      "7d": {
+        "price": 78.76085662841797,
+        "pct_change": -3.94,
+        "correct": false
+      },
+      "14d": {
+        "price": 77.18148803710938,
+        "pct_change": -5.86,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "CAPLIPOINT",
@@ -3049,8 +3331,24 @@
     },
     "baseline_price": 1856.3,
     "timestamp": "2026-05-08T14:49:15.963993",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1811.411865234375,
+        "pct_change": -2.42,
+        "correct": false
+      },
+      "7d": {
+        "price": 1994.8485107421875,
+        "pct_change": 7.46,
+        "correct": true
+      },
+      "14d": {
+        "price": 2023.99072265625,
+        "pct_change": 9.03,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "ESCORTS",
@@ -3096,8 +3394,24 @@
     },
     "baseline_price": 3146.6,
     "timestamp": "2026-05-09T16:48:11.698323",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 2949.327392578125,
+        "pct_change": -6.27,
+        "correct": false
+      },
+      "7d": {
+        "price": 2966.631591796875,
+        "pct_change": -5.72,
+        "correct": false
+      },
+      "14d": {
+        "price": 2898.601318359375,
+        "pct_change": -7.88,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "HEG",
@@ -3143,8 +3457,24 @@
     },
     "baseline_price": 597.7,
     "timestamp": "2026-05-10T05:07:45.936640",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 617.6500244140625,
+        "pct_change": 3.34,
+        "correct": true
+      },
+      "7d": {
+        "price": 606.5,
+        "pct_change": 1.47,
+        "correct": true
+      },
+      "14d": {
+        "price": 584.5499877929688,
+        "pct_change": -2.2,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "BANSALWIRE",
@@ -3190,8 +3520,24 @@
     },
     "baseline_price": 319.1,
     "timestamp": "2026-05-10T06:09:53.880001",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 299.70001220703125,
+        "pct_change": -6.08,
+        "correct": false
+      },
+      "7d": {
+        "price": 301.75,
+        "pct_change": -5.44,
+        "correct": false
+      },
+      "14d": {
+        "price": 320.54998779296875,
+        "pct_change": 0.45,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "BANSALWIRE",
@@ -3240,8 +3586,24 @@
     },
     "baseline_price": 319.1,
     "timestamp": "2026-05-10T06:14:16.896063",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 299.70001220703125,
+        "pct_change": -6.08,
+        "correct": false
+      },
+      "7d": {
+        "price": 301.75,
+        "pct_change": -5.44,
+        "correct": false
+      },
+      "14d": {
+        "price": 320.54998779296875,
+        "pct_change": 0.45,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "COALINDIA",
@@ -3290,8 +3652,24 @@
     },
     "baseline_price": 456.4,
     "timestamp": "2026-05-10T06:21:26.107321",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 454.04998779296875,
+        "pct_change": -0.51,
+        "correct": true
+      },
+      "7d": {
+        "price": 462.1000061035156,
+        "pct_change": 1.25,
+        "correct": true
+      },
+      "14d": {
+        "price": 458.0,
+        "pct_change": 0.35,
+        "correct": true
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "RVNL",
@@ -3340,8 +3718,24 @@
     },
     "baseline_price": 305.0,
     "timestamp": "2026-05-10T07:23:35.249536",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 287.20001220703125,
+        "pct_change": -5.84,
+        "correct": false
+      },
+      "7d": {
+        "price": 276.79998779296875,
+        "pct_change": -9.25,
+        "correct": false
+      },
+      "14d": {
+        "price": 272.45001220703125,
+        "pct_change": -10.67,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "DLF",
@@ -3440,8 +3834,24 @@
     },
     "baseline_price": 608.25,
     "timestamp": "2026-05-10T07:37:17.006870",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 583.25,
+        "pct_change": -4.11,
+        "correct": false
+      },
+      "7d": {
+        "price": 573.1500244140625,
+        "pct_change": -5.77,
+        "correct": false
+      },
+      "14d": {
+        "price": 592.2999877929688,
+        "pct_change": -2.62,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "DLF",
@@ -3490,8 +3900,24 @@
     },
     "baseline_price": 608.25,
     "timestamp": "2026-05-10T07:38:00.121004",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 583.25,
+        "pct_change": -4.11,
+        "correct": false
+      },
+      "7d": {
+        "price": 573.1500244140625,
+        "pct_change": -5.77,
+        "correct": false
+      },
+      "14d": {
+        "price": 592.2999877929688,
+        "pct_change": -2.62,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "DLF",
@@ -3540,8 +3966,24 @@
     },
     "baseline_price": 606.3,
     "timestamp": "2026-05-10T07:46:50.765197",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 583.25,
+        "pct_change": -3.8,
+        "correct": false
+      },
+      "7d": {
+        "price": 573.1500244140625,
+        "pct_change": -5.47,
+        "correct": false
+      },
+      "14d": {
+        "price": 592.2999877929688,
+        "pct_change": -2.31,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "RELIANCE",
@@ -3590,8 +4032,24 @@
     },
     "baseline_price": 1436.0,
     "timestamp": "2026-05-10T07:51:31.127538",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1355.5325927734375,
+        "pct_change": -5.6,
+        "correct": false
+      },
+      "7d": {
+        "price": 1329.7518310546875,
+        "pct_change": -7.4,
+        "correct": false
+      },
+      "14d": {
+        "price": 1360.7086181640625,
+        "pct_change": -5.24,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "INFY",
@@ -3640,8 +4098,24 @@
     },
     "baseline_price": 1179.5,
     "timestamp": "2026-05-10T07:53:26.805570",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 1071.8067626953125,
+        "pct_change": -9.13,
+        "correct": false
+      },
+      "7d": {
+        "price": 1118.3006591796875,
+        "pct_change": -5.19,
+        "correct": false
+      },
+      "14d": {
+        "price": 1143.75,
+        "pct_change": -3.03,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "HEG",
@@ -3690,8 +4164,24 @@
     },
     "baseline_price": 596.1,
     "timestamp": "2026-05-10T08:34:36.340937",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 617.6500244140625,
+        "pct_change": 3.62,
+        "correct": true
+      },
+      "7d": {
+        "price": 606.5,
+        "pct_change": 1.74,
+        "correct": true
+      },
+      "14d": {
+        "price": 584.5499877929688,
+        "pct_change": -1.94,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "HEG",
@@ -3740,8 +4230,24 @@
     },
     "baseline_price": 596.1,
     "timestamp": "2026-05-10T08:40:13.898892",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 617.6500244140625,
+        "pct_change": 3.62,
+        "correct": true
+      },
+      "7d": {
+        "price": 606.5,
+        "pct_change": 1.74,
+        "correct": true
+      },
+      "14d": {
+        "price": 584.5499877929688,
+        "pct_change": -1.94,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "HEG",
@@ -3790,8 +4296,24 @@
     },
     "baseline_price": 596.1,
     "timestamp": "2026-05-10T08:43:19.125656",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 617.6500244140625,
+        "pct_change": 3.62,
+        "correct": true
+      },
+      "7d": {
+        "price": 606.5,
+        "pct_change": 1.74,
+        "correct": true
+      },
+      "14d": {
+        "price": 584.5499877929688,
+        "pct_change": -1.94,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "HEG",
@@ -3840,8 +4362,24 @@
     },
     "baseline_price": 596.1,
     "timestamp": "2026-05-10T08:44:45.319259",
-    "eval_results": {},
-    "checked": false
+    "eval_results": {
+      "3d": {
+        "price": 617.6500244140625,
+        "pct_change": 3.62,
+        "correct": true
+      },
+      "7d": {
+        "price": 606.5,
+        "pct_change": 1.74,
+        "correct": true
+      },
+      "14d": {
+        "price": 584.5499877929688,
+        "pct_change": -1.94,
+        "correct": false
+      }
+    },
+    "checked": true
   },
   {
     "ticker": "HEG",
@@ -3890,6 +4428,468 @@
     },
     "baseline_price": 596.1,
     "timestamp": "2026-05-10T09:10:06.595418",
+    "eval_results": {
+      "3d": {
+        "price": 617.6500244140625,
+        "pct_change": 3.62,
+        "correct": true
+      },
+      "7d": {
+        "price": 606.5,
+        "pct_change": 1.74,
+        "correct": true
+      },
+      "14d": {
+        "price": 584.5499877929688,
+        "pct_change": -1.94,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "BANSALWIRE",
+    "nse_symbol": "BANSALWIRE",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is due to the balanced view of the company's prospects, with strong revenue growth and recent order wins offset by concerns over high debt-to-equity ratio and low return on equity. The reasonable valuation and positive sentiment also contribute to the neutral stance. Overall, the composite score of 58.9 suggests a stable outlook, warranting a HOLD decision.",
+      "key_catalyst": "Recent order wins, particularly the trial order from the largest tyre manufacturer, which demonstrates the company's ability to secure business from major clients",
+      "key_risk": "High debt-to-equity ratio, which could lead to increased interest expenses and reduced financial flexibility",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is due to the balanced view of the company's prospects, with strong revenue growth and recent order wins offset by concerns over high debt-to-equity ratio and low return on equity. The reasonable valuation and positive sentiment also contribute to the neutral stance. Overall, the composite score of 58.9 suggests a stable outlook, warranting a HOLD decision.\",\n  \"key_catalyst\": \"Recent order wins, particularly the trial order from the largest tyre manufacturer, which demonstrates the company's ability to secure business from major clients\",\n  \"key_risk\": \"High debt-to-equity ratio, which could lead to increased interest expenses and reduced financial flexibility\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 33,
+      "risk": "MEDIUM",
+      "composite": 58.9,
+      "scores": {
+        "fundamentals": 47.7,
+        "bull": 70.0,
+        "bear": 55.0,
+        "technical": 73.0,
+        "sentiment": 80.0,
+        "fair_value": 55,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.3,
+        "bull": 0.18,
+        "bear": 0.18,
+        "technical": 0.15,
+        "sentiment": 0.1,
+        "fair_value": 0.09
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 48x0.3 + Bull 70x0.18 + BearInv 45x0.18 + Tech 73x0.15 + Sent 80x0.1 + FV 55x0.09 = 58.9 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 55,
+    "fundamentals_score": 47.7,
+    "scores_breakdown": {
+      "fundamentals": 47.7,
+      "bull": 70.0,
+      "bear": 55.0,
+      "technical": 73.0,
+      "sentiment": 80.0,
+      "fair_value": 55,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 354.15,
+    "timestamp": "2026-07-07T14:26:05.246795",
+    "eval_results": {
+      "3d": {
+        "price": 331.20001220703125,
+        "pct_change": -6.48,
+        "correct": false
+      },
+      "7d": {
+        "price": 319.25,
+        "pct_change": -9.85,
+        "correct": false
+      },
+      "14d": {
+        "price": 315.0,
+        "pct_change": -11.05,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "SBIN",
+    "nse_symbol": "SBIN",
+    "prediction": {
+      "final_reasoning": "The BUY verdict is driven by State Bank of India's strong revenue growth, high profit margins, and attractive valuation, which collectively indicate a positive trend in the company's financial performance. The positive analyst consensus and strong return on equity further support the upside potential of the stock. Despite some risks, the overall composite score of 62.6 suggests a favorable outlook for the company.",
+      "key_catalyst": "High profit margins",
+      "key_risk": "High dividend yield may not be sustainable",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The BUY verdict is driven by State Bank of India's strong revenue growth, high profit margins, and attractive valuation, which collectively indicate a positive trend in the company's financial performance. The positive analyst consensus and strong return on equity further support the upside potential of the stock. Despite some risks, the overall composite score of 62.6 suggests a favorable outlook for the company.\",\n  \"key_catalyst\": \"High profit margins\",\n  \"key_risk\": \"High dividend yield may not be sustainable\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 50,
+      "risk": "MEDIUM",
+      "composite": 62.6,
+      "scores": {
+        "fundamentals": 72.9,
+        "bull": 72.0,
+        "bear": 70.0,
+        "technical": 49.0,
+        "sentiment": 80.0,
+        "fair_value": 78,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.3,
+        "bull": 0.18,
+        "bear": 0.18,
+        "technical": 0.15,
+        "sentiment": 0.1,
+        "fair_value": 0.09
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 73x0.3 + Bull 72x0.18 + BearInv 30x0.18 + Tech 49x0.15 + Sent 80x0.1 + FV 78x0.09 = 62.6 \u2192 BUY"
+    },
+    "bull_score": 72,
+    "bear_score": 70,
+    "fundamentals_score": 72.9,
+    "scores_breakdown": {
+      "fundamentals": 72.9,
+      "bull": 72.0,
+      "bear": 70.0,
+      "technical": 49.0,
+      "sentiment": 80.0,
+      "fair_value": 78,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 1038.1,
+    "timestamp": "2026-07-07T15:03:40.324900",
+    "eval_results": {
+      "3d": {
+        "price": 1036.0,
+        "pct_change": -0.2,
+        "correct": false
+      },
+      "7d": {
+        "price": 1030.0999755859375,
+        "pct_change": -0.77,
+        "correct": false
+      },
+      "14d": {
+        "price": 1025.0,
+        "pct_change": -1.26,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "HDFCBANK",
+    "nse_symbol": "HDFCBANK",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by HDFC Bank's strong financial performance, attractive valuation, and resilient loan growth, which outweigh the concerns of declining revenue growth and relatively high valuation. The bull case, with a score of 70, highlights the company's high return on equity and relatively low P/E ratio, making it an attractive buy. The overall composite score of 63.3 further supports the BUY verdict, indicating a positive outlook for the stock.",
+      "key_catalyst": "HDFC Bank's high return on equity (ROE) of 13.82%, indicating strong financial performance",
+      "key_risk": "Declining revenue growth of -1.80%, which could lead to lower profitability and negatively impact the stock price",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by HDFC Bank's strong financial performance, attractive valuation, and resilient loan growth, which outweigh the concerns of declining revenue growth and relatively high valuation. The bull case, with a score of 70, highlights the company's high return on equity and relatively low P/E ratio, making it an attractive buy. The overall composite score of 63.3 further supports the BUY verdict, indicating a positive outlook for the stock.\",\n  \"key_catalyst\": \"HDFC Bank's high return on equity (ROE) of 13.82%, indicating strong financial performance\",\n  \"key_risk\": \"Declining revenue growth of -1.80%, which could lead to lower profitability and negatively impact the stock price\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 51,
+      "risk": "LOW",
+      "composite": 63.3,
+      "scores": {
+        "fundamentals": 60.4,
+        "bull": 70.0,
+        "bear": 40.0,
+        "technical": 62.0,
+        "sentiment": 55.0,
+        "fair_value": 78,
+        "data_completeness": 0.72
+      },
+      "weights": {
+        "fundamentals": 0.3,
+        "bull": 0.18,
+        "bear": 0.18,
+        "technical": 0.15,
+        "sentiment": 0.1,
+        "fair_value": 0.09
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 60x0.3 + Bull 70x0.18 + BearInv 60x0.18 + Tech 62x0.15 + Sent 55x0.1 + FV 78x0.09 = 63.3 \u2192 BUY"
+    },
+    "bull_score": 70,
+    "bear_score": 40,
+    "fundamentals_score": 60.4,
+    "scores_breakdown": {
+      "fundamentals": 60.4,
+      "bull": 70.0,
+      "bear": 40.0,
+      "technical": 62.0,
+      "sentiment": 55.0,
+      "fair_value": 78,
+      "data_completeness": 0.72
+    },
+    "baseline_price": 829.3,
+    "timestamp": "2026-07-07T16:20:13.818979",
+    "eval_results": {
+      "3d": {
+        "price": 824.9500122070312,
+        "pct_change": -0.52,
+        "correct": false
+      },
+      "7d": {
+        "price": 815.4500122070312,
+        "pct_change": -1.67,
+        "correct": false
+      },
+      "14d": {
+        "price": 753.1500244140625,
+        "pct_change": -9.18,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "ITC",
+    "nse_symbol": "ITC",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by ITC's strong financials, including high ROE and significant profit margins, which indicate strong profitability and efficient use of shareholder capital. Additionally, the upside potential based on fair value estimates provides a potential buying opportunity. Despite some bearish concerns, the overall composite score of 59.6 and fundamentals score of 77.3 support a bullish outlook.",
+      "key_catalyst": "High Return on Equity (ROE) of 29.34%",
+      "key_risk": "High debt-to-equity ratio of 3.293",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by ITC's strong financials, including high ROE and significant profit margins, which indicate strong profitability and efficient use of shareholder capital. Additionally, the upside potential based on fair value estimates provides a potential buying opportunity. Despite some bearish concerns, the overall composite score of 59.6 and fundamentals score of 77.3 support a bullish outlook.\",\n  \"key_catalyst\": \"High Return on Equity (ROE) of 29.34%\",\n  \"key_risk\": \"High debt-to-equity ratio of 3.293\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 60,
+      "risk": "MEDIUM",
+      "composite": 59.6,
+      "scores": {
+        "fundamentals": 77.3,
+        "bull": 70.0,
+        "bear": 55.0,
+        "technical": 28.0,
+        "sentiment": 45.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.3,
+        "bull": 0.18,
+        "bear": 0.18,
+        "technical": 0.15,
+        "sentiment": 0.1,
+        "fair_value": 0.09
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 77x0.3 + Bull 70x0.18 + BearInv 45x0.18 + Tech 28x0.15 + Sent 45x0.1 + FV 78x0.09 = 59.6 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 55,
+    "fundamentals_score": 77.3,
+    "scores_breakdown": {
+      "fundamentals": 77.3,
+      "bull": 70.0,
+      "bear": 55.0,
+      "technical": 28.0,
+      "sentiment": 45.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 288.75,
+    "timestamp": "2026-07-07T17:06:33.404844",
+    "eval_results": {
+      "3d": {
+        "price": 281.75,
+        "pct_change": -2.42,
+        "correct": false
+      },
+      "7d": {
+        "price": 276.6499938964844,
+        "pct_change": -4.19,
+        "correct": false
+      },
+      "14d": {
+        "price": 280.79998779296875,
+        "pct_change": -2.75,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "ITC",
+    "nse_symbol": "ITC",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is driven by ITC's strong fundamentals, including high return on equity and significant free cash flow generation, which position the company for potential stock price growth. Despite medium risk and mixed sentiment, the bull case outweighs the bear case, with a composite score of 60.3. The company's recent expansion in the hospitality segment and attractive valuation also contribute to the BUY verdict.",
+      "key_catalyst": "High Return on Equity (ROE) indicates strong profitability",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is driven by ITC's strong fundamentals, including high return on equity and significant free cash flow generation, which position the company for potential stock price growth. Despite medium risk and mixed sentiment, the bull case outweighs the bear case, with a composite score of 60.3. The company's recent expansion in the hospitality segment and attractive valuation also contribute to the BUY verdict.\",\n  \"key_catalyst\": \"High Return on Equity (ROE) indicates strong profitability\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 55,
+      "risk": "MEDIUM",
+      "composite": 60.3,
+      "scores": {
+        "fundamentals": 77.3,
+        "bull": 72.0,
+        "bear": 55.0,
+        "technical": 30.0,
+        "sentiment": 45.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.3,
+        "bull": 0.18,
+        "bear": 0.18,
+        "technical": 0.15,
+        "sentiment": 0.1,
+        "fair_value": 0.09
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 77x0.3 + Bull 72x0.18 + BearInv 45x0.18 + Tech 30x0.15 + Sent 45x0.1 + FV 78x0.09 = 60.3 \u2192 BUY"
+    },
+    "bull_score": 72,
+    "bear_score": 55,
+    "fundamentals_score": 77.3,
+    "scores_breakdown": {
+      "fundamentals": 77.3,
+      "bull": 72.0,
+      "bear": 55.0,
+      "technical": 30.0,
+      "sentiment": 45.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 288.75,
+    "timestamp": "2026-07-07T19:22:45.448667",
+    "eval_results": {
+      "3d": {
+        "price": 281.75,
+        "pct_change": -2.42,
+        "correct": false
+      },
+      "7d": {
+        "price": 276.6499938964844,
+        "pct_change": -4.19,
+        "correct": false
+      },
+      "14d": {
+        "price": 280.79998779296875,
+        "pct_change": -2.75,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "ITC",
+    "nse_symbol": "ITC",
+    "prediction": {
+      "final_reasoning": "The pre-computed BUY verdict is explained by ITC's strong profitability, high profit margins, and exceptionally high dividend yield, which outweigh the concerns of high debt levels and declining revenue growth. The company's expansion in the hospitality sector also presents a potential growth opportunity. Despite the mixed sentiment and bearish concerns, the overall composite score of 57.6 and fundamentals score of 77.3 support the BUY verdict.",
+      "key_catalyst": "High Return on Equity (ROE) indicates strong profitability",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "medium-term",
+      "_raw": "{\n  \"final_reasoning\": \"The pre-computed BUY verdict is explained by ITC's strong profitability, high profit margins, and exceptionally high dividend yield, which outweigh the concerns of high debt levels and declining revenue growth. The company's expansion in the hospitality sector also presents a potential growth opportunity. Despite the mixed sentiment and bearish concerns, the overall composite score of 57.6 and fundamentals score of 77.3 support the BUY verdict.\",\n  \"key_catalyst\": \"High Return on Equity (ROE) indicates strong profitability\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"medium-term\"\n}",
+      "verdict": "BUY",
+      "confidence": 60,
+      "risk": "MEDIUM",
+      "composite": 57.6,
+      "scores": {
+        "fundamentals": 77.3,
+        "bull": 72.0,
+        "bear": 70.0,
+        "technical": 30.0,
+        "sentiment": 45.0,
+        "fair_value": 78,
+        "data_completeness": 1.0
+      },
+      "weights": {
+        "fundamentals": 0.3,
+        "bull": 0.18,
+        "bear": 0.18,
+        "technical": 0.15,
+        "sentiment": 0.1,
+        "fair_value": 0.09
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 77x0.3 + Bull 72x0.18 + BearInv 30x0.18 + Tech 30x0.15 + Sent 45x0.1 + FV 78x0.09 = 57.6 \u2192 HOLD"
+    },
+    "bull_score": 72,
+    "bear_score": 70,
+    "fundamentals_score": 77.3,
+    "scores_breakdown": {
+      "fundamentals": 77.3,
+      "bull": 72.0,
+      "bear": 70.0,
+      "technical": 30.0,
+      "sentiment": 45.0,
+      "fair_value": 78,
+      "data_completeness": 1.0
+    },
+    "baseline_price": 288.75,
+    "timestamp": "2026-07-07T19:26:47.639249",
+    "eval_results": {
+      "3d": {
+        "price": 281.75,
+        "pct_change": -2.42,
+        "correct": false
+      },
+      "7d": {
+        "price": 276.6499938964844,
+        "pct_change": -4.19,
+        "correct": false
+      },
+      "14d": {
+        "price": 280.79998779296875,
+        "pct_change": -2.75,
+        "correct": false
+      }
+    },
+    "checked": true
+  },
+  {
+    "ticker": "BLUESTONE",
+    "nse_symbol": "BLUESTONE",
+    "prediction": {
+      "final_reasoning": "The HOLD verdict is justified due to the balanced bull and bear cases, with the company's high revenue growth and swing to profit being offset by its high debt-to-equity ratio and overvalued stock price. The composite score of 52.3, which is near the midpoint of the scale, also supports a neutral stance. Overall, the company's prospects are uncertain, warranting a cautious approach.",
+      "key_catalyst": "High revenue growth",
+      "key_risk": "High debt-to-equity ratio",
+      "timeframe": "short-term",
+      "_raw": "{\n  \"final_reasoning\": \"The HOLD verdict is justified due to the balanced bull and bear cases, with the company's high revenue growth and swing to profit being offset by its high debt-to-equity ratio and overvalued stock price. The composite score of 52.3, which is near the midpoint of the scale, also supports a neutral stance. Overall, the company's prospects are uncertain, warranting a cautious approach.\",\n  \"key_catalyst\": \"High revenue growth\",\n  \"key_risk\": \"High debt-to-equity ratio\",\n  \"timeframe\": \"short-term\"\n}",
+      "verdict": "HOLD",
+      "confidence": 43,
+      "risk": "MEDIUM",
+      "composite": 52.3,
+      "scores": {
+        "fundamentals": 40.5,
+        "bull": 70.0,
+        "bear": 70.0,
+        "technical": 73.0,
+        "sentiment": 90.0,
+        "fair_value": 25,
+        "data_completeness": 0.57
+      },
+      "weights": {
+        "fundamentals": 0.3,
+        "bull": 0.18,
+        "bear": 0.18,
+        "technical": 0.15,
+        "sentiment": 0.1,
+        "fair_value": 0.09
+      },
+      "validation_applied": [],
+      "signal_breakdown": "Fund 40x0.3 + Bull 70x0.18 + BearInv 30x0.18 + Tech 73x0.15 + Sent 90x0.1 + FV 25x0.09 = 52.3 \u2192 HOLD"
+    },
+    "bull_score": 70,
+    "bear_score": 70,
+    "fundamentals_score": 40.5,
+    "scores_breakdown": {
+      "fundamentals": 40.5,
+      "bull": 70.0,
+      "bear": 70.0,
+      "technical": 73.0,
+      "sentiment": 90.0,
+      "fair_value": 25,
+      "data_completeness": 0.57
+    },
+    "baseline_price": 776.05,
+    "timestamp": "2026-07-22T13:26:50.845720",
     "eval_results": {},
     "checked": false
   }

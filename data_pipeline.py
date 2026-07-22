@@ -17,15 +17,24 @@ def clean_value(val):
     if not val:
         return None
 
-    val = val.replace(",", "").replace("₹", "").strip()
-
-    if "Cr" in val:
-        return float(val.replace("Cr", "").strip()) * 1e7
-    if "Lakh" in val:
-        return float(val.replace("Lakh", "").strip()) * 1e5
-
+    # Extract all digits, commas, and dots
+    val_str = str(val).replace(",", "").replace("₹", "").strip()
+    
+    # Handle multipliers
+    multiplier = 1
+    if "Cr" in val_str:
+        multiplier = 1e7
+    elif "Lakh" in val_str:
+        multiplier = 1e5
+        
+    # Extract only the numeric part (e.g., from '1277386\n    \n   .')
+    import re
+    match = re.search(r'([0-9]*\.?[0-9]+)', val_str)
+    if not match:
+        return None
+        
     try:
-        return float(val)
+        return float(match.group(1)) * multiplier
     except:
         return None
 
@@ -80,9 +89,9 @@ def generate_slug(name):
     return name.strip()
 
 
-def fetch_screener(company):
-    slug = generate_slug(company)
-    url = f"https://www.screener.in/company/{slug}/consolidated/"
+def fetch_screener(symbol):
+    # Screener.in uses the NSE/BSE symbol in the URL (e.g., TCS, HDFCBANK)
+    url = f"https://www.screener.in/company/{symbol.upper()}/consolidated/"
 
     try:
         r = requests.get(url, headers=HEADERS, timeout=10)
@@ -99,7 +108,9 @@ def fetch_screener(company):
 
         return data
 
-    except:
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
         return {}
 
 
@@ -108,7 +119,7 @@ def fetch_screener(company):
 # ─────────────────────────────
 def normalize(nse, yf, scr):
     return {
-        "price": nse.get("price"),
+        "price": nse.get("price") or scr.get("current price"),
 
         "pe": scr.get("stock p/e") or yf.get("pe"),
         "pb": scr.get("price to book value") or yf.get("pb"),
@@ -119,7 +130,8 @@ def normalize(nse, yf, scr):
         "growth": scr.get("sales growth") or yf.get("growth"),
         "debt": scr.get("debt to equity") or yf.get("debt"),
 
-        "market_cap": yf.get("market_cap"),
+        "market_cap": scr.get("market cap") or yf.get("market_cap"),
+        "dividend_yield": scr.get("dividend yield") or yf.get("dividend_yield"),
     }
 
 
@@ -144,6 +156,10 @@ def validate(data):
             continue
         if k == "debt" and v > 500:
             continue
+        if k == "market_cap" and v < 0:
+            continue
+        if k == "dividend_yield" and (v < 0 or v > 500):
+            continue
 
         clean[k] = v
 
@@ -156,7 +172,8 @@ def validate(data):
 def get_clean_stock_data(symbol):
     nse = fetch_nse(symbol)
     yf  = fetch_yf(symbol + ".NS")
-    scr = fetch_screener(nse.get("company", symbol))
+    # Always use the symbol for Screener, not the company name
+    scr = fetch_screener(symbol)
 
     norm = normalize(nse, yf, scr)
     clean = validate(norm)

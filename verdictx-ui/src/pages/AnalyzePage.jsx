@@ -22,6 +22,8 @@ export default function AnalyzePage() {
   const [error, setError] = useState(null);
   const [done, setDone] = useState(false);
   const [partials, setPartials] = useState({});   // live agent scores as they stream in
+  const [agentStream, setAgentStream] = useState({ sentiment: "", bull: "", bear: "", judge: "" });
+  const [activeAgent, setActiveAgent] = useState(null);
   const esRef = useRef(null);
   const connectedRef = useRef(false);   // tracks whether we ever received a valid message
 
@@ -48,6 +50,14 @@ export default function AnalyzePage() {
         if (data.type === 'partial') {
           // Stream agent scores as they arrive — before the full done event
           setPartials(prev => ({ ...prev, ...data }));
+        }
+
+        if (data.type === 'stream') {
+          setActiveAgent(data.agent);
+          setAgentStream(prev => ({
+            ...prev,
+            [data.agent]: prev[data.agent] + data.chunk
+          }));
         }
 
         if (data.type === 'done') {
@@ -286,6 +296,48 @@ export default function AnalyzePage() {
             );
           })}
         </div>
+
+        {/* Live Output Terminal */}
+        <AnimatePresence>
+          {activeAgent && agentStream[activeAgent] && !done && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, height: 0 }}
+              style={{
+                background: 'rgba(2,6,23,0.9)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 12,
+                padding: 16,
+                marginBottom: 24,
+                fontFamily: '"Fira Code", monospace',
+                fontSize: 12,
+                lineHeight: 1.5,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+                maxHeight: 220,
+                overflowY: 'auto',
+                color: activeAgent === 'bull' ? '#4ade80' : 
+                       activeAgent === 'bear' ? '#f87171' : 
+                       activeAgent === 'judge' ? '#fbbf24' : '#a78bfa',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.5) inset',
+              }}
+            >
+              <div style={{ opacity: 0.6, marginBottom: 8, fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'flex', justifyContent: 'space-between' }}>
+                <span>{activeAgent} Agent Active</span>
+                <motion.span animate={{ opacity: [1, 0.4, 1] }} transition={{ repeat: Infinity, duration: 1.5 }}>● LIVE</motion.span>
+              </div>
+              <div style={{ opacity: 0.9 }}>
+                {agentStream[activeAgent]}
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ repeat: Infinity, duration: 0.8 }}
+                  style={{ display: 'inline-block', width: 6, height: 12, background: 'currentColor', marginLeft: 4, verticalAlign: 'middle' }}
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Error state */}
         <AnimatePresence>

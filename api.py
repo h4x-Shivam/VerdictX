@@ -35,13 +35,19 @@ def _safe_json(obj):
         if isinstance(obj, np.integer):
             return int(obj)
         if isinstance(obj, np.floating):
-            return float(obj)
+            val = float(obj)
+            import math
+            if math.isnan(val) or math.isinf(val):
+                return None
+            return val
         if isinstance(obj, np.ndarray):
             return obj.tolist()
     except Exception:
         pass
-    if isinstance(obj, float) and (obj != obj):  # NaN check
-        return None
+    if isinstance(obj, float):
+        import math
+        if math.isnan(obj) or math.isinf(obj):
+            return None
     try:
         json.dumps(obj)
         return obj
@@ -51,7 +57,7 @@ def _safe_json(obj):
 
 def _emit(event_type: str, payload: dict) -> str:
     """Format a single SSE event."""
-    data = json.dumps({"type": event_type, **payload})
+    data = json.dumps({"type": event_type, **payload}, allow_nan=False)
     return f"data: {data}\n\n"
 
 
@@ -146,7 +152,13 @@ def _analysis_generator(ticker: str):
             "msg": f"Data ready in {t1 - t0:.1f}s — analyzing market sentiment…",
         })
 
-        sent = analyze_sentiment(news_text)
+        sent = {}
+        for event in analyze_sentiment(news_text, stream=True):
+            if event["type"] == "stream":
+                yield _emit("stream", {"agent": "sentiment", "chunk": event["chunk"]})
+            elif event["type"] == "result":
+                sent = event["data"]
+
         yield _emit("partial", {
             "agent": "sentiment",
             "sentiment":         sent.get("sentiment", "NEUTRAL"),
@@ -158,7 +170,13 @@ def _analysis_generator(ticker: str):
             "msg": f"Sentiment: {sent.get('sentiment', 'N/A')} ({sent.get('score', 0):+d}) ✓ — Bull agent scanning positive signals…",
         })
 
-        bull = run_bull_agent(fund_summary, news_text)
+        bull = {}
+        for event in run_bull_agent(fund_summary, news_text, stream=True):
+            if event["type"] == "stream":
+                yield _emit("stream", {"agent": "bull", "chunk": event["chunk"]})
+            elif event["type"] == "result":
+                bull = event["data"]
+
         yield _emit("partial", {
             "agent": "bull",
             "bull_score":  bull.get("overall_bull_score", 50),
@@ -170,7 +188,13 @@ def _analysis_generator(ticker: str):
             "msg": f"Bull score: {bull.get('overall_bull_score', '?')}/100 ✓ — Bear agent scanning risks…",
         })
 
-        bear = run_bear_agent(fund_summary, news_text)
+        bear = {}
+        for event in run_bear_agent(fund_summary, news_text, stream=True):
+            if event["type"] == "stream":
+                yield _emit("stream", {"agent": "bear", "chunk": event["chunk"]})
+            elif event["type"] == "result":
+                bear = event["data"]
+
         yield _emit("partial", {
             "agent": "bear",
             "bear_score":  bear.get("overall_bear_score", 50),
@@ -222,11 +246,17 @@ def _analysis_generator(ticker: str):
             "msg": f"Verdict: {validated.get('verdict')} — judge writing reasoning…",
         })
 
-        verdict = run_judge_agent(
+        verdict = {}
+        for event in run_judge_agent(
             bull, bear, sent,
             verdict_data=validated,
             fundamentals_data=fund_data,
-        )
+            stream=True
+        ):
+            if event["type"] == "stream":
+                yield _emit("stream", {"agent": "judge", "chunk": event["chunk"]})
+            elif event["type"] == "result":
+                verdict = event["data"]
 
         # ── Save prediction ────────────────────────────────────────
         yield _emit("progress", {"step": 7, "total": 7, "pct": 92, "msg": "Saving prediction…"})
@@ -239,7 +269,9 @@ def _analysis_generator(ticker: str):
             fundamentals_score=fund_data["score"],
             scores=validated.get("scores"),
         )
-        check_outcomes()
+        # Run check_outcomes in a background thread to avoid blocking the stream
+        import threading
+        threading.Thread(target=check_outcomes, daemon=True).start()
 
         t3 = time.time()
         total_s = round(t3 - t0, 1)
@@ -287,12 +319,14 @@ def _analysis_generator(ticker: str):
             },
         })
         yield _emit("done", {"result": result})
+        time.sleep(1.0)  # Flush socket buffer before exit
 
     except Exception as e:
         tb = traceback.format_exc()
         safe_msg = f"[API ERROR] {ticker}: {e}\n{tb}".encode("utf-8", "replace").decode("utf-8", "replace")
         print(safe_msg)
         yield _emit("error", {"message": str(e), "detail": tb[-500:]})
+        time.sleep(1.0)  # Flush socket buffer before exit
 
 
 # ─────────────────────────────────────────────────────────────────
